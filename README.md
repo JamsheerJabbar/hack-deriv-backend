@@ -22,10 +22,11 @@ This is a modular implementation of a Natural Language to SQL pipeline based on 
 
 2. Run the application:
    ```bash
-   python -m app.main
+   python -m uvicorn app.main:app --reload --port 8000  
    ```
 
 3. Access the API documentation at `http://localhost:8000/docs`.
+4. 
 
 ## Usage
 

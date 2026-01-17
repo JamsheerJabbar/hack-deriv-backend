@@ -17,6 +17,8 @@ This is a modular implementation of a Natural Language to SQL pipeline based on 
 
 1. Install dependencies:
    ```bash
+   python -m venv venv
+   source venv/bin/activate
    pip install -r requirements.txt
    ```
 

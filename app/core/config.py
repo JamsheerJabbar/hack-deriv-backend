@@ -12,10 +12,12 @@ class Settings(BaseSettings):
     
     # LLM Settings
     GEMINI_API_KEY: Optional[str] = None
-    MODEL_NAME: str = "gemini-2.0-flash-exp"
+    GEMINI_MODEL_NAME: str = "gemini-2.0-flash-exp"
+    OPENAI_API_KEY: Optional[str] = None
+    OPENAI_MODEL_NAME: str = "gpt-3.5-turbo"
     
     # Database Settings (Target DB to query)
-    DATABASE_URL: str = "sqlite:///./derivinsight.db"
+    DATABASE_URL: str = "sqlite:///./derivinsight_fixed.db"
     SCHEMA_PATH: str = "app/files/derivinsight_schema.sql"
     MOCK_DATA_SCRIPT_PATH: str = "app/files/generate_mock_data.py"
     

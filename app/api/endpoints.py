@@ -8,26 +8,42 @@ router = APIRouter()
 async def query_database(request: QueryRequest):
     """
     Process a natural language query through the NL2SQL pipeline.
+    Supports conversational clarification flow.
     """
     initial_state = {
         "user_question": request.query,
-        "conversation_history": [],
+        "domain": request.domain,
+        "conversation_history": request.conversation_history,
         "retry_count": 0
     }
     
     # Run the graph
     result = await app_graph.ainvoke(initial_state)
     
+    # Check if clarification is needed
+    if result.get("status") == "needs_clarification":
+        return QueryResponse(
+            sql=None,
+            results=None,
+            status="needs_clarification",
+            clarification_question=result.get("clarification_question"),
+            is_final=False
+        )
+    
+    # Check for validation errors
     if result.get("validation_error") and not result.get("query_result"):
         return QueryResponse(
             sql=result.get("generated_sql"),
             results=None,
             status="failed",
-            error=result["validation_error"]
+            error=result["validation_error"],
+            is_final=True
         )
-        
+    
+    # Success - SQL generated and executed
     return QueryResponse(
         sql=result.get("generated_sql"),
         results=result.get("query_result"),
-        status="success"
+        status="success",
+        is_final=True
     )

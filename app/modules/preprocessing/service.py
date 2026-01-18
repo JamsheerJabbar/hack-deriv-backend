@@ -15,14 +15,15 @@ class PreprocessingService:
         self.few_shot_retriever = FewShotRetriever()
         self.entity_extractor = EntityExtractor()
 
-    async def process(self, query: str) -> Dict[str, Any]:
+    async def process(self, query: str, domain: str = "general") -> Dict[str, Any]:
         """
         Runs all preprocessing components in parallel.
+        Domain is used to filter few-shot examples.
         """
         # Create tasks for parallel execution
         t1 = self.table_retriever.retrieve(query)
         t2 = self.column_retriever.retrieve(query)
-        t3 = self.few_shot_retriever.retrieve(query)
+        t3 = self.few_shot_retriever.retrieve(query, domain=domain)
         t4 = self.entity_extractor.extract(query)
 
         # Execute all tasks concurrently
@@ -32,7 +33,8 @@ class PreprocessingService:
             "relevant_tables": tables,
             "relevant_columns": columns,
             "few_shot_examples": few_shots,
-            "entities": entities
+            "entities": entities,
+            "domain": domain
         }
 
 # Singleton instance

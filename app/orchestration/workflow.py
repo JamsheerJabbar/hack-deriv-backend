@@ -6,6 +6,7 @@ from app.modules.clarification import clarification_module
 from app.modules.preprocessing import preprocessing_service
 from app.modules.sql_generation import sql_generation_module
 from app.modules.validation import validation_module
+from app.modules.visualization import visualization_module
 from app.services.database import db_service
 
 # Node Definitions
@@ -80,6 +81,16 @@ async def execute_query_node(state: GraphState) -> Dict[str, Any]:
     results = db_service.execute(sql)
     return {"query_result": results, "status": "success"}
 
+async def recommend_visualization_node(state: GraphState) -> Dict[str, Any]:
+    """Analyze results and recommend visualization."""
+    query = state["user_question"]
+    sql = state.get("generated_sql", "")
+    results = state.get("query_result", [])
+    
+    vis_config = await visualization_module.recommend(query, sql, results)
+    
+    return {"visualization_config": vis_config}
+
 async def format_response_node(state: GraphState) -> Dict[str, Any]:
     # Format results if needed
     return {}
@@ -112,6 +123,7 @@ workflow.add_node("generate_sql", generate_sql_node)
 workflow.add_node("validate_sql", validate_sql_node)
 workflow.add_node("repair_sql", repair_sql_node)
 workflow.add_node("execute_query", execute_query_node)
+workflow.add_node("recommend_visualization", recommend_visualization_node)
 workflow.add_node("format_response", format_response_node)
 
 workflow.set_entry_point("classify_intent")
@@ -141,7 +153,8 @@ workflow.add_conditional_edges(
 )
 
 workflow.add_edge("repair_sql", "validate_sql")
-workflow.add_edge("execute_query", "format_response")
+workflow.add_edge("execute_query", "recommend_visualization")
+workflow.add_edge("recommend_visualization", "format_response")
 workflow.add_edge("format_response", END)
 
 app_graph = workflow.compile()

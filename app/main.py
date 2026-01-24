@@ -1,8 +1,21 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from app.api.endpoints import router as api_router
 from app.core.config import settings
+import os
 
 app = FastAPI(title=settings.PROJECT_NAME)
+
+# Enable CORS for frontend access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
@@ -10,6 +23,16 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 def health_check():
     return {"status": "healthy"}
 
+# Serve frontend static files
+frontend_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
+if os.path.exists(frontend_path):
+    app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+    
+    @app.get("/")
+    def serve_frontend():
+        """Serve the frontend HTML"""
+        return FileResponse(os.path.join(frontend_path, "index.html"))
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)

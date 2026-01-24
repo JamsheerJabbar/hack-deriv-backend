@@ -38,13 +38,17 @@ Analyze the query and return a JSON object with:
 Examples of queries needing clarification:
 - "Show me suspicious users" → needs threshold/criteria
 - "Find compliance violations" → needs specific rule type
-- "Check recent activity" → needs time range
+- "Check recent activity" → needs time range (unless "recent" serves as default limit)
 - "Users need to have verified KYC and no flagged transactions in last 30 days" → complex rule, may need confirmation
 
-Examples of clear queries:
+Examples of clear queries (DO NOT ASK FOR CLARIFICATION):
 - "Show high-risk users from UAE"
+- "Show me 5 users" (Implicitly means any 5 users)
 - "List transactions over $50,000 with status FLAGGED"
 - "Count failed login attempts in last 24 hours"
+- "Show all users" (Implicitly means top N or all)
+
+IMPORTANT: Do NOT ask for clarification for simple queries like "Show me users" or "List transactions". Assume reasonable defaults (LIMIT 5, Order by date desc) in the SQL generation phase instead. Only ask if the intent is truly ambiguous or unexecutable.
 
 Return ONLY the JSON object.
 """

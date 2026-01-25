@@ -4,9 +4,11 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from app.api.endpoints import router as api_router
 from app.core.config import settings
+from app.core.logger import logger
 import os
 
 app = FastAPI(title=settings.PROJECT_NAME)
+logger.info(f"Starting {settings.PROJECT_NAME} on port 8080...")
 
 # Enable CORS for frontend access
 app.add_middleware(

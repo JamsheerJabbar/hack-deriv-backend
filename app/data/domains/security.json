@@ -1,0 +1,61 @@
+{
+  "domain": "security",
+  "description": "Configuration for security domain",
+  "schema_context": "The database contains information related to user security and risk management. The `users` table stores user information, including personal details (full_name, email, phone, date_of_birth, country), KYC (Know Your Customer) status (kyc_status, kyc_verified_at, kyc_expiry_date), risk assessment (risk_level, risk_score, is_pep), account status (account_status), and timestamps. `transactions` table records all transactions performed by users, with details such as txn_id, user_id, txn_type, instrument, amount, currency, amount_usd, status, flag_reason, payment_method, external_ref, ip_address, and timestamps. The `login_events` table captures user login attempts, including the email_attempted, ip_address, country, city, device_type, device_fingerprint, user_agent, status (success/failure), failure_reason and timestamps. The `alert_rules` table defines rules for detecting suspicious activities, including rule_id, rule_name, rule_type, condition (defining triggering events), severity, is_active status and timestamps. The `alerts` table stores information about alerts triggered by the alert rules, including alert_id, rule_name, rule_id, user_id, txn_id (if applicable), severity, status, details (JSON format), assigned_to (user or group), resolution timestamps, resolution notes and timestamps. The `audit_logs` table tracks user actions within the system, including log_id, actor_id, action, resource_type, resource_id, query_text, ip_address, and timestamps. The `dashboards` table holds information about created dashboards with columns dashboard_id, name, owner_id, widgets (JSON format), layout (JSON format), deployment information like is_deployed, deploy_url, refresh_interval and timestamps. The `query_history` table stores history of NL to SQL queries.",
+  "prompts": {
+    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nWhen interpreting user questions, pay close attention to security-related keywords such as 'KYC', 'FLAGGED', 'MFA_FAILED', 'risk_level', 'risk_score', 'is_pep', 'account_status', 'fraud', 'alerts', 'login events', 'suspicious activity', and be aware of the specific alert rule names like 'Dormant Account Activity', 'Failed Auth Spike', 'High Risk Country', 'Large Transaction', 'New Geo Login'. When a query references 'alerts', understand they can have statuses like 'DISMISSED', 'INVESTIGATING', 'OPEN', and 'RESOLVED'.\n\nDOMAIN SPECIFIC INSTRUCTION:\nAdd this instruction to the system prompt: Pay close attention to KYC statuses like 'EXPIRED', 'PENDING', 'REJECTED', 'VERIFIED', account statuses such as 'ACTIVE', 'FROZEN', 'SUSPENDED', transaction statuses like 'COMPLETED', 'FAILED', 'FLAGGED', 'PENDING', and login event statuses like 'BLOCKED', 'FAILED', 'SUCCESS'. Also consider flag reasons like 'Automated screening', 'Risk threshold exceeded', 'Large amount', 'Unusual pattern', and failure reasons such as 'MFA_FAILED', 'IP_BLOCKED', 'WRONG_PASSWORD', 'ACCOUNT_LOCKED', 'SUSPICIOUS_ACTIVITY'. When the user asks a query regarding rule conditions, always examine the JSON format.",
+    "sql": null
+  },
+  "few_shots": [
+    {
+      "question": "Show me all users with KYC status 'PENDING'.",
+      "sql": "SELECT user_id, email FROM users WHERE kyc_status = 'PENDING';",
+      "explanation": "This query selects the user ID and email from the 'users' table where the 'kyc_status' column is equal to 'PENDING'."
+    },
+    {
+      "question": "What are the transaction IDs of all 'FLAGGED' transactions using 'CARD' payment method?",
+      "sql": "SELECT txn_id FROM transactions WHERE status = 'FLAGGED' AND payment_method = 'CARD';",
+      "explanation": "This query selects the transaction IDs from the 'transactions' table where the 'status' is 'FLAGGED' and the 'payment_method' is 'CARD'."
+    },
+    {
+      "question": "List all login events with 'WRONG_PASSWORD' as the failure reason.",
+      "sql": "SELECT event_id, user_id, email_attempted FROM login_events WHERE failure_reason = 'WRONG_PASSWORD';",
+      "explanation": "This query retrieves the event ID, user ID, and attempted email address from the 'login_events' table for entries where the 'failure_reason' is 'WRONG_PASSWORD'."
+    },
+    {
+      "question": "How many alerts have a severity of 'CRITICAL'?",
+      "sql": "SELECT count(*) FROM alerts WHERE severity = 'CRITICAL';",
+      "explanation": "This query counts the number of rows in the 'alerts' table where the 'severity' is 'CRITICAL'."
+    },
+    {
+      "question": "Show me the audit logs for 'LOGIN' actions on the 'USER' resource type.",
+      "sql": "SELECT log_id, actor_id, ip_address, created_at FROM audit_logs WHERE action = 'LOGIN' AND resource_type = 'USER';",
+      "explanation": "This query retrieves the log ID, actor ID, IP address, and creation timestamp from the 'audit_logs' table where the 'action' is 'LOGIN' and the 'resource_type' is 'USER'."
+    },
+    {
+      "question": "What are the names and risk levels of users with KYC status 'VERIFIED'?",
+      "sql": "SELECT full_name, risk_level FROM users WHERE kyc_status = 'VERIFIED';",
+      "explanation": "This query selects the full name and risk level from the users table, filtering for users whose KYC status is 'VERIFIED'."
+    },
+    {
+      "question": "Show me the transaction IDs, amounts, and flag reasons for transactions that are flagged.",
+      "sql": "SELECT txn_id, amount, flag_reason FROM transactions WHERE status = 'FLAGGED';",
+      "explanation": "This retrieves the transaction ID, amount, and flag reason from the transactions table, specifically for transactions with a 'FLAGGED' status."
+    },
+    {
+      "question": "List the distinct failure reasons for login events.",
+      "sql": "SELECT DISTINCT failure_reason FROM login_events;",
+      "explanation": "This query retrieves all the unique failure reasons for logins present in the login_events table."
+    },
+    {
+      "question": "Find all dashboards created in '2025-09'. Display their name and deploy_url.",
+      "sql": "SELECT name, deploy_url FROM dashboards WHERE created_at LIKE '2025-09%';",
+      "explanation": "This query retrieves the names and deploy urls from the dashboards table for dashboards that were created in september of 2025."
+    },
+    {
+      "question": "Show the average amount_usd for COMPLETED transactions.",
+      "sql": "SELECT AVG(amount_usd) FROM transactions WHERE status = 'COMPLETED';",
+      "explanation": "This query computes the average amount in USD for transactions where the status is COMPLETED."
+    }
+  ]
+}

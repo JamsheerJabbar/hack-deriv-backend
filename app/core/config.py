@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     
     # LLM Settings
     GEMINI_API_KEY: Optional[str] = None
-    GEMINI_MODEL_NAME: str = "gemini-2.0-flash-exp"
+    GEMINI_MODEL_NAME: str = "gemini-2.5-flash-lite"
     OPENAI_API_KEY: Optional[str] = None
     OPENAI_MODEL_NAME: str = "gpt-3.5-turbo"
     

@@ -1,0 +1,61 @@
+{
+  "domain": "operations",
+  "description": "Configuration for operations domain",
+  "schema_context": "The database contains information related to user operations, transactions, alerts, and system activities. \n\nThe `users` table stores user profile data, including `user_id` (unique user identifier), `email`, `full_name`, `country` (e.g., AE, AU, CA, CH, DE), `phone`, `date_of_birth`, `kyc_status` (e.g., EXPIRED, PENDING, REJECTED, VERIFIED), `kyc_verified_at`, `kyc_expiry_date`, `risk_level` (e.g., HIGH, LOW, MEDIUM), `risk_score`, `is_pep` (Political Exposed Person), `account_status` (e.g., ACTIVE, FROZEN, SUSPENDED), `created_at`, and `updated_at`. KYC refers to 'Know Your Customer' verification.\n\nThe `transactions` table records transaction details, with columns like `txn_id` (unique transaction identifier), `user_id` (foreign key to users), `txn_type` (e.g., BONUS, DEPOSIT, FEE, TRADE, WITHDRAWAL), `instrument` (e.g., AAPL, AED/USD, BTC/USD, ETH/USD, EUR/USD), `amount`, `currency` (e.g. USD), `amount_usd` (amount in USD), `status` (e.g., COMPLETED, FAILED, FLAGGED, PENDING), `flag_reason` (e.g., Automated screening, Risk threshold exceeded, Large amount, Unusual pattern), `payment_method` (e.g., CRYPTO, EWALLET, CARD, BANK_TRANSFER), `external_ref`, `ip_address`, `created_at`, and `processed_at`.\n\nThe `login_events` table tracks user login attempts, storing `event_id` (unique event identifier), `user_id` (foreign key to users), `email_attempted`, `ip_address`, `country` (e.g., AE, AU, CA, CH, DE), `city`, `device_type` (e.g., DESKTOP, MOBILE, TABLET), `device_fingerprint`, `user_agent`, `status` (e.g., BLOCKED, FAILED, SUCCESS), `failure_reason` (e.g., MFA_FAILED, IP_BLOCKED, WRONG_PASSWORD, ACCOUNT_LOCKED, SUSPICIOUS_ACTIVITY), and `created_at`.\n\nThe `alert_rules` table defines alert rules based on various conditions: `rule_id` (unique identifier), `rule_name` (e.g., Dormant Account Activity, Failed Auth Spike, High Risk Country, Large Transaction, New Geo Login), `rule_type` (e.g., THRESHOLD, VELOCITY, TIME, GEO, PATTERN), `condition` (JSON containing the rule's condition), `severity` (e.g., HIGH, MEDIUM, LOW, CRITICAL), `is_active` (1 or 0), and `created_at`.\n\nThe `alerts` table stores generated alerts: `alert_id` (unique identifier), `rule_name` (from alert_rules), `rule_id` (foreign key to alert_rules), `user_id` (foreign key to users), `txn_id` (foreign key to transactions), `severity` (e.g., CRITICAL, HIGH, LOW, MEDIUM), `status` (e.g., DISMISSED, INVESTIGATING, OPEN, RESOLVED), `details` (JSON containing alert details), `assigned_to`, `resolved_at`, `resolution_notes`, and `created_at`.\n\nThe `audit_logs` table tracks user actions: `log_id` (unique identifier), `actor_id` (user performing the action), `action` (e.g., EXPORT, LOGIN, QUERY, UPDATE, VIEW), `resource_type` (e.g., REPORT, ALERT, DASHBOARD, TRANSACTION, USER), `resource_id`, `query_text` (if applicable), `ip_address`, and `created_at`.\n\nThe `dashboards` table contains definitions for dashboards: `dashboard_id` (unique identifier), `name`, `owner_id`, `widgets` (JSON array of widgets), `layout` (JSON array describing widget positions), `is_deployed` (1 or 0), `deploy_url`, `refresh_interval` (in seconds), `created_at`, and `deployed_at`.\n\nThe `query_history` table stores NL-SQL query history.",
+  "prompts": {
+    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nAdd this instruction to the system prompt: Pay close attention to the specific values of columns like `kyc_status`, `txn_type`, `status`, `flag_reason`, `country`, `rule_name` and `account_status`. When generating SQL, prefer the actual values present in the database rather than generic placeholders.\n\nDOMAIN SPECIFIC INSTRUCTION:\nAdd this instruction to the system prompt: Consider abbreviations like 'KYC' (Know Your Customer), 'PEP' (Politically Exposed Person). Understand common alert rule types like 'THRESHOLD', 'VELOCITY', 'TIME', 'GEO', and 'PATTERN'. Pay attention to transaction statuses like 'FLAGGED', 'COMPLETED', 'PENDING', and 'FAILED'.",
+    "sql": null
+  },
+  "few_shots": [
+    {
+      "question": "How many users have a KYC status of 'VERIFIED'?",
+      "sql": "SELECT count(*) FROM users WHERE kyc_status = 'VERIFIED'",
+      "explanation": "This query counts the number of users in the `users` table where the `kyc_status` column is equal to 'VERIFIED'."
+    },
+    {
+      "question": "What are the full names and email addresses of users from country 'DE'?",
+      "sql": "SELECT full_name, email FROM users WHERE country = 'DE'",
+      "explanation": "This query selects the `full_name` and `email` columns from the `users` table for users where the `country` column is 'DE'."
+    },
+    {
+      "question": "Show the txn_id, user_id, and amount for all 'FLAGGED' transactions.",
+      "sql": "SELECT txn_id, user_id, amount FROM transactions WHERE status = 'FLAGGED'",
+      "explanation": "This query retrieves the `txn_id`, `user_id`, and `amount` from the `transactions` table where the `status` column is equal to 'FLAGGED'."
+    },
+    {
+      "question": "List all alert rules with severity 'HIGH' and their rule names.",
+      "sql": "SELECT rule_name FROM alert_rules WHERE severity = 'HIGH'",
+      "explanation": "This query selects the `rule_name` from the `alert_rules` table where the `severity` column is 'HIGH'."
+    },
+    {
+      "question": "What is the average risk score for users with account status 'ACTIVE'?",
+      "sql": "SELECT avg(risk_score) FROM users WHERE account_status = 'ACTIVE'",
+      "explanation": "This query calculates the average value of the `risk_score` column from the `users` table where the `account_status` is equal to 'ACTIVE'."
+    },
+    {
+      "question": "What is the count of users with a KYC status of 'VERIFIED' and 'EXPIRED'?",
+      "sql": "SELECT kyc_status, count(*) FROM users WHERE kyc_status IN ('VERIFIED', 'EXPIRED') GROUP BY kyc_status;",
+      "explanation": "This query groups users by their 'kyc_status' ('VERIFIED' and 'EXPIRED') and counts the number of users in each group using the COUNT(*) function."
+    },
+    {
+      "question": "Show the full names and risk levels of users whose risk level is 'HIGH' and are flagged as a PEP (Politically Exposed Person).",
+      "sql": "SELECT full_name, risk_level FROM users WHERE risk_level = 'HIGH' AND is_pep = 1;",
+      "explanation": "This query selects the 'full_name' and 'risk_level' columns from the 'users' table, filtering for users with a 'risk_level' of 'HIGH' and 'is_pep' equal to 1 (meaning they are a PEP)."
+    },
+    {
+      "question": "List the transaction IDs and amount in USD for all 'FLAGGED' transactions with 'Risk threshold exceeded' as the flag reason.",
+      "sql": "SELECT txn_id, amount_usd FROM transactions WHERE status = 'FLAGGED' AND flag_reason = 'Risk threshold exceeded';",
+      "explanation": "This query retrieves the 'txn_id' and 'amount_usd' for transactions that have a 'status' of 'FLAGGED' and a 'flag_reason' of 'Risk threshold exceeded'."
+    },
+    {
+      "question": "Retrieve the email addresses of users who have had 'FAILED' login attempts due to 'WRONG_PASSWORD'.",
+      "sql": "SELECT email_attempted FROM login_events WHERE status = 'FAILED' AND failure_reason = 'WRONG_PASSWORD';",
+      "explanation": "This query fetches the 'email_attempted' from the 'login_events' table where the 'status' is 'FAILED' and the 'failure_reason' is 'WRONG_PASSWORD', indicating a failed login due to an incorrect password."
+    },
+    {
+      "question": "Show the rule names and associated severity of all alert rules that are active.",
+      "sql": "SELECT rule_name, severity FROM alert_rules WHERE is_active = 1;",
+      "explanation": "This query selects the 'rule_name' and 'severity' columns from the 'alert_rules' table, filtering for rows where 'is_active' is equal to 1, indicating that the rule is active."
+    }
+  ]
+}

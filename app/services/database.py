@@ -2,10 +2,12 @@ import os
 from typing import List, Dict, Any
 from sqlalchemy import create_engine, text, inspect
 from app.core.config import settings
+from app.core.logger import logger
 
 class DatabaseService:
     def __init__(self):
         self.engine = create_engine(settings.DATABASE_URL)
+        logger.info(f"DatabaseService initialized with engine: {settings.DATABASE_URL.split('///')[-1]}")
         self.initialize_db()
 
     def initialize_db(self):
@@ -48,17 +50,21 @@ class DatabaseService:
 
     def execute(self, sql: str) -> List[Dict[str, Any]]:
         """Execute a raw SQL query and return results as a list of dicts."""
+        logger.info(f"Executing SQL: {sql}")
         try:
             with self.engine.connect() as conn:
                 result = conn.execute(text(sql))
                 # Check if it's a SELECT query (returns rows)
                 if result.returns_rows:
-                    return [dict(row) for row in result.mappings()]
+                    data = [dict(row) for row in result.mappings()]
+                    logger.info(f"Execution complete. Returned {len(data)} rows.")
+                    return data
                 else:
                     conn.commit()
+                    logger.info(f"Execution complete. Rows affected: {result.rowcount}")
                     return [{"status": "success", "rows_affected": result.rowcount}]
         except Exception as e:
-            print(f"Query execution error: {e}")
+            logger.error(f"DATABASE EXECUTION ERROR: {str(e)} | Query: {sql}")
             return []
 
 db_service = DatabaseService()

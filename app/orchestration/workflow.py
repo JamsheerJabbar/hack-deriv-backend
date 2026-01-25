@@ -8,17 +8,20 @@ from app.modules.sql_generation import sql_generation_module
 from app.modules.validation import validation_module
 from app.modules.visualization import visualization_module
 from app.services.database import db_service
+from app.core.logger import logger
 
 # Node Definitions
 
 async def classify_intent_node(state: GraphState) -> Dict[str, Any]:
+    logger.info("Node: [classify_intent]")
     query = state["user_question"]
     domain = state.get("domain", "general")
     conversation_history = state.get("conversation_history", [])
     
     intent, confidence, complexity, needs_clarification = await intent_module.classify(
-        query, conversation_history
+        query, conversation_history, domain=domain
     )
+    logger.info(f"Intent classified: {intent} (conf: {confidence}) | Needs Clarification: {needs_clarification}")
     
     # Run preprocessing with domain context
     preproc_data = await preprocessing_service.process(query, domain=domain)
@@ -48,6 +51,7 @@ async def generate_clarification_node(state: GraphState) -> Dict[str, Any]:
     }
 
 async def generate_sql_node(state: GraphState) -> Dict[str, Any]:
+    logger.info("Node: [generate_sql]")
     query = state["user_question"]
     domain = state.get("domain", "general")
     context = {
@@ -56,11 +60,15 @@ async def generate_sql_node(state: GraphState) -> Dict[str, Any]:
         "domain": domain
     }
     sql = await sql_generation_module.generate(query, context)
+    logger.info(f"SQL Generated: {sql[:50]}...")
     return {"generated_sql": sql}
 
 async def validate_sql_node(state: GraphState) -> Dict[str, Any]:
+    logger.info("Node: [validate_sql]")
     sql = state["generated_sql"]
     is_valid, error = validation_module.validate(sql)
+    if not is_valid:
+        logger.warning(f"SQL Validation Error: {error}")
     return {"validation_error": error}
 
 async def repair_sql_node(state: GraphState) -> Dict[str, Any]:
@@ -77,9 +85,15 @@ async def repair_sql_node(state: GraphState) -> Dict[str, Any]:
     }
 
 async def execute_query_node(state: GraphState) -> Dict[str, Any]:
+    logger.info("Node: [execute_query]")
     sql = state["generated_sql"]
-    results = db_service.execute(sql)
-    return {"query_result": results, "status": "success"}
+    try:
+        results = db_service.execute(sql)
+        logger.info(f"Query execution returned {len(results)} rows.")
+        return {"query_result": results, "status": "success"}
+    except Exception as e:
+        logger.error(f"Execution Error: {str(e)}")
+        return {"query_result": None, "status": "failed", "validation_error": str(e)}
 
 async def recommend_visualization_node(state: GraphState) -> Dict[str, Any]:
     """Analyze results and recommend visualization."""
@@ -91,6 +105,55 @@ async def recommend_visualization_node(state: GraphState) -> Dict[str, Any]:
     
     return {"visualization_config": vis_config}
 
+async def guidance_node(state: GraphState) -> Dict[str, Any]:
+    """Generate a helpful response for off-topic or schema queries."""
+    from app.services.llm import llm_service
+    from app.modules.schema_understanding import schema_module
+    
+    query = state["user_question"]
+    domain = state.get("domain", "general")
+    intent = state.get("intent", "OFF_TOPIC")
+    
+    # Get schema context to help guide the user
+    schema_context = schema_module.get_schema_string(domain=domain)
+    
+    if intent == "SCHEMA_QUERY":
+        prompt = f"""
+        You are a Database Expert. The user wants to know about the system structure.
+        User asked: "{query}"
+        
+        Database Schema Context:
+        {schema_context}
+        
+        Task:
+        Provide a very clear and helpful list of the tables and columns available. 
+        Structure it so it's easy to read (use bullet points).
+        Mention what kind of questions you can answer with these tables.
+        """
+    else:
+        prompt = f"""
+        You are a helpful database assistant.
+        The user asked: "{query}"
+        This is off-topic or cannot be answered by the database.
+
+        Database Knowledge:
+        {schema_context}
+
+        Task:
+        Write a polite, helpful response that:
+        1. Validates that you cannot answer the specific question.
+        2. Suggests 3 relevant things they CAN ask about instead.
+        3. Be concise and friendly.
+        """
+    
+    guidance = await llm_service.generate_response(prompt)
+    
+    # We use 'clarification_question' field to show this as a standard chat message
+    return {
+        "clarification_question": guidance,
+        "status": "needs_clarification" 
+    }
+
 async def format_response_node(state: GraphState) -> Dict[str, Any]:
     # Format results if needed
     return {}
@@ -99,6 +162,8 @@ async def format_response_node(state: GraphState) -> Dict[str, Any]:
 
 def route_after_intent(state: GraphState):
     """Route based on whether clarification is needed."""
+    if state["intent"] in ["OFF_TOPIC", "SCHEMA_QUERY"]:
+        return "guidance"
     if state.get("needs_clarification", False):
         return "clarification"
     if state["confidence"] < 0.5:
@@ -119,6 +184,7 @@ workflow = StateGraph(GraphState)
 
 workflow.add_node("classify_intent", classify_intent_node)
 workflow.add_node("clarification", generate_clarification_node)
+workflow.add_node("guidance", guidance_node)
 workflow.add_node("generate_sql", generate_sql_node)
 workflow.add_node("validate_sql", validate_sql_node)
 workflow.add_node("repair_sql", repair_sql_node)
@@ -133,12 +199,14 @@ workflow.add_conditional_edges(
     route_after_intent,
     {
         "generate_sql": "generate_sql",
-        "clarification": "clarification"
+        "clarification": "clarification",
+        "guidance": "guidance"
     }
 )
 
 # Clarification ends the conversation (user must respond)
 workflow.add_edge("clarification", END)
+workflow.add_edge("guidance", END)
 
 workflow.add_edge("generate_sql", "validate_sql")
 

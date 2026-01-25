@@ -113,7 +113,13 @@ function addMessage(content, type = 'user', options = {}) {
 
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
-    contentDiv.textContent = content;
+
+    // Render as Markdown if marked library is available, otherwise fallback to escaped text
+    if (typeof marked !== 'undefined') {
+        contentDiv.innerHTML = marked.parse(content);
+    } else {
+        contentDiv.textContent = content;
+    }
 
     const timestampDiv = document.createElement('div');
     timestampDiv.className = 'message-timestamp';

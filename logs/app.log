@@ -1,0 +1,1150 @@
+2026-01-25 14:31:48,587 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:31:48,827 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:31:50,873 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:17,274 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:17,315 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:17,333 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:28,802 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:28,887 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:28,903 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:40,242 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:40,278 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:32:40,290 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:03,987 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:04,024 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:04,070 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:04,110 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:04,157 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:04,185 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:15,121 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:15,156 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:15,196 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:15,199 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:15,229 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:15,233 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:30,801 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:30,833 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:30,872 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:30,892 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:30,922 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:30,953 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:45,018 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:45,035 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:45,042 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:45,068 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:45,149 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:45,168 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:54,259 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:54,289 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:54,293 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:54,300 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:33:54,327 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:33:54,335 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:11,210 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:11,238 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:11,244 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:11,261 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:11,285 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:11,293 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:36,195 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:36,237 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:36,285 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:36,317 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:36,320 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:36,355 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:46,272 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:46,280 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:46,308 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:34:46,313 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:46,320 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:34:46,344 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:35:10,246 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:35:10,316 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:36:30,778 - nl2sql - INFO - endpoints.py:14 - Incoming query: What are the compliance violations in the last 30 days? | Domain: risk
+2026-01-25 14:36:30,784 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:36:30,791 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: What are the compliance violations in the last 30 days?
+2026-01-25 14:36:30,798 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:36:32,822 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:36:32,825 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:36:32,829 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:36:32,912 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:36:32,912 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: risk | Query: What are the compliance violations in the last 30 days?
+2026-01-25 14:36:32,922 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the risk doma...
+2026-01-25 14:36:33,928 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: The database schema does not contain inform...
+2026-01-25 14:36:33,932 - nl2sql - WARNING - sql_generation.py:69 - SQL Generation guidance response for query: What are the compliance violations in the last 30 days? | Msg: Error: The database schema does not contain inform...
+2026-01-25 14:36:33,935 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: The database schema does not contain inform...
+2026-01-25 14:36:33,941 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:36:33,943 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 19.
+  Error: The [4mdatabase[0m schema does not contain information about compliance violations. Try asking about: users, transacti
+2026-01-25 14:36:33,951 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 14:36:35,089 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```sqlite
+SELECT * FROM audit_logs WHERE timestamp...
+2026-01-25 14:36:35,092 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:36:35,096 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 2, Col: 6.
+  ite
+[4mSELECT[0m * FROM audit_logs WHERE timestamp >= strftime('%Y-%m-%d %H:%M:%S', date('now', '-30 days'));
+2026-01-25 14:36:35,106 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 14:36:36,046 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM audit_logs WHERE timestamp >= strfti...
+2026-01-25 14:36:36,052 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:36:36,069 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:36:36,075 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM audit_logs WHERE timestamp >= strftime('%Y-%m-%d %H:%M:%S', date('now', '-30 days'));
+2026-01-25 14:36:36,078 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: timestamp
+[SQL: SELECT * FROM audit_logs WHERE timestamp >= strftime('%Y-%m-%d %H:%M:%S', date('now', '-30 days'));]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT * FROM audit_logs WHERE timestamp >= strftime('%Y-%m-%d %H:%M:%S', date('now', '-30 days'));
+2026-01-25 14:36:36,078 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 14:36:36,082 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: What are the compliance violations in the last 30 days?
+2026-01-25 14:36:36,091 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 14:37:06,792 - nl2sql - INFO - endpoints.py:14 - Incoming query: show the compliace violations | Domain: risk
+2026-01-25 14:37:06,797 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:37:06,801 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: show the compliace violations
+2026-01-25 14:37:06,803 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:37:07,744 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:37:07,744 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.9) | Needs Clarification: True
+2026-01-25 14:37:07,751 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.9) | Needs Clarification: True
+2026-01-25 14:37:07,801 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a helpful assistant helping clarify datab...
+2026-01-25 14:37:08,739 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Could you please specify the time range you'd like...
+2026-01-25 14:37:08,742 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: show the compliace violations
+2026-01-25 14:37:18,698 - nl2sql - INFO - endpoints.py:14 - Incoming query: last year | Domain: risk
+2026-01-25 14:37:18,699 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:37:18,705 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: last year
+2026-01-25 14:37:18,705 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:37:19,792 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:37:19,792 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:37:19,795 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:37:19,850 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:37:19,853 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: risk | Query: last year
+2026-01-25 14:37:19,857 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the risk doma...
+2026-01-25 14:37:20,989 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: Your request is not clear. Please specify w...
+2026-01-25 14:37:20,992 - nl2sql - WARNING - sql_generation.py:69 - SQL Generation guidance response for query: last year | Msg: Error: Your request is not clear. Please specify w...
+2026-01-25 14:37:20,995 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: Your request is not clear. Please specify w...
+2026-01-25 14:37:20,999 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:37:21,004 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 19.
+  Error: Your [4mrequest[0m is not clear. Please specify which data from the last year you want to query. Try asking about: use
+2026-01-25 14:37:21,014 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 14:37:22,457 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```sqlite
+SELECT * FROM users WHERE strftime('%Y',...
+2026-01-25 14:37:22,463 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:37:22,469 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 2, Col: 6.
+  ite
+[4mSELECT[0m * FROM users WHERE strftime('%Y', registration_date) = strftime('%Y', date('now', '-1 year'));
+2026-01-25 14:37:22,473 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 14:37:23,339 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM users WHERE strftime('%Y', registrat...
+2026-01-25 14:37:23,342 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:37:23,355 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:37:23,359 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM users WHERE strftime('%Y', registration_date) = strftime('%Y', date('now', '-1 year'));
+2026-01-25 14:37:23,363 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: registration_date
+[SQL: SELECT * FROM users WHERE strftime('%Y', registration_date) = strftime('%Y', date('now', '-1 year'));]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT * FROM users WHERE strftime('%Y', registration_date) = strftime('%Y', date('now', '-1 year'));
+2026-01-25 14:37:23,367 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 14:37:23,373 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: last year
+2026-01-25 14:37:23,378 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 14:37:36,265 - nl2sql - INFO - endpoints.py:14 - Incoming query: Show me all high severity incidents and the count | Domain: risk
+2026-01-25 14:37:36,269 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:37:36,274 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: Show me all high severity incidents and the count
+2026-01-25 14:37:36,282 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:37:37,203 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:37:37,206 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:37:37,207 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:37:37,277 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:37:37,281 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: risk | Query: Show me all high severity incidents and the count
+2026-01-25 14:37:37,283 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the risk doma...
+2026-01-25 14:37:38,093 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT severity, COUNT(*) FROM alerts WHERE severi...
+2026-01-25 14:37:38,095 - nl2sql - INFO - sql_generation.py:80 - SQL Generated and cleaned: SELECT severity, COUNT(*) FROM alerts WHERE severi...
+2026-01-25 14:37:38,095 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT severity, COUNT(*) FROM alerts WHERE severi...
+2026-01-25 14:37:38,104 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:37:38,121 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:37:38,121 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT severity, COUNT(*) FROM alerts WHERE severity = 'HIGH' GROUP BY severity;
+2026-01-25 14:37:38,133 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 14:37:38,135 - nl2sql - INFO - workflow.py:92 - Query execution returned 1 rows.
+2026-01-25 14:37:38,140 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 14:37:39,460 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "bar",
+  "title": "Count...
+2026-01-25 14:37:39,468 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: Show me all high severity incidents and the count
+2026-01-25 14:37:39,471 - nl2sql - INFO - endpoints.py:48 - Query success! 1 rows returned.
+2026-01-25 14:38:48,036 - nl2sql - INFO - endpoints.py:14 - Incoming query: List all open security risks | Domain: risk
+2026-01-25 14:38:48,043 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:38:48,046 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: List all open security risks
+2026-01-25 14:38:48,046 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:38:49,236 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:38:49,241 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:38:49,245 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:38:49,308 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:38:49,313 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: risk | Query: List all open security risks
+2026-01-25 14:38:49,314 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the risk doma...
+2026-01-25 14:38:50,356 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```sql
+SELECT alert_id, rule_name, severity, user_...
+2026-01-25 14:38:50,360 - nl2sql - INFO - sql_generation.py:80 - SQL Generated and cleaned: SELECT alert_id, rule_name, severity, user_id, tra...
+2026-01-25 14:38:50,363 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT alert_id, rule_name, severity, user_id, tra...
+2026-01-25 14:38:50,370 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:38:50,379 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:38:50,383 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT alert_id, rule_name, severity, user_id, transaction_id FROM alerts WHERE status = 'OPEN';
+2026-01-25 14:38:50,385 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: transaction_id
+[SQL: SELECT alert_id, rule_name, severity, user_id, transaction_id FROM alerts WHERE status = 'OPEN';]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT alert_id, rule_name, severity, user_id, transaction_id FROM alerts WHERE status = 'OPEN';
+2026-01-25 14:38:50,392 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 14:38:50,402 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: List all open security risks
+2026-01-25 14:38:50,402 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 14:44:27,327 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:44:27,362 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:44:27,469 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:44:27,507 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:44:28,625 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:44:28,640 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:44:46,166 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:44:46,199 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:44:46,212 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:44:46,216 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:44:46,255 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:44:46,262 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:45:11,892 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:45:11,909 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:45:28,091 - nl2sql - INFO - endpoints.py:14 - Incoming query: Show me all high severity incidents | Domain: security
+2026-01-25 14:45:28,098 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:45:28,098 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: security | Query: Show me all high severity incidents
+2026-01-25 14:45:28,112 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:45:29,613 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:45:29,618 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:45:29,618 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:45:29,630 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:45:31,005 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {
+    "severity":...
+2026-01-25 14:45:31,006 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'severity': 'HIGH'}
+2026-01-25 14:45:31,012 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:45:31,012 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: security | Query: Show me all high severity incidents
+2026-01-25 14:45:31,014 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the security ...
+2026-01-25 14:45:31,972 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT alert_id, rule_name, user_id, txn_id, detai...
+2026-01-25 14:45:31,974 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT alert_id, rule_name, user_id, txn_id, detai...
+2026-01-25 14:45:31,974 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT alert_id, rule_name, user_id, txn_id, detai...
+2026-01-25 14:45:31,978 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:45:31,983 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:45:31,987 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT alert_id, rule_name, user_id, txn_id, details FROM alerts WHERE severity = 'HIGH';
+2026-01-25 14:45:31,990 - nl2sql - INFO - database.py:60 - Execution complete. Returned 99 rows.
+2026-01-25 14:45:31,992 - nl2sql - INFO - workflow.py:92 - Query execution returned 99 rows.
+2026-01-25 14:45:31,992 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 14:45:33,573 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "table",
+  "title": "Hig...
+2026-01-25 14:45:33,578 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: Show me all high severity incidents
+2026-01-25 14:45:33,578 - nl2sql - INFO - endpoints.py:48 - Query success! 99 rows returned.
+2026-01-25 14:46:01,984 - nl2sql - INFO - endpoints.py:14 - Incoming query: what is this domian speciality | Domain: risk
+2026-01-25 14:46:01,992 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:46:01,996 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: what is this domian speciality
+2026-01-25 14:46:01,996 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:46:03,037 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "UNKNOWN",
+  "confidence": 0...
+2026-01-25 14:46:03,042 - nl2sql - INFO - intent_classification.py:81 - Classification Result: UNKNOWN (conf: 0.3) | Needs Clarification: True
+2026-01-25 14:46:03,042 - nl2sql - INFO - workflow.py:24 - Intent classified: UNKNOWN (conf: 0.3) | Needs Clarification: True
+2026-01-25 14:46:03,050 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:46:04,380 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 14:46:04,384 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 14:46:04,393 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a helpful assistant helping clarify datab...
+2026-01-25 14:46:05,308 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Could you please tell me which area of the RISK do...
+2026-01-25 14:46:05,314 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: what is this domian speciality
+2026-01-25 14:46:22,141 - nl2sql - INFO - endpoints.py:14 - Incoming query: which table has data related to fruad detection | Domain: risk
+2026-01-25 14:46:22,141 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:46:22,150 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: which table has data related to fruad detection
+2026-01-25 14:46:22,159 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:46:23,205 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:46:23,205 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:46:23,209 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:46:23,215 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:46:24,203 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 14:46:24,203 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 14:46:24,213 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:46:24,213 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: risk | Query: which table has data related to fruad detection
+2026-01-25 14:46:24,224 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the risk doma...
+2026-01-25 14:46:25,299 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: The database schema does not explicitly con...
+2026-01-25 14:46:25,301 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: which table has data related to fruad detection | Msg: Error: The database schema does not explicitly con...
+2026-01-25 14:46:25,304 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: The database schema does not explicitly con...
+2026-01-25 14:46:25,310 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:46:25,314 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 19.
+  Error: The [4mdatabase[0m schema does not explicitly contain a "fraud detection" table. However, the `alerts`, `transactions`
+2026-01-25 14:46:25,322 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 14:46:26,355 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```sqlite
+SELECT DISTINCT tbl_name FROM sqlite_mas...
+2026-01-25 14:46:26,360 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:46:26,363 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 2, Col: 6.
+  ite
+[4mSELECT[0m DISTINCT tbl_name FROM sqlite_master WHERE type = 'table' AND tbl_name IN ('alerts', 'transactions'
+2026-01-25 14:46:26,371 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 14:46:27,222 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT DISTINCT tbl_name FROM sqlite_master WHERE ...
+2026-01-25 14:46:27,225 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:46:27,238 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:46:27,242 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT tbl_name FROM sqlite_master WHERE type = 'table' AND tbl_name IN ('alerts', 'transactions', 'users', 'login_events');
+2026-01-25 14:46:27,245 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 14:46:27,259 - nl2sql - INFO - workflow.py:92 - Query execution returned 4 rows.
+2026-01-25 14:46:27,264 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 14:46:28,432 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "table",
+  "title": "Tab...
+2026-01-25 14:46:28,441 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: which table has data related to fruad detection
+2026-01-25 14:46:28,443 - nl2sql - INFO - endpoints.py:48 - Query success! 4 rows returned.
+2026-01-25 14:46:46,517 - nl2sql - INFO - endpoints.py:14 - Incoming query: ok what the columns in transcations table | Domain: risk
+2026-01-25 14:46:46,524 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:46:46,531 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: ok what the columns in transcations table
+2026-01-25 14:46:46,534 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:46:47,797 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:46:47,797 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:46:47,806 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:46:47,811 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:46:48,659 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 14:46:48,662 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 14:46:48,668 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:46:48,668 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: risk | Query: ok what the columns in transcations table
+2026-01-25 14:46:48,678 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the risk doma...
+2026-01-25 14:46:49,679 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT transaction_id, user_id, transaction_type, ...
+2026-01-25 14:46:49,682 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT transaction_id, user_id, transaction_type, ...
+2026-01-25 14:46:49,686 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT transaction_id, user_id, transaction_type, ...
+2026-01-25 14:46:49,690 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:46:49,703 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:46:49,703 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT transaction_id, user_id, transaction_type, instrument, amount, currency, amount_usd, status, flag_reason, payment_method, external_reference, ip_address, created_at, processing_at FROM transactions LIMIT 5
+2026-01-25 14:46:49,708 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: transaction_id
+[SQL: SELECT transaction_id, user_id, transaction_type, instrument, amount, currency, amount_usd, status, flag_reason, payment_method, external_reference, ip_address, created_at, processing_at FROM transactions LIMIT 5]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT transaction_id, user_id, transaction_type, instrument, amount, currency, amount_usd, status, flag_reason, payment_method, external_reference, ip_address, created_at, processing_at FROM transactions LIMIT 5
+2026-01-25 14:46:49,715 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 14:46:49,727 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: ok what the columns in transcations table
+2026-01-25 14:46:49,731 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 14:47:34,240 - nl2sql - INFO - endpoints.py:14 - Incoming query: what are the cloumns in transcation table | Domain: risk
+2026-01-25 14:47:34,245 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:47:34,248 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: what are the cloumns in transcation table
+2026-01-25 14:47:34,255 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:47:35,170 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:47:35,173 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:47:35,178 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:47:35,187 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:47:36,069 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 14:47:36,071 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 14:47:36,079 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:47:36,082 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: risk | Query: what are the cloumns in transcation table
+2026-01-25 14:47:36,083 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the risk doma...
+2026-01-25 14:47:37,061 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: To understand the columns in the `transacti...
+2026-01-25 14:47:37,065 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: what are the cloumns in transcation table | Msg: Error: To understand the columns in the `transacti...
+2026-01-25 14:47:37,065 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: To understand the columns in the `transacti...
+2026-01-25 14:47:37,073 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:47:37,078 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 20.
+  Error: To [4munderstand[0m the columns in the `transactions` table, query a few rows from it, for example using `SELECT * FROM
+2026-01-25 14:47:37,087 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 14:47:37,882 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM transactions LIMIT 5;
+...
+2026-01-25 14:47:37,892 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:47:37,900 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:47:37,900 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM transactions LIMIT 5;
+2026-01-25 14:47:37,905 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 14:47:37,911 - nl2sql - INFO - workflow.py:92 - Query execution returned 5 rows.
+2026-01-25 14:47:37,914 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 14:47:39,328 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "table",
+  "title": "Sam...
+2026-01-25 14:47:39,336 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: what are the cloumns in transcation table
+2026-01-25 14:47:39,342 - nl2sql - INFO - endpoints.py:48 - Query success! 5 rows returned.
+2026-01-25 14:48:05,591 - nl2sql - INFO - endpoints.py:14 - Incoming query: give me only the column names from transaction table | Domain: risk
+2026-01-25 14:48:05,600 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:48:05,600 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: risk | Query: give me only the column names from transaction table
+2026-01-25 14:48:05,606 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:48:06,650 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:48:06,656 - nl2sql - INFO - intent_classification.py:81 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:48:06,657 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:48:06,662 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:48:07,591 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 14:48:07,595 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 14:48:07,602 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:48:07,602 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: risk | Query: give me only the column names from transaction table
+2026-01-25 14:48:07,611 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the risk doma...
+2026-01-25 14:48:08,633 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT transaction_id, user_id, transaction_type, ...
+2026-01-25 14:48:08,636 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT transaction_id, user_id, transaction_type, ...
+2026-01-25 14:48:08,637 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT transaction_id, user_id, transaction_type, ...
+2026-01-25 14:48:08,642 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:48:08,652 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:48:08,659 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT transaction_id, user_id, transaction_type, instrument, amount, currency, amount_usd, status, flag_reason, payment_method, external_reference, ip_address, created_at, processing_at FROM transactions LIMIT 5;
+2026-01-25 14:48:08,662 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: transaction_id
+[SQL: SELECT transaction_id, user_id, transaction_type, instrument, amount, currency, amount_usd, status, flag_reason, payment_method, external_reference, ip_address, created_at, processing_at FROM transactions LIMIT 5;]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT transaction_id, user_id, transaction_type, instrument, amount, currency, amount_usd, status, flag_reason, payment_method, external_reference, ip_address, created_at, processing_at FROM transactions LIMIT 5;
+2026-01-25 14:48:08,668 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 14:48:08,678 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: give me only the column names from transaction table
+2026-01-25 14:48:08,685 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 14:48:59,713 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:48:59,752 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:48:59,760 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:48:59,794 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:49:00,741 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:49:00,762 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:49:12,558 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:49:12,572 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:49:12,597 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:49:12,600 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:49:12,616 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:49:12,640 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:49:28,389 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 14:49:28,405 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 14:51:28,161 - nl2sql - INFO - endpoints.py:14 - Incoming query: What columns are in the transactions table? | Domain: general
+2026-01-25 14:51:28,169 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:51:28,169 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: general | Query: What columns are in the transactions table?
+2026-01-25 14:51:28,182 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:51:29,965 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SCHEMA_QUERY",
+  "confidenc...
+2026-01-25 14:51:29,969 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SCHEMA_QUERY (conf: 1.0) | Needs Clarification: False
+2026-01-25 14:51:29,969 - nl2sql - INFO - workflow.py:24 - Intent classified: SCHEMA_QUERY (conf: 1.0) | Needs Clarification: False
+2026-01-25 14:51:29,982 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:51:30,888 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 14:51:30,890 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 14:51:30,909 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+        You are a Database Expert. The user wants...
+2026-01-25 14:51:34,336 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Okay, here's a breakdown of the columns within the...
+2026-01-25 14:51:34,341 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: What columns are in the transactions table?
+2026-01-25 14:56:25,353 - nl2sql - INFO - endpoints.py:14 - Incoming query: Show me all high severity incidents | Domain: general
+2026-01-25 14:56:25,360 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:56:25,363 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: general | Query: Show me all high severity incidents
+2026-01-25 14:56:25,369 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:56:27,665 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:56:27,668 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:56:27,672 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:56:27,678 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:56:28,771 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {
+    "severity":...
+2026-01-25 14:56:28,771 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'severity': 'HIGH'}
+2026-01-25 14:56:28,783 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:56:28,788 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: general | Query: Show me all high severity incidents
+2026-01-25 14:56:28,796 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the general d...
+2026-01-25 14:56:29,755 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM alerts WHERE severity = 'HIGH';
+...
+2026-01-25 14:56:29,757 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT * FROM alerts WHERE severity = 'HIGH';...
+2026-01-25 14:56:29,760 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT * FROM alerts WHERE severity = 'HIGH';...
+2026-01-25 14:56:29,762 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:56:29,782 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 14:56:29,784 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM alerts WHERE severity = 'HIGH';
+2026-01-25 14:56:29,797 - nl2sql - INFO - database.py:60 - Execution complete. Returned 99 rows.
+2026-01-25 14:56:29,801 - nl2sql - INFO - workflow.py:92 - Query execution returned 99 rows.
+2026-01-25 14:56:29,809 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 14:56:31,466 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "table",
+  "title": "Hig...
+2026-01-25 14:56:31,466 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: Show me all high severity incidents
+2026-01-25 14:56:31,478 - nl2sql - INFO - endpoints.py:48 - Query success! 99 rows returned.
+2026-01-25 14:59:54,949 - nl2sql - INFO - endpoints.py:14 - Incoming query: Show operational metrics for last quarter | Domain: general
+2026-01-25 14:59:54,957 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 14:59:54,962 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: general | Query: Show operational metrics for last quarter
+2026-01-25 14:59:54,965 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 14:59:56,164 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 14:59:56,166 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:59:56,170 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.95) | Needs Clarification: False
+2026-01-25 14:59:56,179 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 14:59:57,228 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 14:59:57,233 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 14:59:57,241 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 14:59:57,245 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: general | Query: Show operational metrics for last quarter
+2026-01-25 14:59:57,252 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the general d...
+2026-01-25 14:59:58,621 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: The database schema does not contain specif...
+2026-01-25 14:59:58,624 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: Show operational metrics for last quarter | Msg: Error: The database schema does not contain specif...
+2026-01-25 14:59:58,628 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: The database schema does not contain specif...
+2026-01-25 14:59:58,633 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 14:59:58,633 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 19.
+  Error: The [4mdatabase[0m schema does not contain specific tables or columns for operational metrics. Try asking about: users
+2026-01-25 14:59:58,648 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 15:00:00,009 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```sqlite
+SELECT
+  COUNT(T.transaction_id)
+FROM tr...
+2026-01-25 15:00:00,013 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:00:00,021 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 2, Col: 6.
+  ite
+[4mSELECT[0m
+  COUNT(T.transaction_id)
+FROM transactions AS T
+WHERE
+  T.timestamp BETWEEN date('now', '-3 months
+2026-01-25 15:00:00,030 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 15:00:00,983 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT
+  COUNT(transaction_id)
+FROM transactions
+W...
+2026-01-25 15:00:00,991 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:00:00,996 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:00:00,996 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT
+  COUNT(transaction_id)
+FROM transactions
+WHERE
+  timestamp BETWEEN date('now', '-3 months') AND date('now');
+2026-01-25 15:00:01,012 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: transaction_id
+[SQL: SELECT
+  COUNT(transaction_id)
+FROM transactions
+WHERE
+  timestamp BETWEEN date('now', '-3 months') AND date('now');]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT
+  COUNT(transaction_id)
+FROM transactions
+WHERE
+  timestamp BETWEEN date('now', '-3 months') AND date('now');
+2026-01-25 15:00:01,020 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 15:00:01,033 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: Show operational metrics for last quarter
+2026-01-25 15:00:01,036 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 15:01:43,658 - nl2sql - INFO - endpoints.py:14 - Incoming query: what are you capabitliies | Domain: security
+2026-01-25 15:01:43,664 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:01:43,666 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: security | Query: what are you capabitliies
+2026-01-25 15:01:43,671 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:01:44,794 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SCHEMA_QUERY",
+  "confidenc...
+2026-01-25 15:01:44,794 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SCHEMA_QUERY (conf: 0.95) | Needs Clarification: False
+2026-01-25 15:01:44,802 - nl2sql - INFO - workflow.py:24 - Intent classified: SCHEMA_QUERY (conf: 0.95) | Needs Clarification: False
+2026-01-25 15:01:44,812 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:01:45,754 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:01:45,760 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:01:45,768 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+        You are a Database Expert. The user wants...
+2026-01-25 15:02:04,766 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Okay, here's a breakdown of the database schema an...
+2026-01-25 15:02:04,766 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: what are you capabitliies
+2026-01-25 15:03:56,788 - nl2sql - INFO - endpoints.py:14 - Incoming query: ok show me good visaulization of user queries | Domain: security
+2026-01-25 15:03:56,792 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:03:56,792 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: security | Query: ok show me good visaulization of user queries
+2026-01-25 15:03:56,803 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:03:58,007 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "UNKNOWN",
+  "confidence": 0...
+2026-01-25 15:03:58,009 - nl2sql - INFO - intent_classification.py:82 - Classification Result: UNKNOWN (conf: 0.6) | Needs Clarification: True
+2026-01-25 15:03:58,012 - nl2sql - INFO - workflow.py:24 - Intent classified: UNKNOWN (conf: 0.6) | Needs Clarification: True
+2026-01-25 15:03:58,015 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:03:59,013 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:03:59,013 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:03:59,028 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a helpful assistant helping clarify datab...
+2026-01-25 15:04:00,270 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: What kind of user queries are you interested in vi...
+2026-01-25 15:04:00,274 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: ok show me good visaulization of user queries
+2026-01-25 15:04:05,442 - nl2sql - INFO - endpoints.py:14 - Incoming query: signups | Domain: security
+2026-01-25 15:04:05,446 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:04:05,446 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: security | Query: signups
+2026-01-25 15:04:05,452 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:04:06,433 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 15:04:06,433 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.8) | Needs Clarification: True
+2026-01-25 15:04:06,441 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.8) | Needs Clarification: True
+2026-01-25 15:04:06,442 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:04:07,596 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:04:07,601 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:04:07,635 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a helpful assistant helping clarify datab...
+2026-01-25 15:04:08,842 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: What time range are you interested in for signups ...
+2026-01-25 15:04:08,846 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: signups
+2026-01-25 15:04:14,462 - nl2sql - INFO - endpoints.py:14 - Incoming query: daily | Domain: security
+2026-01-25 15:04:14,469 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:04:14,469 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: security | Query: daily
+2026-01-25 15:04:14,478 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:04:15,403 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 15:04:15,409 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.9) | Needs Clarification: False
+2026-01-25 15:04:15,412 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.9) | Needs Clarification: False
+2026-01-25 15:04:15,415 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:04:16,513 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:04:16,517 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:04:16,526 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:04:16,531 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: security | Query: daily
+2026-01-25 15:04:16,536 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the security ...
+2026-01-25 15:04:17,516 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: Please specify what information about "dail...
+2026-01-25 15:04:17,525 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: daily | Msg: Error: Please specify what information about "dail...
+2026-01-25 15:04:17,525 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: Please specify what information about "dail...
+2026-01-25 15:04:17,533 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:04:17,536 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 21.
+  Error: Please [4mspecify[0m what information about "daily" you want to retrieve. Try asking about: users, transactions, alerts,
+2026-01-25 15:04:17,542 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 15:04:18,388 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM daily;
+...
+2026-01-25 15:04:18,392 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:04:18,401 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:04:18,405 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM daily;
+2026-01-25 15:04:18,409 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such table: daily
+[SQL: SELECT * FROM daily;]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT * FROM daily;
+2026-01-25 15:04:18,411 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 15:04:18,421 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: daily
+2026-01-25 15:04:18,427 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 15:05:55,067 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 15:05:55,069 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 15:05:55,087 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 15:05:55,096 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 15:05:57,630 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 15:05:57,655 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 15:06:29,047 - nl2sql - INFO - endpoints.py:14 - Incoming query: What are the compliance violations in the last 30 days? | Domain: security
+2026-01-25 15:06:29,063 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:06:29,063 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: security | Query: What are the compliance violations in the last 30 days?
+2026-01-25 15:06:29,073 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:06:34,603 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: {
+  "intent": "SELECT",
+  "confidence": 0.98,
+  "c...
+2026-01-25 15:06:34,603 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.98) | Needs Clarification: False
+2026-01-25 15:06:34,603 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.98) | Needs Clarification: False
+2026-01-25 15:06:34,613 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:07:43,838 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:07:43,840 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:07:43,852 - nl2sql - INFO - endpoints.py:14 - Incoming query: Show me all high severity incidents | Domain: security
+2026-01-25 15:07:43,862 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:07:43,864 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: security | Query: Show me all high severity incidents
+2026-01-25 15:07:43,869 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:07:46,647 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: {
+  "intent": "SELECT",
+  "confidence": 1.0,
+  "co...
+2026-01-25 15:07:46,651 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:07:46,651 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:07:46,659 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:07:50,609 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: {
+  "resolved_entities": {
+    "severity": "HIGH"
+...
+2026-01-25 15:07:50,612 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'severity': 'HIGH'}
+2026-01-25 15:07:50,656 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:07:50,660 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: security | Query: What are the compliance violations in the last 30 days?
+2026-01-25 15:07:50,663 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the security ...
+2026-01-25 15:08:04,005 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM alerts WHERE created_at >= datetime(...
+2026-01-25 15:08:04,005 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT * FROM alerts WHERE created_at >= datetime(...
+2026-01-25 15:08:04,005 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT * FROM alerts WHERE created_at >= datetime(...
+2026-01-25 15:08:04,011 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:08:04,012 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:08:04,016 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: security | Query: Show me all high severity incidents
+2026-01-25 15:08:04,016 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the security ...
+2026-01-25 15:08:08,595 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT alert_id, rule_name, user_id, severity, sta...
+2026-01-25 15:08:08,595 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT alert_id, rule_name, user_id, severity, sta...
+2026-01-25 15:08:08,600 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT alert_id, rule_name, user_id, severity, sta...
+2026-01-25 15:08:08,604 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:08:08,612 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:08:08,612 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM alerts WHERE created_at >= datetime('now', '-30 days');
+2026-01-25 15:08:08,626 - nl2sql - INFO - database.py:60 - Execution complete. Returned 161 rows.
+2026-01-25 15:08:08,627 - nl2sql - INFO - workflow.py:92 - Query execution returned 161 rows.
+2026-01-25 15:08:08,633 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 15:08:17,826 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: {
+  "chart_type": "table",
+  "title": "Compliance ...
+2026-01-25 15:08:17,828 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:08:17,828 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT alert_id, rule_name, user_id, severity, status, created_at FROM alerts WHERE severity = 'HIGH';
+2026-01-25 15:08:17,833 - nl2sql - INFO - database.py:60 - Execution complete. Returned 99 rows.
+2026-01-25 15:08:17,835 - nl2sql - INFO - workflow.py:92 - Query execution returned 99 rows.
+2026-01-25 15:08:17,837 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 15:08:28,807 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: {
+  "chart_type": "table",
+  "title": "High Severi...
+2026-01-25 15:08:28,813 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: What are the compliance violations in the last 30 days?
+2026-01-25 15:08:28,815 - nl2sql - INFO - endpoints.py:48 - Query success! 161 rows returned.
+2026-01-25 15:08:28,831 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: Show me all high severity incidents
+2026-01-25 15:08:28,834 - nl2sql - INFO - endpoints.py:48 - Query success! 99 rows returned.
+2026-01-25 15:10:34,976 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 15:10:34,976 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 15:10:35,079 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 15:10:35,088 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 15:10:37,328 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 15:10:37,352 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 15:10:37,375 - nl2sql - INFO - endpoints.py:14 - Incoming query: What are the compliance violations in the last 30 days? | Domain: general
+2026-01-25 15:10:37,378 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:10:37,381 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: general | Query: What are the compliance violations in the last 30 days?
+2026-01-25 15:10:37,387 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:10:39,260 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 1....
+2026-01-25 15:10:39,261 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:10:39,262 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:10:39,262 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:10:39,802 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:10:39,803 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:10:39,808 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:10:39,809 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: general | Query: What are the compliance violations in the last 30 days?
+2026-01-25 15:10:39,812 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the general d...
+2026-01-25 15:10:40,925 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT DISTINCT alert_rules.rule_name FROM alerts ...
+2026-01-25 15:10:40,928 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT DISTINCT alert_rules.rule_name FROM alerts ...
+2026-01-25 15:10:40,928 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT DISTINCT alert_rules.rule_name FROM alerts ...
+2026-01-25 15:10:40,928 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:10:40,933 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:10:40,933 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT alert_rules.rule_name FROM alerts JOIN alert_rules ON alerts.rule_id = alert_rules.rule_id WHERE alerts.severity IN ('HIGH', 'CRITICAL') AND alerts.creation_timestamp >= date('now', '-30 days')
+2026-01-25 15:10:40,938 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: alerts.creation_timestamp
+[SQL: SELECT DISTINCT alert_rules.rule_name FROM alerts JOIN alert_rules ON alerts.rule_id = alert_rules.rule_id WHERE alerts.severity IN ('HIGH', 'CRITICAL') AND alerts.creation_timestamp >= date('now', '-30 days')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT DISTINCT alert_rules.rule_name FROM alerts JOIN alert_rules ON alerts.rule_id = alert_rules.rule_id WHERE alerts.severity IN ('HIGH', 'CRITICAL') AND alerts.creation_timestamp >= date('now', '-30 days')
+2026-01-25 15:10:40,938 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 15:10:40,942 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: What are the compliance violations in the last 30 days?
+2026-01-25 15:10:40,942 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 15:11:16,772 - nl2sql - INFO - endpoints.py:14 - Incoming query: Show operational metrics for last quarter | Domain: general
+2026-01-25 15:11:16,772 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:11:16,780 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: general | Query: Show operational metrics for last quarter
+2026-01-25 15:11:16,783 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:11:17,543 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 1....
+2026-01-25 15:11:17,545 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:11:17,545 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:11:17,551 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:11:18,305 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:11:18,307 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:11:18,312 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:11:18,316 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: general | Query: Show operational metrics for last quarter
+2026-01-25 15:11:18,316 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the general d...
+2026-01-25 15:11:19,089 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: Cannot determine "operational metrics" from...
+2026-01-25 15:11:19,092 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: Show operational metrics for last quarter | Msg: Error: Cannot determine "operational metrics" from...
+2026-01-25 15:11:19,096 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: Cannot determine "operational metrics" from...
+2026-01-25 15:11:19,098 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:11:19,105 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 23.
+  Error: Cannot [4mdetermine[0m "operational metrics" from the provided schema. Try asking about: users, transactions, login_events
+2026-01-25 15:11:19,112 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 15:11:19,973 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT COUNT(*) FROM login_events WHERE event_time...
+2026-01-25 15:11:19,978 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:11:19,991 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:11:19,991 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT COUNT(*) FROM login_events WHERE event_timestamp >= date('now', '-3 months')
+2026-01-25 15:11:19,997 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: event_timestamp
+[SQL: SELECT COUNT(*) FROM login_events WHERE event_timestamp >= date('now', '-3 months')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT COUNT(*) FROM login_events WHERE event_timestamp >= date('now', '-3 months')
+2026-01-25 15:11:19,997 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 15:11:20,005 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: Show operational metrics for last quarter
+2026-01-25 15:11:20,009 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 15:11:42,012 - nl2sql - INFO - endpoints.py:14 - Incoming query: show me operation metrics all | Domain: general
+2026-01-25 15:11:42,016 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:11:42,025 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: general | Query: show me operation metrics all
+2026-01-25 15:11:42,030 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:11:42,981 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 15:11:42,983 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.9) | Needs Clarification: False
+2026-01-25 15:11:42,983 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.9) | Needs Clarification: False
+2026-01-25 15:11:42,992 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:11:43,743 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:11:43,746 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:11:43,749 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:11:43,754 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: general | Query: show me operation metrics all
+2026-01-25 15:11:43,754 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the general d...
+2026-01-25 15:11:44,353 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: "operation metrics" is too vague. Try askin...
+2026-01-25 15:11:44,355 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: show me operation metrics all | Msg: Error: "operation metrics" is too vague. Try askin...
+2026-01-25 15:11:44,355 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: "operation metrics" is too vague. Try askin...
+2026-01-25 15:11:44,363 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:11:44,363 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 29.
+  Error: "operation metrics" [4mis[0m too vague. Try asking about: transactions, login_events, alerts.
+2026-01-25 15:11:44,371 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 15:11:45,078 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM transactions UNION ALL SELECT * FROM...
+2026-01-25 15:11:45,082 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:11:45,095 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:11:45,098 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM transactions UNION ALL SELECT * FROM login_events UNION ALL SELECT * FROM alerts
+2026-01-25 15:11:45,102 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) SELECTs to the left and right of UNION ALL do not have the same number of result columns
+[SQL: SELECT * FROM transactions UNION ALL SELECT * FROM login_events UNION ALL SELECT * FROM alerts]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT * FROM transactions UNION ALL SELECT * FROM login_events UNION ALL SELECT * FROM alerts
+2026-01-25 15:11:45,104 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 15:11:45,115 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: show me operation metrics all
+2026-01-25 15:11:45,117 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 15:12:07,304 - nl2sql - INFO - endpoints.py:14 - Incoming query: show me all operational metrics | Domain: operations
+2026-01-25 15:12:07,312 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:12:07,312 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: operations | Query: show me all operational metrics
+2026-01-25 15:12:07,312 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:12:07,971 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 1....
+2026-01-25 15:12:07,971 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:12:07,977 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:12:07,983 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:12:08,970 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:12:08,974 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:12:08,983 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:12:08,983 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: operations | Query: show me all operational metrics
+2026-01-25 15:12:08,991 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the operation...
+2026-01-25 15:12:10,034 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: The term "operational metrics" is too broad...
+2026-01-25 15:12:10,034 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: show me all operational metrics | Msg: Error: The term "operational metrics" is too broad...
+2026-01-25 15:12:10,034 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: The term "operational metrics" is too broad...
+2026-01-25 15:12:10,041 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:12:10,050 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 15.
+  Error: The [4mterm[0m "operational metrics" is too broad. Please specify which operational metrics you are interested in.
+2026-01-25 15:12:10,058 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 15:12:10,819 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM transactions...
+2026-01-25 15:12:10,824 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:12:10,833 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:12:10,833 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM transactions
+2026-01-25 15:12:12,836 - nl2sql - INFO - database.py:60 - Execution complete. Returned 50000 rows.
+2026-01-25 15:12:12,836 - nl2sql - INFO - workflow.py:92 - Query execution returned 50000 rows.
+2026-01-25 15:12:12,842 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 15:12:14,188 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "table",
+  "title": "All...
+2026-01-25 15:12:14,197 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: show me all operational metrics
+2026-01-25 15:12:14,201 - nl2sql - INFO - endpoints.py:48 - Query success! 50000 rows returned.
+2026-01-25 15:18:08,767 - nl2sql - INFO - endpoints.py:14 - Incoming query: what are complaice in UAE ? | Domain: compliance
+2026-01-25 15:18:08,791 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:18:08,797 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: what are complaice in UAE ?
+2026-01-25 15:18:08,819 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:18:10,238 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 15:18:10,238 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.9) | Needs Clarification: True
+2026-01-25 15:18:10,242 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.9) | Needs Clarification: True
+2026-01-25 15:18:10,262 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:18:11,136 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {
+    "country": ...
+2026-01-25 15:18:11,136 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'country': 'AE'}
+2026-01-25 15:18:11,152 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a helpful assistant helping clarify datab...
+2026-01-25 15:18:11,683 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: To help me understand what you're looking for rega...
+2026-01-25 15:18:11,685 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: what are complaice in UAE ?
+2026-01-25 15:18:29,425 - nl2sql - INFO - endpoints.py:14 - Incoming query: politcally expoed person | Domain: compliance
+2026-01-25 15:18:29,430 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:18:29,431 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: politcally expoed person
+2026-01-25 15:18:29,436 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:18:30,492 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 1....
+2026-01-25 15:18:30,492 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:18:30,492 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:18:30,501 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:18:31,368 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {
+    "is_pep": t...
+2026-01-25 15:18:31,371 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'is_pep': True}
+2026-01-25 15:18:31,378 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:18:31,385 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: compliance | Query: politcally expoed person
+2026-01-25 15:18:31,392 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the complianc...
+2026-01-25 15:18:32,013 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT user_id, email FROM users WHERE pep_status ...
+2026-01-25 15:18:32,020 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT user_id, email FROM users WHERE pep_status ...
+2026-01-25 15:18:32,023 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT user_id, email FROM users WHERE pep_status ...
+2026-01-25 15:18:32,023 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:18:32,042 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:18:32,042 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT user_id, email FROM users WHERE pep_status = 1
+2026-01-25 15:18:32,080 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: pep_status
+[SQL: SELECT user_id, email FROM users WHERE pep_status = 1]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT user_id, email FROM users WHERE pep_status = 1
+2026-01-25 15:18:32,083 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 15:18:32,092 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: politcally expoed person
+2026-01-25 15:18:32,099 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 15:22:47,413 - nl2sql - INFO - endpoints.py:14 - Incoming query: accroding to transaction monitoring rules in UAE  apid Fund MovementDeposit + withdrawal within short periodAML red flag ..lets see from our data if we are complaint | Domain: compliance
+2026-01-25 15:22:47,421 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:22:47,421 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: accroding to transaction monitoring rules in UAE  apid Fund MovementDeposit + withdrawal within short periodAML red flag ..lets see from our data if we are complaint
+2026-01-25 15:22:47,430 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:22:49,327 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 15:22:49,327 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.9) | Needs Clarification: True
+2026-01-25 15:22:49,332 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.9) | Needs Clarification: True
+2026-01-25 15:22:49,340 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:22:50,305 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {
+    "country": ...
+2026-01-25 15:22:50,305 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'country': 'AE', 'transaction_type': ['DEPOSIT', 'WITHDRAWAL']}
+2026-01-25 15:22:50,333 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a helpful assistant helping clarify datab...
+2026-01-25 15:22:51,192 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: To help me check your compliance with UAE transact...
+2026-01-25 15:22:51,195 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: accroding to transaction monitoring rules in UAE  apid Fund MovementDeposit + withdrawal within short periodAML red flag ..lets see from our data if we are complaint
+2026-01-25 15:23:10,743 - nl2sql - INFO - endpoints.py:14 - Incoming query: lets whatever time period we have | Domain: compliance
+2026-01-25 15:23:10,751 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:23:10,751 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: lets whatever time period we have
+2026-01-25 15:23:10,760 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:23:11,602 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 15:23:11,608 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.7) | Needs Clarification: True
+2026-01-25 15:23:11,610 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.7) | Needs Clarification: True
+2026-01-25 15:23:11,612 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:23:12,492 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:23:12,496 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:23:12,499 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a helpful assistant helping clarify datab...
+2026-01-25 15:23:14,479 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: To effectively check for rapid fund movements, cou...
+2026-01-25 15:23:14,482 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: lets whatever time period we have
+2026-01-25 15:23:22,078 - nl2sql - INFO - endpoints.py:14 - Incoming query: 24 hrs | Domain: compliance
+2026-01-25 15:23:22,083 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 15:23:22,083 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: 24 hrs
+2026-01-25 15:23:22,093 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 15:23:23,033 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 1....
+2026-01-25 15:23:23,033 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:23:23,033 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 15:23:23,045 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 15:23:23,887 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 15:23:23,887 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 15:23:23,896 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 15:23:23,900 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: compliance | Query: 24 hrs
+2026-01-25 15:23:23,905 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the complianc...
+2026-01-25 15:23:25,018 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: The request "24 hrs" is too vague. It's unc...
+2026-01-25 15:23:25,021 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: 24 hrs | Msg: Error: The request "24 hrs" is too vague. It's unc...
+2026-01-25 15:23:25,022 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: The request "24 hrs" is too vague. It's unc...
+2026-01-25 15:23:25,028 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:23:25,030 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Error tokenizing 'y asking about: transactions, login_events, alert'
+2026-01-25 15:23:25,047 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 15:23:26,474 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: This request is to fix an invalid SQL query based ...
+2026-01-25 15:23:26,478 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:23:26,496 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 15.
+  This request [4mis[0m to fix an invalid SQL query based on the provided error message. The error message indicates that t
+2026-01-25 15:23:26,504 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 15:23:27,297 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT COUNT(*) FROM transactions WHERE transactio...
+2026-01-25 15:23:27,299 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 15:23:27,319 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 15:23:27,319 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT COUNT(*) FROM transactions WHERE transaction_time >= strftime('%s', 'now', '-24 hours')
+2026-01-25 15:23:27,337 - nl2sql - ERROR - database.py:67 - DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such column: transaction_time
+[SQL: SELECT COUNT(*) FROM transactions WHERE transaction_time >= strftime('%s', 'now', '-24 hours')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT COUNT(*) FROM transactions WHERE transaction_time >= strftime('%s', 'now', '-24 hours')
+2026-01-25 15:23:27,339 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
+2026-01-25 15:23:27,347 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: 24 hrs
+2026-01-25 15:23:27,351 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.

@@ -1,0 +1,61 @@
+{
+  "domain": "risk",
+  "description": "Configuration for risk domain",
+  "schema_context": "The database contains information about users, their transactions, login events, alerts, alert rules, audit logs, and dashboards. The `users` table stores user-specific information, including their user ID, email, full name, country, phone number, date of birth, KYC (Know Your Customer) status, KYC verification and expiry dates, risk level, risk score, PEP (Politically Exposed Person) status, account status, and creation/update timestamps.  KYC status can be EXPIRED, PENDING, REJECTED, or VERIFIED. Risk levels are HIGH, MEDIUM, or LOW. Account statuses are ACTIVE, FROZEN, or SUSPENDED. The `transactions` table tracks user transactions, including transaction ID, user ID, transaction type (BONUS, DEPOSIT, FEE, TRADE, WITHDRAWAL), instrument (e.g., AAPL, AED/USD, BTC/USD, ETH/USD, EUR/USD), amount, currency (USD), amount in USD, status (COMPLETED, FAILED, FLAGGED, PENDING), flag reason (Automated screening, Risk threshold exceeded, Large amount, Unusual pattern), payment method (CRYPTO, EWALLET, CARD, BANK_TRANSFER), external reference, IP address, and creation/processing timestamps. The `login_events` table records user login attempts, including event ID, user ID, attempted email, IP address, country (AE, AU, CA, CH, DE), city, device type (DESKTOP, MOBILE, TABLET), device fingerprint, user agent, status (BLOCKED, FAILED, SUCCESS), failure reason (MFA_FAILED, IP_BLOCKED, WRONG_PASSWORD, ACCOUNT_LOCKED, SUSPICIOUS_ACTIVITY) and creation timestamp. The `alert_rules` table defines rules for generating alerts, including rule ID, rule name (Dormant Account Activity, Failed Auth Spike, High Risk Country, Large Transaction, New Geo Login), rule type (THRESHOLD, VELOCITY, TIME, GEO, PATTERN), condition (JSON format), severity (HIGH, MEDIUM, LOW, CRITICAL), active status, and creation timestamp. The `alerts` table stores information about generated alerts, including alert ID, rule name, rule ID, user ID, transaction ID, severity, status (DISMISSED, INVESTIGATING, OPEN, RESOLVED), details (JSON format), assigned user, resolution timestamp, resolution notes, and creation timestamp. The `audit_logs` table records user actions, including log ID, actor ID, action (EXPORT, LOGIN, QUERY, UPDATE, VIEW), resource type (REPORT, ALERT, DASHBOARD, TRANSACTION, USER), resource ID, query text, IP address, and creation timestamp. Finally, `dashboards` stores metadata about analytical dashboards, `query_history` is currently empty.",
+  "prompts": {
+    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nPay close attention to the following terms and their meanings in the context of risk management: KYC Status (EXPIRED, PENDING, REJECTED, VERIFIED), Risk Level (HIGH, LOW, MEDIUM), Is PEP (Politically Exposed Person), Account Status (ACTIVE, FROZEN, SUSPENDED), Flag Reason (e.g., Automated screening, Risk threshold exceeded), Alert Severity (CRITICAL, HIGH, LOW, MEDIUM), and Transaction Types (BONUS, DEPOSIT, FEE, TRADE, WITHDRAWAL).\n\nDOMAIN SPECIFIC INSTRUCTION:\nClarify the meaning of KYC status (EXPIRED, PENDING, REJECTED, VERIFIED), account status (ACTIVE, FROZEN, SUSPENDED), risk level (HIGH, MEDIUM, LOW), transaction status (COMPLETED, FAILED, FLAGGED, PENDING) and PEP (Politically Exposed Person).",
+    "sql": null
+  },
+  "few_shots": [
+    {
+      "question": "What are the user ids and kyc statuses of all users?",
+      "sql": "SELECT user_id, kyc_status FROM users",
+      "explanation": "This query retrieves the user ID and KYC status from the `users` table, showing the KYC verification status for each user."
+    },
+    {
+      "question": "Show me all transactions that have been flagged with 'Risk threshold exceeded' as the reason.",
+      "sql": "SELECT * FROM transactions WHERE flag_reason = 'Risk threshold exceeded'",
+      "explanation": "This query filters the `transactions` table to find transactions where the `flag_reason` is 'Risk threshold exceeded', indicating potentially risky transactions."
+    },
+    {
+      "question": "What is the average risk score for users with account status 'ACTIVE'?",
+      "sql": "SELECT AVG(risk_score) FROM users WHERE account_status = 'ACTIVE'",
+      "explanation": "This query calculates the average `risk_score` from the `users` table for users whose `account_status` is 'ACTIVE', providing an overall risk assessment for active users."
+    },
+    {
+      "question": "List the rule names and severity of all alert rules.",
+      "sql": "SELECT rule_name, severity FROM alert_rules",
+      "explanation": "This query shows all alert rules' names and their defined severity levels.  It helps to understand which rules are in place and the importance assigned to them."
+    },
+    {
+      "question": "Find the user IDs and full names of users who are marked as PEP (Politically Exposed Person).",
+      "sql": "SELECT user_id, full_name FROM users WHERE is_pep = 1",
+      "explanation": "This query retrieves the user ID and full name from the `users` table where the `is_pep` flag is set to 1, indicating users who are politically exposed persons."
+    },
+    {
+      "question": "Show me all users with a KYC status of 'PENDING'.",
+      "sql": "SELECT user_id, email FROM users WHERE kyc_status = 'PENDING'",
+      "explanation": "This query selects the user_id and email from the users table, filtering for users where the kyc_status is 'PENDING'."
+    },
+    {
+      "question": "List all transactions with a 'FLAGGED' status and 'Large amount' as the flag reason.",
+      "sql": "SELECT txn_id, user_id, amount, currency FROM transactions WHERE status = 'FLAGGED' AND flag_reason = 'Large amount'",
+      "explanation": "This query retrieves transaction details (txn_id, user_id, amount, currency) from the transactions table, filtering for transactions that are 'FLAGGED' due to a 'Large amount'."
+    },
+    {
+      "question": "What are the names of the alert rules with 'HIGH' severity?",
+      "sql": "SELECT rule_name FROM alert_rules WHERE severity = 'HIGH'",
+      "explanation": "This SQL query selects the names of alert rules that have a severity level of 'HIGH'."
+    },
+    {
+      "question": "Find all login events from the country 'DE' that resulted in a 'FAILED' status.",
+      "sql": "SELECT event_id, user_id, email_attempted FROM login_events WHERE country = 'DE' AND status = 'FAILED'",
+      "explanation": "This SQL query retrieves the event ID, user ID, and attempted email addresses of login events originating from Germany ('DE') that failed."
+    },
+    {
+      "question": "Show the emails of users whose accounts are 'FROZEN' and have a risk level of 'HIGH'.",
+      "sql": "SELECT email FROM users WHERE account_status = 'FROZEN' AND risk_level = 'HIGH'",
+      "explanation": "This SQL query selects the email addresses of users who have 'FROZEN' accounts and are classified as having a 'HIGH' risk level."
+    }
+  ]
+}

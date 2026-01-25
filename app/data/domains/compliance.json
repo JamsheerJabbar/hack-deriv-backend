@@ -1,0 +1,36 @@
+{
+  "domain": "compliance",
+  "description": "Configuration for compliance domain",
+  "schema_context": "The database contains information related to user compliance, transactions, and security events. The `users` table stores user details such as email, full name, country, phone number, date of birth, KYC (Know Your Customer) status, risk level, risk score, PEP (Politically Exposed Person) status, and account status. KYC status can be EXPIRED, PENDING, REJECTED, or VERIFIED. Risk level can be HIGH, MEDIUM, or LOW. Account status includes ACTIVE, FROZEN, and SUSPENDED. The `transactions` table logs transaction details, including transaction ID, user ID, transaction type (DEPOSIT, WITHDRAWAL, TRADE, FEE, BONUS), instrument (e.g., AAPL, BTC/USD, EUR/USD), amount, currency, amount in USD, status (COMPLETED, FAILED, FLAGGED, PENDING), flag reason (Automated screening, Risk threshold exceeded, Large amount, Unusual pattern), payment method (CRYPTO, EWALLET, CARD, BANK_TRANSFER), IP address, and timestamps. The `login_events` table captures login attempts, including user ID, email attempted, IP address, country, city (currently empty), device type (DESKTOP, MOBILE, TABLET), device fingerprint, user agent, status (SUCCESS, FAILED, BLOCKED), failure reason (MFA_FAILED, IP_BLOCKED, WRONG_PASSWORD, ACCOUNT_LOCKED, SUSPICIOUS_ACTIVITY), and timestamps. The `alert_rules` table defines rules for generating alerts, including rule ID, rule name, rule type (THRESHOLD, VELOCITY, TIME, GEO, PATTERN), condition (JSON format describing the rule), severity (HIGH, MEDIUM, LOW, CRITICAL), and status. The `alerts` table stores details of generated alerts, including alert ID, rule name, rule ID, user ID, transaction ID, severity, status (DISMISSED, INVESTIGATING, OPEN, RESOLVED), details (JSON format), assigned user, resolution timestamp, and resolution notes. The `audit_logs` table tracks user actions such as EXPORT, LOGIN, QUERY, UPDATE, and VIEW performed on resources like REPORT, ALERT, DASHBOARD, TRANSACTION, and USER. The `dashboards` table stores dashboard metadata including owner, widgets (JSON), layout (JSON), deploy URL and refresh interval.",
+  "prompts": {
+    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nWhen referring to user verification, use the term KYC and its possible values: EXPIRED, PENDING, REJECTED, VERIFIED. When referring to flagged transactions, consider flag reasons: Automated screening, Risk threshold exceeded, Large amount, Unusual pattern. Risk levels are HIGH, MEDIUM or LOW. A user can also be a PEP (Politically Exposed Person).",
+    "sql": null
+  },
+  "few_shots": [
+    {
+      "question": "What are the number of users with HIGH risk level?",
+      "sql": "SELECT count(*) FROM users WHERE risk_level = 'HIGH'",
+      "explanation": "This query counts the number of users in the 'users' table where the 'risk_level' column is equal to 'HIGH'."
+    },
+    {
+      "question": "Show the last 5 transactions with status FLAGGED.",
+      "sql": "SELECT * FROM transactions WHERE status = 'FLAGGED' ORDER BY created_at DESC LIMIT 5",
+      "explanation": "This query retrieves all columns from the 'transactions' table, filters for transactions where the 'status' is 'FLAGGED', orders them by the 'created_at' column in descending order to get the most recent transactions, and limits the result to the top 5."
+    },
+    {
+      "question": "List user id and email address for those whose KYC status is EXPIRED.",
+      "sql": "SELECT user_id, email FROM users WHERE kyc_status = 'EXPIRED'",
+      "explanation": "This query selects the user_id and email from the 'users' table, filtering for users where the 'kyc_status' is 'EXPIRED'."
+    },
+    {
+      "question": "How many login events resulted in ACCOUNT_LOCKED?",
+      "sql": "SELECT count(*) FROM login_events WHERE failure_reason = 'ACCOUNT_LOCKED'",
+      "explanation": "This query counts all rows from the 'login_events' table where the 'failure_reason' column has the value 'ACCOUNT_LOCKED'."
+    },
+    {
+      "question": "Show the alert rules with severity HIGH or CRITICAL.",
+      "sql": "SELECT * FROM alert_rules WHERE severity IN ('HIGH', 'CRITICAL')",
+      "explanation": "This query retrieves all columns from the 'alert_rules' table, filtering for rules where the 'severity' column is either 'HIGH' or 'CRITICAL'."
+    }
+  ]
+}

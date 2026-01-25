@@ -1,5 +1,6 @@
 from typing import Dict, Any, Tuple
 from app.services.llm import llm_service
+from app.core.logger import logger
 
 class IntentClassificationModule:
     """
@@ -7,50 +8,57 @@ class IntentClassificationModule:
     Determines query type, complexity, confidence level, and if clarification is needed.
     """
     
-    async def classify(self, query: str, conversation_history: list = None) -> Tuple[str, float, str, bool]:
+    async def classify(self, query: str, conversation_history: list = None, domain: str = "general") -> Tuple[str, float, str, bool]:
         """
         Returns (intent, confidence, complexity, needs_clarification)
         """
+        logger.info(f"Classifying intent for domain: {domain} | Query: {query}")
+        from app.modules.domain_adapter import domain_adapter
+        
+        # Load domain config
+        domain_config = domain_adapter.get_domain_config(domain)
+        # We treat the stored prompt as "Domain Specific Instructions" 
+        # (even if it currently contains 'You are an AI...', we'll just append it contextually)
+        domain_instructions = domain_config.get("prompts", {}).get("intent", "")
+        
         history_context = ""
         if conversation_history:
             history_context = "\n\nConversation History:\n"
             for msg in conversation_history[-3:]:  # Last 3 messages for context
                 history_context += f"- {msg.get('role', 'user')}: {msg.get('content', '')}\n"
         
+        # Base Prompt Template
         prompt = f"""
-You are analyzing a natural language database query to determine if it's ready for SQL generation.
+You are an AI assistant for a Database system.
+Your job is to classify the user's intent.
 
 {history_context}
 
-Current Query: "{query}"
+User Query: "{query}"
 
-Analyze the query and return a JSON object with:
-- "intent": "SELECT", "UPDATE", "DELETE", "INSERT", or "UNKNOWN"
-- "confidence": float between 0.0 and 1.0 (how confident you are about the intent)
+DOMAIN CONTEXT & INSTRUCTIONS:
+{domain_instructions}
+
+INSTRUCTIONS:
+Analyze the query and return a valid JSON object with:
+- "intent": "SELECT", "UPDATE", "DELETE", "INSERT", "SCHEMA_QUERY", "OFF_TOPIC", or "UNKNOWN"
+- "confidence": float between 0.0 and 1.0
 - "complexity": "Simple", "Medium", "Complex"
-- "needs_clarification": boolean - true if the query is:
-  * Too vague or ambiguous
-  * Missing critical information (date ranges, thresholds, specific entities)
-  * Contains compliance rules that need to be broken down
-  * Requires multiple steps or clarification
-- "clarity_score": float between 0.0 and 1.0 (how clear and specific the query is)
+- "needs_clarification": boolean
+- "off_topic_reason": string (if intent is OFF_TOPIC)
 
-Examples of queries needing clarification:
-- "Show me suspicious users" → needs threshold/criteria
-- "Find compliance violations" → needs specific rule type
-- "Check recent activity" → needs time range (unless "recent" serves as default limit)
-- "Users need to have verified KYC and no flagged transactions in last 30 days" → complex rule, may need confirmation
+INTENT GUIDELINES:
+1. **SCHEMA_QUERY**: User asks about the database structure, tables available, column names, or "what can you do?".
+   - Example: "list columns", "what tables are there?", "show schema".
+2. **OFF_TOPIC**: Query is about weather, sports... or greetings.
+3. **SELECT**: Query asks for data retrieval.
+4. **UNKNOWN**: Query is gibberish.
 
-Examples of clear queries (DO NOT ASK FOR CLARIFICATION):
-- "Show high-risk users from UAE"
-- "Show me 5 users" (Implicitly means any 5 users)
-- "List transactions over $50,000 with status FLAGGED"
-- "Count failed login attempts in last 24 hours"
-- "Show all users" (Implicitly means top N or all)
+CLARIFICATION GUIDELINES:
+- Set needs_clarification=true if query is ambiguous (e.g., "Show me data") or missing critical filters implies by the logic.
+- Do NOT ask for clarification for simple things like "Show users" (Assume LIMIT 5).
 
-IMPORTANT: Do NOT ask for clarification for simple queries like "Show me users" or "List transactions". Assume reasonable defaults (LIMIT 5, Order by date desc) in the SQL generation phase instead. Only ask if the intent is truly ambiguous or unexecutable.
-
-Return ONLY the JSON object.
+Output JSON only.
 """
         
         try:
@@ -71,10 +79,11 @@ Return ONLY the JSON object.
             if clarity_score < 0.6:
                 needs_clarification = True
                 
+            logger.info(f"Classification Result: {intent} (conf: {confidence}) | Needs Clarification: {needs_clarification}")
             return intent, confidence, complexity, needs_clarification
             
         except Exception as e:
-            print(f"Intent classification error: {e}")
+            logger.error(f"Intent classification error: {str(e)}")
             # Fallback if LLM fails or returns bad JSON
             return "SELECT", 0.9, "Simple", False
 

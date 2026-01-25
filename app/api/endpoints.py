@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from app.models.state import QueryRequest, QueryResponse, AlertRequest, AlertResponse
 from app.orchestration.workflow import app_graph
+from app.core.logger import logger
 
 router = APIRouter()
 
@@ -10,6 +11,7 @@ async def query_database(request: QueryRequest):
     Process a natural language query through the NL2SQL pipeline.
     Supports conversational clarification flow.
     """
+    logger.info(f"Incoming query: {request.query} | Domain: {request.domain}")
     initial_state = {
         "user_question": request.query,
         "domain": request.domain,
@@ -19,6 +21,7 @@ async def query_database(request: QueryRequest):
     
     # Run the graph
     result = await app_graph.ainvoke(initial_state)
+    logger.info(f"Graph execution status: {result.get('status')} for query: {request.query}")
     
     # Check if clarification is needed
     if result.get("status") == "needs_clarification":
@@ -32,6 +35,7 @@ async def query_database(request: QueryRequest):
     
     # Check for validation errors
     if result.get("validation_error") and not result.get("query_result"):
+        logger.warning(f"Validation failure for query: {request.query} | Error: {result['validation_error']}")
         return QueryResponse(
             sql=result.get("generated_sql"),
             results=None,
@@ -41,6 +45,7 @@ async def query_database(request: QueryRequest):
         )
     
     # Success - SQL generated and executed
+    logger.info(f"Query success! {len(result.get('query_result', []))} rows returned.")
     return QueryResponse(
         sql=result.get("generated_sql"),
         results=result.get("query_result"),
@@ -54,6 +59,7 @@ async def create_alert(request: AlertRequest):
     """
     Process a request to create a data alert based on a previous query.
     """
+    logger.info(f"Alert creation request received for SQL: {request.base_sql[:50]}...")
     from app.modules.alert_generation import alert_module
     
     status, message, sql, config = await alert_module.process_alert_request(

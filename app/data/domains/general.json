@@ -1,0 +1,111 @@
+{
+  "domain": "general",
+  "description": "Configuration for general domain",
+  "schema_context": "The database contains information about users, their transactions, login events, alerts, alert rules, audit logs, and dashboards. The `users` table stores user details such as user ID, email, full name, country, phone number, date of birth, KYC status (VERIFIED, PENDING, REJECTED, EXPIRED), KYC verification and expiry dates, risk level (HIGH, MEDIUM, LOW), risk score, PEP status (is_pep), account status (ACTIVE, FROZEN, SUSPENDED), creation and update timestamps. The `transactions` table logs user transactions, including transaction ID, user ID, transaction type (DEPOSIT, WITHDRAWAL, TRADE, FEE, BONUS), instrument (e.g., AAPL, BTC/USD), amount, currency (USD), amount in USD, status (COMPLETED, FAILED, FLAGGED, PENDING), flag reason, payment method (CARD, CRYPTO, EWALLET, BANK_TRANSFER), external reference, IP address, creation and processing timestamps. The `login_events` table records login attempts, containing event ID, user ID, attempted email, IP address, country, city, device type (DESKTOP, MOBILE, TABLET), device fingerprint, user agent, status (SUCCESS, FAILED, BLOCKED), failure reason (WRONG_PASSWORD, MFA_FAILED, IP_BLOCKED, ACCOUNT_LOCKED, SUSPICIOUS_ACTIVITY), and creation timestamp. The `alert_rules` table defines rules for generating alerts, including rule ID, rule name (e.g., Dormant Account Activity, Failed Auth Spike), rule type (THRESHOLD, VELOCITY, TIME, GEO, PATTERN), condition, severity (HIGH, MEDIUM, LOW, CRITICAL), active status, and creation timestamp. The `alerts` table stores information about generated alerts, including alert ID, rule name, rule ID, user ID, transaction ID, severity, status (OPEN, INVESTIGATING, RESOLVED, DISMISSED), details, assigned user, resolution timestamp, resolution notes, and creation timestamp. The `audit_logs` table stores logs of user actions, including log ID, actor ID, action (VIEW, QUERY, UPDATE, LOGIN, EXPORT), resource type (USER, TRANSACTION, ALERT, DASHBOARD, REPORT), resource ID, query text, IP address, and creation timestamp. The `dashboards` table stores dashboard details, including dashboard ID, name, owner ID, widgets (stored as JSON arrays), layout (stored as JSON arrays), is deployed, deploy URL, refresh interval, created at, and deployed at. The `query_history` table stores the query history of each user, including `query_id`, `user_id`, `nl_query`, `generated_sql`, `result_count`, `is_favorite`, and `created_at`.",
+  "prompts": {
+    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nAdd this instruction to the system prompt: Focus on understanding KYC status, PEP status, alert severities, transaction types, and account statuses. Pay close attention to the column `instrument` which represents the asset the transaction is related to.\n\nDOMAIN SPECIFIC INSTRUCTION:\nWhen a user asks about KYC status, account status, PEP status, risk level, txn_type, failure_reason or severity, always use the exact values given in the data and return results with only those values. For example, if the user asks for 'high risk users', filter the users table by the risk_level column where risk_level = 'HIGH'.\n\nDOMAIN SPECIFIC INSTRUCTION:\nAdd this instruction to the system prompt: When the user asks about KYC (Know Your Customer) status, remember to map user intent regarding statuses like 'verified', 'pending', 'rejected', and 'expired' to `kyc_status` values of 'VERIFIED', 'PENDING', 'REJECTED', and 'EXPIRED' respectively. Similarly, interpret `is_pep` as 'Politically Exposed Person'. Also, understand that txn_type can include types like BONUS, DEPOSIT, FEE, TRADE, and WITHDRAWAL. Interpret 'FLAGGED' transaction to mean a transaction with status 'FLAGGED'.\n\nDOMAIN SPECIFIC INSTRUCTION:\nAdd this instruction to the system prompt: Pay close attention to terms like 'KYC status', 'risk level', 'flag reason', 'account status', 'txn_type', 'payment_method', 'device_type', 'failure_reason', and severity levels like 'HIGH', 'MEDIUM', 'LOW', 'CRITICAL' when understanding the user's intent. Also note the different alert rule types: THRESHOLD, VELOCITY, TIME, GEO, and PATTERN.",
+    "sql": null
+  },
+  "few_shots": [
+    {
+      "question": "What are the full names of users with KYC status 'VERIFIED' from 'DE'?",
+      "sql": "SELECT full_name FROM users WHERE kyc_status = 'VERIFIED' AND country = 'DE'",
+      "explanation": "This query selects the `full_name` column from the `users` table, filtering for users whose `kyc_status` is 'VERIFIED' and `country` is 'DE'."
+    },
+    {
+      "question": "Show the txn_id and amount for transactions of type 'TRADE' and currency 'USD'.",
+      "sql": "SELECT txn_id, amount FROM transactions WHERE txn_type = 'TRADE' AND currency = 'USD'",
+      "explanation": "This query retrieves the `txn_id` and `amount` columns from the `transactions` table for rows where `txn_type` is 'TRADE' and `currency` is 'USD'."
+    },
+    {
+      "question": "List all alert rules with severity 'HIGH' or 'CRITICAL'.",
+      "sql": "SELECT * FROM alert_rules WHERE severity IN ('HIGH', 'CRITICAL')",
+      "explanation": "This query fetches all columns from the `alert_rules` table, filtering for rules where the `severity` is either 'HIGH' or 'CRITICAL'."
+    },
+    {
+      "question": "Find the email attempted and status of login events with failure reason 'WRONG_PASSWORD'.",
+      "sql": "SELECT email_attempted, status FROM login_events WHERE failure_reason = 'WRONG_PASSWORD'",
+      "explanation": "This query selects the `email_attempted` and `status` columns from the `login_events` table, filtering for events where the `failure_reason` is 'WRONG_PASSWORD'."
+    },
+    {
+      "question": "Show me the name and deploy_url of dashboards that are deployed (is_deployed = 1).",
+      "sql": "SELECT name, deploy_url FROM dashboards WHERE is_deployed = 1",
+      "explanation": "This query returns the `name` and `deploy_url` columns from the `dashboards` table for dashboards where the `is_deployed` column is 1, indicating that the dashboard is deployed."
+    },
+    {
+      "question": "Show me all users with KYC status 'VERIFIED' from country 'DE'.",
+      "sql": "SELECT user_id, email, full_name FROM users WHERE kyc_status = 'VERIFIED' AND country = 'DE';",
+      "explanation": "This query selects the user ID, email, and full name from the 'users' table, filtering for users whose KYC status is 'VERIFIED' and who are from the country 'DE'."
+    },
+    {
+      "question": "What are the different transaction types?",
+      "sql": "SELECT DISTINCT txn_type FROM transactions;",
+      "explanation": "This query selects all the unique transaction types from the 'transactions' table."
+    },
+    {
+      "question": "Find the average transaction amount for 'TRADE' transactions.",
+      "sql": "SELECT AVG(amount) FROM transactions WHERE txn_type = 'TRADE';",
+      "explanation": "This query calculates the average transaction amount from the 'transactions' table, filtering for transactions where the transaction type is 'TRADE'."
+    },
+    {
+      "question": "How many login attempts have failed with reason 'WRONG_PASSWORD'?",
+      "sql": "SELECT COUNT(*) FROM login_events WHERE status = 'FAILED' AND failure_reason = 'WRONG_PASSWORD';",
+      "explanation": "This query counts the number of failed login attempts from the 'login_events' table, filtering for records where the status is 'FAILED' and the failure reason is 'WRONG_PASSWORD'."
+    },
+    {
+      "question": "List alert rule names with severity 'HIGH' or 'CRITICAL'.",
+      "sql": "SELECT rule_name FROM alert_rules WHERE severity IN ('HIGH', 'CRITICAL');",
+      "explanation": "This query selects the names of alert rules from the 'alert_rules' table, filtering for rules where the severity is either 'HIGH' or 'CRITICAL'."
+    },
+    {
+      "question": "Show me users with KYC status 'VERIFIED'.",
+      "sql": "SELECT user_id, full_name FROM users WHERE kyc_status = 'VERIFIED';",
+      "explanation": "This query selects the user ID and full name of users from the 'users' table where the KYC status is 'VERIFIED'."
+    },
+    {
+      "question": "List the transaction IDs of all 'FLAGGED' transactions.",
+      "sql": "SELECT txn_id FROM transactions WHERE status = 'FLAGGED';",
+      "explanation": "This query retrieves the transaction IDs from the 'transactions' table where the transaction status is 'FLAGGED'."
+    },
+    {
+      "question": "What is the count of login events with 'WRONG_PASSWORD' as the failure reason?",
+      "sql": "SELECT count(*) FROM login_events WHERE failure_reason = 'WRONG_PASSWORD';",
+      "explanation": "This query counts the number of entries in the 'login_events' table where the 'failure_reason' is 'WRONG_PASSWORD'."
+    },
+    {
+      "question": "Show the rule name for alert rules where severity is 'HIGH'.",
+      "sql": "SELECT rule_name FROM alert_rules WHERE severity = 'HIGH';",
+      "explanation": "This query retrieves the rule name from the 'alert_rules' table where the severity is 'HIGH'."
+    },
+    {
+      "question": "Find dashboards owned by 'USR-0014'.",
+      "sql": "SELECT dashboard_id, name FROM dashboards WHERE owner_id = 'USR-0014';",
+      "explanation": "This query finds the dashboard IDs and names from the 'dashboards' table that are owned by the user with ID 'USR-0014'."
+    },
+    {
+      "question": "What is the KYC status and risk level of Layla Johnson?",
+      "sql": "SELECT kyc_status, risk_level FROM users WHERE full_name = 'Layla Johnson';",
+      "explanation": "This query selects the kyc_status and risk_level columns from the users table, filtering the results to only include the user with the full_name 'Layla Johnson'."
+    },
+    {
+      "question": "How many transactions are flagged with the reason 'Unusual pattern'?",
+      "sql": "SELECT count(*) FROM transactions WHERE flag_reason = 'Unusual pattern';",
+      "explanation": "This query counts the number of rows in the transactions table where the flag_reason column is equal to 'Unusual pattern'."
+    },
+    {
+      "question": "Show me the event ID, email attempted and failure reason from login events that are marked as failed",
+      "sql": "SELECT event_id, email_attempted, failure_reason FROM login_events WHERE status = 'FAILED';",
+      "explanation": "This query selects the event_id, email_attempted, and failure_reason from the login_events table where the status is 'FAILED'."
+    },
+    {
+      "question": "List the names of dashboards owned by USR-0011.",
+      "sql": "SELECT name FROM dashboards WHERE owner_id = 'USR-0011';",
+      "explanation": "This query selects the name of all dashboards from the dashboards table where the owner_id column matches 'USR-0011'."
+    },
+    {
+      "question": "Show me all medium severity alerts that are still open.",
+      "sql": "SELECT * FROM alerts WHERE severity = 'MEDIUM' AND status = 'OPEN';",
+      "explanation": "This query retrieves all columns from the alerts table for alerts where the severity is 'MEDIUM' and the status is 'OPEN'."
+    }
+  ]
+}

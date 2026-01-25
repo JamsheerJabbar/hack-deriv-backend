@@ -1148,3 +1148,1173 @@ You are a SQL expert. The following SQLite query ...
 2026-01-25 15:23:27,339 - nl2sql - INFO - workflow.py:92 - Query execution returned 0 rows.
 2026-01-25 15:23:27,347 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: 24 hrs
 2026-01-25 15:23:27,351 - nl2sql - INFO - endpoints.py:48 - Query success! 0 rows returned.
+2026-01-25 16:03:59,009 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 16:03:59,009 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 16:03:59,057 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 16:03:59,060 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 16:04:10,829 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 16:04:10,850 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 16:04:10,870 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 16:04:10,890 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 16:04:19,034 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_fixed.db
+2026-01-25 16:04:19,058 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';
+2026-01-25 16:04:19,063 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:19,063 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(users);
+2026-01-25 16:04:19,066 - nl2sql - INFO - database.py:60 - Execution complete. Returned 15 rows.
+2026-01-25 16:04:19,066 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM users WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,069 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,071 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email FROM users WHERE email IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,075 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,075 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT full_name FROM users WHERE full_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,078 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,079 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM users WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,082 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,083 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT phone FROM users WHERE phone IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,083 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,083 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT date_of_birth FROM users WHERE date_of_birth IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,083 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,083 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_status FROM users WHERE kyc_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,089 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:19,091 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_verified_at FROM users WHERE kyc_verified_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,093 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,093 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_expiry_date FROM users WHERE kyc_expiry_date IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,093 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,093 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_level FROM users WHERE risk_level IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,098 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:19,098 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_score FROM users WHERE risk_score IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,100 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,100 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_pep FROM users WHERE is_pep IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,108 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:19,108 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT account_status FROM users WHERE account_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,112 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:19,113 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM users WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,115 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,117 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT updated_at FROM users WHERE updated_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,118 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,120 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(transactions);
+2026-01-25 16:04:19,122 - nl2sql - INFO - database.py:60 - Execution complete. Returned 14 rows.
+2026-01-25 16:04:19,123 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM transactions WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,125 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,128 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM transactions WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,133 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,133 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_type FROM transactions WHERE txn_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,205 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,205 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT instrument FROM transactions WHERE instrument IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,228 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,229 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount FROM transactions WHERE amount IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,232 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,232 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT currency FROM transactions WHERE currency IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,716 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:19,716 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount_usd FROM transactions WHERE amount_usd IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,728 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,728 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM transactions WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,783 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:19,785 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT flag_reason FROM transactions WHERE flag_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,799 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:19,799 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT payment_method FROM transactions WHERE payment_method IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,816 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:19,816 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT external_ref FROM transactions WHERE external_ref IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,821 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,821 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM transactions WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,821 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,821 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM transactions WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,829 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,829 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT processed_at FROM transactions WHERE processed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,830 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,830 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(login_events);
+2026-01-25 16:04:19,832 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:19,832 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT event_id FROM login_events WHERE event_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,837 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,838 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM login_events WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,841 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,841 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email_attempted FROM login_events WHERE email_attempted IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,846 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,846 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM login_events WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,848 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,848 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM login_events WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,863 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,863 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT city FROM login_events WHERE city IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,940 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:19,941 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_type FROM login_events WHERE device_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,951 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:19,951 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_fingerprint FROM login_events WHERE device_fingerprint IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,954 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,955 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_agent FROM login_events WHERE user_agent IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,962 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:19,962 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM login_events WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,970 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:19,970 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT failure_reason FROM login_events WHERE failure_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,970 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,977 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM login_events WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,979 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,980 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alert_rules);
+2026-01-25 16:04:19,982 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:19,983 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alert_rules WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,983 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,983 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alert_rules WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,986 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,987 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_type FROM alert_rules WHERE rule_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,987 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,990 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT condition FROM alert_rules WHERE condition IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,991 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:19,991 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alert_rules WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,991 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:19,995 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_active FROM alert_rules WHERE is_active IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,995 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:19,995 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alert_rules WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:19,995 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:19,995 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alerts);
+2026-01-25 16:04:19,995 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:20,002 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT alert_id FROM alerts WHERE alert_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,002 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,002 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alerts WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,021 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,021 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alerts WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,021 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,025 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM alerts WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,029 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,029 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM alerts WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,033 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,035 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alerts WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,037 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:20,037 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM alerts WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,040 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:20,042 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT details FROM alerts WHERE details IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,045 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,045 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT assigned_to FROM alerts WHERE assigned_to IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,048 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:20,050 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolved_at FROM alerts WHERE resolved_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,054 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,054 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolution_notes FROM alerts WHERE resolution_notes IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,054 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:20,054 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alerts WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,062 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,064 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(audit_logs);
+2026-01-25 16:04:20,064 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:20,064 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT log_id FROM audit_logs WHERE log_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,070 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,074 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT actor_id FROM audit_logs WHERE actor_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,076 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,079 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT action FROM audit_logs WHERE action IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,099 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,100 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_type FROM audit_logs WHERE resource_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,103 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,103 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_id FROM audit_logs WHERE resource_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,109 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,110 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_text FROM audit_logs WHERE query_text IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,149 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:20,153 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM audit_logs WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,153 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,153 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM audit_logs WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,160 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,161 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(dashboards);
+2026-01-25 16:04:20,165 - nl2sql - INFO - database.py:60 - Execution complete. Returned 10 rows.
+2026-01-25 16:04:20,167 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT dashboard_id FROM dashboards WHERE dashboard_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,169 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,171 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT name FROM dashboards WHERE name IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,171 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,171 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT owner_id FROM dashboards WHERE owner_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,179 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,179 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT widgets FROM dashboards WHERE widgets IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,182 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,182 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT layout FROM dashboards WHERE layout IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,187 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,187 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_deployed FROM dashboards WHERE is_deployed IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,194 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:20,201 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deploy_url FROM dashboards WHERE deploy_url IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,206 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,206 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT refresh_interval FROM dashboards WHERE refresh_interval IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,208 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,210 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM dashboards WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,212 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,212 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deployed_at FROM dashboards WHERE deployed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,214 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:20,214 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(query_history);
+2026-01-25 16:04:20,216 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:20,218 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_id FROM query_history WHERE query_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,221 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:20,221 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM query_history WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,221 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:20,221 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT nl_query FROM query_history WHERE nl_query IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,221 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:20,228 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT generated_sql FROM query_history WHERE generated_sql IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,231 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:20,232 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT result_count FROM query_history WHERE result_count IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,232 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:20,232 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_favorite FROM query_history WHERE is_favorite IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,237 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:20,238 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM query_history WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:20,242 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:20,244 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert Data Scientist and System Archi...
+2026-01-25 16:04:25,466 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "refined_schema_context": "The databas...
+2026-01-25 16:04:25,470 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';
+2026-01-25 16:04:25,478 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:25,478 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(users);
+2026-01-25 16:04:25,482 - nl2sql - INFO - database.py:60 - Execution complete. Returned 15 rows.
+2026-01-25 16:04:25,482 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM users WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,486 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,488 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email FROM users WHERE email IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,492 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,492 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT full_name FROM users WHERE full_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,497 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,497 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM users WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,504 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,504 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT phone FROM users WHERE phone IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,508 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,512 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT date_of_birth FROM users WHERE date_of_birth IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,515 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,517 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_status FROM users WHERE kyc_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,521 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:25,521 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_verified_at FROM users WHERE kyc_verified_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,526 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,528 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_expiry_date FROM users WHERE kyc_expiry_date IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,531 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,533 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_level FROM users WHERE risk_level IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,535 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:25,538 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_score FROM users WHERE risk_score IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,541 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,541 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_pep FROM users WHERE is_pep IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,547 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:25,547 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT account_status FROM users WHERE account_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,547 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:25,547 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM users WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,554 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,554 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT updated_at FROM users WHERE updated_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,557 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,557 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(transactions);
+2026-01-25 16:04:25,562 - nl2sql - INFO - database.py:60 - Execution complete. Returned 14 rows.
+2026-01-25 16:04:25,562 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM transactions WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,564 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,564 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM transactions WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,569 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,571 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_type FROM transactions WHERE txn_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,578 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,578 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT instrument FROM transactions WHERE instrument IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,583 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,586 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount FROM transactions WHERE amount IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,588 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,590 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT currency FROM transactions WHERE currency IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,612 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:25,617 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount_usd FROM transactions WHERE amount_usd IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,620 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,620 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM transactions WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,630 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:25,630 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT flag_reason FROM transactions WHERE flag_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,650 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:25,653 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT payment_method FROM transactions WHERE payment_method IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,670 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:25,670 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT external_ref FROM transactions WHERE external_ref IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,677 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,679 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM transactions WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,679 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,681 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM transactions WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,682 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,684 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT processed_at FROM transactions WHERE processed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,686 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,688 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(login_events);
+2026-01-25 16:04:25,690 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:25,690 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT event_id FROM login_events WHERE event_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,692 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,692 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM login_events WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,692 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,692 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email_attempted FROM login_events WHERE email_attempted IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,692 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,692 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM login_events WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,692 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,702 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM login_events WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,702 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,702 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT city FROM login_events WHERE city IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,714 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,716 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_type FROM login_events WHERE device_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,729 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:25,729 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_fingerprint FROM login_events WHERE device_fingerprint IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,729 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,733 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_agent FROM login_events WHERE user_agent IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,741 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:25,741 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM login_events WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,746 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:25,746 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT failure_reason FROM login_events WHERE failure_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,746 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,746 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM login_events WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,746 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,746 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alert_rules);
+2026-01-25 16:04:25,746 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:25,746 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alert_rules WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,759 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,761 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alert_rules WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,762 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,762 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_type FROM alert_rules WHERE rule_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,762 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,762 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT condition FROM alert_rules WHERE condition IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,768 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,770 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alert_rules WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,770 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:25,770 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_active FROM alert_rules WHERE is_active IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,770 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:25,770 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alert_rules WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,770 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:25,778 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alerts);
+2026-01-25 16:04:25,778 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:25,778 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT alert_id FROM alerts WHERE alert_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,782 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,783 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alerts WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,785 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,787 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alerts WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,787 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,789 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM alerts WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,790 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,791 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM alerts WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,794 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,797 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alerts WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,797 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:25,799 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM alerts WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,799 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:25,802 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT details FROM alerts WHERE details IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,804 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,806 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT assigned_to FROM alerts WHERE assigned_to IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,806 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,808 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolved_at FROM alerts WHERE resolved_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,810 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,812 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolution_notes FROM alerts WHERE resolution_notes IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,814 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:25,814 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alerts WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,816 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,818 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(audit_logs);
+2026-01-25 16:04:25,821 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:25,822 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT log_id FROM audit_logs WHERE log_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,824 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,825 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT actor_id FROM audit_logs WHERE actor_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,827 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,829 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT action FROM audit_logs WHERE action IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,831 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,831 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_type FROM audit_logs WHERE resource_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,833 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,833 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_id FROM audit_logs WHERE resource_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,833 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,833 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_text FROM audit_logs WHERE query_text IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,841 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:25,844 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM audit_logs WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,848 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,848 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM audit_logs WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,848 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,853 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(dashboards);
+2026-01-25 16:04:25,855 - nl2sql - INFO - database.py:60 - Execution complete. Returned 10 rows.
+2026-01-25 16:04:25,857 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT dashboard_id FROM dashboards WHERE dashboard_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,857 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,861 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT name FROM dashboards WHERE name IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,864 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,865 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT owner_id FROM dashboards WHERE owner_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,868 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,870 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT widgets FROM dashboards WHERE widgets IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,873 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,873 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT layout FROM dashboards WHERE layout IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,877 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,878 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_deployed FROM dashboards WHERE is_deployed IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,880 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:25,882 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deploy_url FROM dashboards WHERE deploy_url IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,882 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,885 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT refresh_interval FROM dashboards WHERE refresh_interval IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,887 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,890 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM dashboards WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,892 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,892 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deployed_at FROM dashboards WHERE deployed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,895 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:25,895 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(query_history);
+2026-01-25 16:04:25,895 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:25,899 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_id FROM query_history WHERE query_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,899 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,903 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM query_history WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,905 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,905 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT nl_query FROM query_history WHERE nl_query IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,907 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,907 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT generated_sql FROM query_history WHERE generated_sql IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,909 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,912 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT result_count FROM query_history WHERE result_count IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,912 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,912 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_favorite FROM query_history WHERE is_favorite IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,912 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,918 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM query_history WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:25,919 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:25,922 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert Data Scientist and System Archi...
+2026-01-25 16:04:30,241 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "refined_schema_context": "The databas...
+2026-01-25 16:04:30,266 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';
+2026-01-25 16:04:30,268 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:30,270 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(users);
+2026-01-25 16:04:30,270 - nl2sql - INFO - database.py:60 - Execution complete. Returned 15 rows.
+2026-01-25 16:04:30,270 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM users WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,279 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,282 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email FROM users WHERE email IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,283 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,287 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT full_name FROM users WHERE full_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,288 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,290 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM users WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,292 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,294 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT phone FROM users WHERE phone IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,296 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,296 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT date_of_birth FROM users WHERE date_of_birth IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,296 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,304 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_status FROM users WHERE kyc_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,305 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:30,305 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_verified_at FROM users WHERE kyc_verified_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,311 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,311 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_expiry_date FROM users WHERE kyc_expiry_date IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,311 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,316 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_level FROM users WHERE risk_level IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,316 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:30,319 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_score FROM users WHERE risk_score IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,322 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,322 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_pep FROM users WHERE is_pep IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,324 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:30,324 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT account_status FROM users WHERE account_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,328 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:30,328 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM users WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,328 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,333 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT updated_at FROM users WHERE updated_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,335 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,335 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(transactions);
+2026-01-25 16:04:30,340 - nl2sql - INFO - database.py:60 - Execution complete. Returned 14 rows.
+2026-01-25 16:04:30,341 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM transactions WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,341 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,344 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM transactions WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,345 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,345 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_type FROM transactions WHERE txn_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,357 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,358 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT instrument FROM transactions WHERE instrument IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,362 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,364 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount FROM transactions WHERE amount IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,366 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,366 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT currency FROM transactions WHERE currency IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,396 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:30,396 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount_usd FROM transactions WHERE amount_usd IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,396 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,402 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM transactions WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,405 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:30,412 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT flag_reason FROM transactions WHERE flag_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,431 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:30,433 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT payment_method FROM transactions WHERE payment_method IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,453 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:30,453 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT external_ref FROM transactions WHERE external_ref IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,453 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,453 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM transactions WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,453 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,460 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM transactions WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,462 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,462 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT processed_at FROM transactions WHERE processed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,462 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,462 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(login_events);
+2026-01-25 16:04:30,462 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:30,469 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT event_id FROM login_events WHERE event_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,471 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,471 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM login_events WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,471 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,471 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email_attempted FROM login_events WHERE email_attempted IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,477 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,479 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM login_events WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,479 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,482 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM login_events WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,482 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,485 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT city FROM login_events WHERE city IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,494 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,494 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_type FROM login_events WHERE device_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,508 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:30,508 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_fingerprint FROM login_events WHERE device_fingerprint IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,511 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,512 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_agent FROM login_events WHERE user_agent IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,524 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:30,524 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM login_events WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,533 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:30,533 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT failure_reason FROM login_events WHERE failure_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,537 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,537 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM login_events WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,540 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,541 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alert_rules);
+2026-01-25 16:04:30,541 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:30,544 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alert_rules WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,544 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,544 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alert_rules WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,544 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,544 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_type FROM alert_rules WHERE rule_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,544 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,555 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT condition FROM alert_rules WHERE condition IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,555 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,555 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alert_rules WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,560 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:30,560 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_active FROM alert_rules WHERE is_active IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,562 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:30,562 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alert_rules WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,566 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:30,566 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alerts);
+2026-01-25 16:04:30,568 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:30,569 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT alert_id FROM alerts WHERE alert_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,571 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,573 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alerts WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,573 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,575 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alerts WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,576 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,577 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM alerts WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,579 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,581 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM alerts WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,582 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,582 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alerts WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,584 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:30,584 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM alerts WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,584 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:30,584 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT details FROM alerts WHERE details IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,590 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,592 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT assigned_to FROM alerts WHERE assigned_to IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,594 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,594 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolved_at FROM alerts WHERE resolved_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,594 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,594 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolution_notes FROM alerts WHERE resolution_notes IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,594 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:30,594 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alerts WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,602 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,602 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(audit_logs);
+2026-01-25 16:04:30,602 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:30,602 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT log_id FROM audit_logs WHERE log_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,608 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,609 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT actor_id FROM audit_logs WHERE actor_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,611 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,613 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT action FROM audit_logs WHERE action IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,616 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,617 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_type FROM audit_logs WHERE resource_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,620 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,621 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_id FROM audit_logs WHERE resource_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,621 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,624 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_text FROM audit_logs WHERE query_text IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,627 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:30,627 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM audit_logs WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,627 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,632 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM audit_logs WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,632 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,632 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(dashboards);
+2026-01-25 16:04:30,632 - nl2sql - INFO - database.py:60 - Execution complete. Returned 10 rows.
+2026-01-25 16:04:30,632 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT dashboard_id FROM dashboards WHERE dashboard_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,640 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,641 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT name FROM dashboards WHERE name IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,641 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,645 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT owner_id FROM dashboards WHERE owner_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,647 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,647 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT widgets FROM dashboards WHERE widgets IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,649 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,649 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT layout FROM dashboards WHERE layout IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,651 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,651 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_deployed FROM dashboards WHERE is_deployed IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,654 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:30,656 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deploy_url FROM dashboards WHERE deploy_url IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,658 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,660 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT refresh_interval FROM dashboards WHERE refresh_interval IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,662 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,664 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM dashboards WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,666 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,666 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deployed_at FROM dashboards WHERE deployed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,669 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:30,669 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(query_history);
+2026-01-25 16:04:30,669 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:30,669 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_id FROM query_history WHERE query_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,669 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,669 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM query_history WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,678 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,678 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT nl_query FROM query_history WHERE nl_query IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,681 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,683 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT generated_sql FROM query_history WHERE generated_sql IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,685 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,685 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT result_count FROM query_history WHERE result_count IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,688 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,688 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_favorite FROM query_history WHERE is_favorite IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,691 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,693 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM query_history WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:30,695 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:30,695 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert Data Scientist and System Archi...
+2026-01-25 16:04:34,914 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "refined_schema_context": "The databas...
+2026-01-25 16:04:34,929 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';
+2026-01-25 16:04:34,933 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:34,935 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(users);
+2026-01-25 16:04:34,937 - nl2sql - INFO - database.py:60 - Execution complete. Returned 15 rows.
+2026-01-25 16:04:34,939 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM users WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,942 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,943 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email FROM users WHERE email IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,945 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,946 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT full_name FROM users WHERE full_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,947 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,947 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM users WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,953 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,954 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT phone FROM users WHERE phone IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,957 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,957 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT date_of_birth FROM users WHERE date_of_birth IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,957 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,957 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_status FROM users WHERE kyc_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,962 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:34,962 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_verified_at FROM users WHERE kyc_verified_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,964 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,964 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_expiry_date FROM users WHERE kyc_expiry_date IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,964 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,964 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_level FROM users WHERE risk_level IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,970 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:34,971 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_score FROM users WHERE risk_score IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,971 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,971 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_pep FROM users WHERE is_pep IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,971 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:34,978 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT account_status FROM users WHERE account_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,980 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:34,980 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM users WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,983 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,983 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT updated_at FROM users WHERE updated_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,987 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,987 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(transactions);
+2026-01-25 16:04:34,987 - nl2sql - INFO - database.py:60 - Execution complete. Returned 14 rows.
+2026-01-25 16:04:34,990 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM transactions WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,992 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,992 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM transactions WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:34,992 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:34,992 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_type FROM transactions WHERE txn_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,002 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,002 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT instrument FROM transactions WHERE instrument IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,002 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,002 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount FROM transactions WHERE amount IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,002 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,012 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT currency FROM transactions WHERE currency IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,028 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:35,028 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount_usd FROM transactions WHERE amount_usd IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,028 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,033 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM transactions WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,036 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:35,040 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT flag_reason FROM transactions WHERE flag_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,044 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:35,057 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT payment_method FROM transactions WHERE payment_method IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,080 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:35,082 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT external_ref FROM transactions WHERE external_ref IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,084 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,085 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM transactions WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,087 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,087 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM transactions WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,090 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,092 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT processed_at FROM transactions WHERE processed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,094 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,094 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(login_events);
+2026-01-25 16:04:35,094 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:35,094 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT event_id FROM login_events WHERE event_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,094 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,102 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM login_events WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,104 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,104 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email_attempted FROM login_events WHERE email_attempted IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,104 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,104 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM login_events WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,111 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,112 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM login_events WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,112 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,112 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT city FROM login_events WHERE city IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,128 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,128 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_type FROM login_events WHERE device_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,140 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:35,142 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_fingerprint FROM login_events WHERE device_fingerprint IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,143 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,143 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_agent FROM login_events WHERE user_agent IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,152 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:35,152 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM login_events WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,158 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:35,160 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT failure_reason FROM login_events WHERE failure_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,162 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,162 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM login_events WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,162 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,162 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alert_rules);
+2026-01-25 16:04:35,162 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:35,162 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alert_rules WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,169 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,169 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alert_rules WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,169 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,169 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_type FROM alert_rules WHERE rule_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,169 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,169 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT condition FROM alert_rules WHERE condition IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,177 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,178 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alert_rules WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,180 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:35,180 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_active FROM alert_rules WHERE is_active IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,180 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:35,183 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alert_rules WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,186 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:35,186 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alerts);
+2026-01-25 16:04:35,186 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:35,190 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT alert_id FROM alerts WHERE alert_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,191 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,193 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alerts WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,194 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,194 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alerts WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,194 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,194 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM alerts WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,194 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,194 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM alerts WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,202 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,202 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alerts WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,202 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:35,202 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM alerts WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,202 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:35,209 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT details FROM alerts WHERE details IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,210 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,212 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT assigned_to FROM alerts WHERE assigned_to IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,212 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,212 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolved_at FROM alerts WHERE resolved_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,212 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,217 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolution_notes FROM alerts WHERE resolution_notes IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,219 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:35,219 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alerts WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,219 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,219 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(audit_logs);
+2026-01-25 16:04:35,219 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:35,219 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT log_id FROM audit_logs WHERE log_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,226 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,228 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT actor_id FROM audit_logs WHERE actor_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,228 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,228 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT action FROM audit_logs WHERE action IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,232 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,232 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_type FROM audit_logs WHERE resource_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,234 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,235 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_id FROM audit_logs WHERE resource_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,235 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,235 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_text FROM audit_logs WHERE query_text IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,240 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM audit_logs WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM audit_logs WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(dashboards);
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:60 - Execution complete. Returned 10 rows.
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT dashboard_id FROM dashboards WHERE dashboard_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,242 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT name FROM dashboards WHERE name IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,250 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,253 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT owner_id FROM dashboards WHERE owner_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,253 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,253 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT widgets FROM dashboards WHERE widgets IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,253 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,253 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT layout FROM dashboards WHERE layout IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,253 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,253 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_deployed FROM dashboards WHERE is_deployed IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,259 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:35,260 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deploy_url FROM dashboards WHERE deploy_url IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,262 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,262 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT refresh_interval FROM dashboards WHERE refresh_interval IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,262 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,262 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM dashboards WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,262 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,267 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deployed_at FROM dashboards WHERE deployed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,267 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:35,267 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(query_history);
+2026-01-25 16:04:35,267 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:35,267 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_id FROM query_history WHERE query_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,267 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,275 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM query_history WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,277 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,278 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT nl_query FROM query_history WHERE nl_query IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,280 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,280 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT generated_sql FROM query_history WHERE generated_sql IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,282 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,282 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT result_count FROM query_history WHERE result_count IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,283 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,285 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_favorite FROM query_history WHERE is_favorite IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,287 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,287 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM query_history WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:35,287 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:35,290 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert Data Scientist and System Archi...
+2026-01-25 16:04:39,454 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "refined_schema_context": "The databas...
+2026-01-25 16:04:39,500 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';
+2026-01-25 16:04:39,502 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:39,503 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(users);
+2026-01-25 16:04:39,505 - nl2sql - INFO - database.py:60 - Execution complete. Returned 15 rows.
+2026-01-25 16:04:39,507 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM users WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,507 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,507 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email FROM users WHERE email IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,511 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,513 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT full_name FROM users WHERE full_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,513 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,513 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM users WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,518 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,519 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT phone FROM users WHERE phone IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,520 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,520 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT date_of_birth FROM users WHERE date_of_birth IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,524 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,524 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_status FROM users WHERE kyc_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,524 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:39,524 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_verified_at FROM users WHERE kyc_verified_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,529 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,529 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT kyc_expiry_date FROM users WHERE kyc_expiry_date IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,529 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,532 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_level FROM users WHERE risk_level IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,532 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:39,534 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT risk_score FROM users WHERE risk_score IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,534 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,534 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_pep FROM users WHERE is_pep IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,534 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:39,540 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT account_status FROM users WHERE account_status IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,542 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:39,542 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM users WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,542 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,544 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT updated_at FROM users WHERE updated_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,546 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,546 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(transactions);
+2026-01-25 16:04:39,546 - nl2sql - INFO - database.py:60 - Execution complete. Returned 14 rows.
+2026-01-25 16:04:39,546 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM transactions WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,553 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,555 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM transactions WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,555 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,555 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_type FROM transactions WHERE txn_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,562 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,562 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT instrument FROM transactions WHERE instrument IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,562 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,562 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount FROM transactions WHERE amount IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,562 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,562 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT currency FROM transactions WHERE currency IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,588 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:39,591 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT amount_usd FROM transactions WHERE amount_usd IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,591 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,591 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM transactions WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,600 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:39,600 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT flag_reason FROM transactions WHERE flag_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,616 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:39,616 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT payment_method FROM transactions WHERE payment_method IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,636 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:39,637 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT external_ref FROM transactions WHERE external_ref IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,637 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,637 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM transactions WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,640 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,642 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM transactions WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,643 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,644 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT processed_at FROM transactions WHERE processed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,644 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,644 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(login_events);
+2026-01-25 16:04:39,644 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:39,644 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT event_id FROM login_events WHERE event_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,644 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,651 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM login_events WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,652 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,652 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT email_attempted FROM login_events WHERE email_attempted IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,655 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,655 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM login_events WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,655 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,655 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT country FROM login_events WHERE country IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,660 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,661 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT city FROM login_events WHERE city IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,669 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,669 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_type FROM login_events WHERE device_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,678 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:39,678 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT device_fingerprint FROM login_events WHERE device_fingerprint IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,696 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,698 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_agent FROM login_events WHERE user_agent IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,706 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:39,709 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM login_events WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,712 - nl2sql - INFO - database.py:60 - Execution complete. Returned 3 rows.
+2026-01-25 16:04:39,714 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT failure_reason FROM login_events WHERE failure_reason IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,716 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,716 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM login_events WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,718 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,719 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alert_rules);
+2026-01-25 16:04:39,721 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:39,723 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alert_rules WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,723 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,723 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alert_rules WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,725 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,726 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_type FROM alert_rules WHERE rule_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,729 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,729 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT condition FROM alert_rules WHERE condition IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,731 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,732 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alert_rules WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,733 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:39,734 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_active FROM alert_rules WHERE is_active IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,735 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:39,735 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alert_rules WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,735 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:39,735 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(alerts);
+2026-01-25 16:04:39,740 - nl2sql - INFO - database.py:60 - Execution complete. Returned 12 rows.
+2026-01-25 16:04:39,741 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT alert_id FROM alerts WHERE alert_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,743 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,745 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_name FROM alerts WHERE rule_name IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,745 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,745 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT rule_id FROM alerts WHERE rule_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,745 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,745 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM alerts WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,745 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,752 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT txn_id FROM alerts WHERE txn_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,752 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,752 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT severity FROM alerts WHERE severity IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,752 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:39,752 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT status FROM alerts WHERE status IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,752 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:04:39,759 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT details FROM alerts WHERE details IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,760 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,761 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT assigned_to FROM alerts WHERE assigned_to IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,762 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,762 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolved_at FROM alerts WHERE resolved_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,764 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,764 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resolution_notes FROM alerts WHERE resolution_notes IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,766 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:39,766 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM alerts WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,766 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,766 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(audit_logs);
+2026-01-25 16:04:39,766 - nl2sql - INFO - database.py:60 - Execution complete. Returned 8 rows.
+2026-01-25 16:04:39,766 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT log_id FROM audit_logs WHERE log_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,766 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,775 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT actor_id FROM audit_logs WHERE actor_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,776 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,778 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT action FROM audit_logs WHERE action IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,781 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,781 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_type FROM audit_logs WHERE resource_type IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,783 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,783 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT resource_id FROM audit_logs WHERE resource_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,785 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,785 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_text FROM audit_logs WHERE query_text IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,794 - nl2sql - INFO - database.py:60 - Execution complete. Returned 1 rows.
+2026-01-25 16:04:39,796 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT ip_address FROM audit_logs WHERE ip_address IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,797 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,799 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM audit_logs WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,799 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,801 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(dashboards);
+2026-01-25 16:04:39,804 - nl2sql - INFO - database.py:60 - Execution complete. Returned 10 rows.
+2026-01-25 16:04:39,804 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT dashboard_id FROM dashboards WHERE dashboard_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,805 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,805 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT name FROM dashboards WHERE name IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,809 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,811 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT owner_id FROM dashboards WHERE owner_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,813 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,815 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT widgets FROM dashboards WHERE widgets IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,815 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,817 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT layout FROM dashboards WHERE layout IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,820 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,821 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_deployed FROM dashboards WHERE is_deployed IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,821 - nl2sql - INFO - database.py:60 - Execution complete. Returned 2 rows.
+2026-01-25 16:04:39,821 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deploy_url FROM dashboards WHERE deploy_url IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,828 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,828 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT refresh_interval FROM dashboards WHERE refresh_interval IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,831 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,832 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM dashboards WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,833 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,835 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT deployed_at FROM dashboards WHERE deployed_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,835 - nl2sql - INFO - database.py:60 - Execution complete. Returned 5 rows.
+2026-01-25 16:04:39,835 - nl2sql - INFO - database.py:53 - Executing SQL: PRAGMA table_info(query_history);
+2026-01-25 16:04:39,842 - nl2sql - INFO - database.py:60 - Execution complete. Returned 7 rows.
+2026-01-25 16:04:39,842 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT query_id FROM query_history WHERE query_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,844 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,844 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT user_id FROM query_history WHERE user_id IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,848 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,848 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT nl_query FROM query_history WHERE nl_query IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,851 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,853 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT generated_sql FROM query_history WHERE generated_sql IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,855 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,855 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT result_count FROM query_history WHERE result_count IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,855 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,864 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT is_favorite FROM query_history WHERE is_favorite IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,867 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,873 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT DISTINCT created_at FROM query_history WHERE created_at IS NOT NULL LIMIT 5
+2026-01-25 16:04:39,875 - nl2sql - INFO - database.py:60 - Execution complete. Returned 0 rows.
+2026-01-25 16:04:39,880 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert Data Scientist and System Archi...
+2026-01-25 16:04:44,752 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "refined_schema_context": "The databas...
+2026-01-25 16:31:11,686 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_hackathon.db
+2026-01-25 16:31:11,686 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_hackathon.db
+2026-01-25 16:31:11,747 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 16:31:11,752 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 16:31:24,874 - nl2sql - INFO - database.py:10 - DatabaseService initialized with engine: ./derivinsight_hackathon.db
+2026-01-25 16:31:24,908 - nl2sql - INFO - main.py:11 - Starting NL2SQL Pipeline on port 8080...
+2026-01-25 16:32:49,822 - nl2sql - INFO - endpoints.py:14 - Incoming query: what are the complaince data capabilities | Domain: compliance
+2026-01-25 16:32:49,834 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 16:32:49,842 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: what are the complaince data capabilities
+2026-01-25 16:32:49,852 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 16:32:51,254 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SCHEMA_QUERY",
+  "confidenc...
+2026-01-25 16:32:51,255 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SCHEMA_QUERY (conf: 0.8) | Needs Clarification: False
+2026-01-25 16:32:51,255 - nl2sql - INFO - workflow.py:24 - Intent classified: SCHEMA_QUERY (conf: 0.8) | Needs Clarification: False
+2026-01-25 16:32:51,270 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 16:32:52,368 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 16:32:52,368 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 16:32:52,378 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+        You are a Database Expert. The user wants...
+2026-01-25 16:32:59,181 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: As a Database Expert, I can help you understand th...
+2026-01-25 16:32:59,186 - nl2sql - INFO - endpoints.py:24 - Graph execution status: needs_clarification for query: what are the complaince data capabilities
+2026-01-25 16:34:32,592 - nl2sql - INFO - endpoints.py:14 - Incoming query: How many users are in each kyc_status category (e.g., PENDING, VERIFIED)? | Domain: compliance
+2026-01-25 16:34:32,598 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 16:34:32,598 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: How many users are in each kyc_status category (e.g., PENDING, VERIFIED)?
+2026-01-25 16:34:32,606 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 16:34:33,492 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 1....
+2026-01-25 16:34:33,492 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 16:34:33,496 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 16:34:33,505 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 16:34:34,155 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {
+    "kyc_status...
+2026-01-25 16:34:34,155 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'kyc_status': ['PENDING', 'VERIFIED']}
+2026-01-25 16:34:34,163 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 16:34:34,170 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: compliance | Query: How many users are in each kyc_status category (e.g., PENDING, VERIFIED)?
+2026-01-25 16:34:34,170 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the complianc...
+2026-01-25 16:34:34,894 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT kyc_status, COUNT(*) FROM users GROUP BY ky...
+2026-01-25 16:34:34,897 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT kyc_status, COUNT(*) FROM users GROUP BY ky...
+2026-01-25 16:34:34,903 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT kyc_status, COUNT(*) FROM users GROUP BY ky...
+2026-01-25 16:34:34,903 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 16:34:34,921 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 16:34:34,928 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT kyc_status, COUNT(*) FROM users GROUP BY kyc_status
+2026-01-25 16:34:34,942 - nl2sql - INFO - database.py:60 - Execution complete. Returned 4 rows.
+2026-01-25 16:34:34,946 - nl2sql - INFO - workflow.py:92 - Query execution returned 4 rows.
+2026-01-25 16:34:34,952 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 16:34:35,798 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "bar",
+  "title": "User ...
+2026-01-25 16:34:35,801 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: How many users are in each kyc_status category (e.g., PENDING, VERIFIED)?
+2026-01-25 16:34:35,801 - nl2sql - INFO - endpoints.py:48 - Query success! 4 rows returned.
+2026-01-25 16:34:48,313 - nl2sql - INFO - endpoints.py:14 - Incoming query: Show me all high severity incidents | Domain: compliance
+2026-01-25 16:34:48,313 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 16:34:48,321 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: Show me all high severity incidents
+2026-01-25 16:34:48,321 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 16:34:49,525 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 0....
+2026-01-25 16:34:49,528 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 0.9) | Needs Clarification: False
+2026-01-25 16:34:49,531 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 0.9) | Needs Clarification: False
+2026-01-25 16:34:49,536 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 16:34:50,629 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {
+    "severity":...
+2026-01-25 16:34:50,630 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'severity': 'HIGH'}
+2026-01-25 16:34:50,635 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 16:34:50,641 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: compliance | Query: Show me all high severity incidents
+2026-01-25 16:34:50,643 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the complianc...
+2026-01-25 16:34:51,442 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM alerts WHERE severity = 'HIGH'...
+2026-01-25 16:34:51,442 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT * FROM alerts WHERE severity = 'HIGH'...
+2026-01-25 16:34:51,447 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT * FROM alerts WHERE severity = 'HIGH'...
+2026-01-25 16:34:51,454 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 16:34:51,465 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 16:34:51,466 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM alerts WHERE severity = 'HIGH'
+2026-01-25 16:34:51,493 - nl2sql - INFO - database.py:60 - Execution complete. Returned 239 rows.
+2026-01-25 16:34:51,493 - nl2sql - INFO - workflow.py:92 - Query execution returned 239 rows.
+2026-01-25 16:34:51,499 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 16:34:52,596 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "table",
+  "title": "Hig...
+2026-01-25 16:34:52,610 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: Show me all high severity incidents
+2026-01-25 16:34:52,612 - nl2sql - INFO - endpoints.py:48 - Query success! 239 rows returned.
+2026-01-25 16:40:55,802 - nl2sql - INFO - endpoints.py:14 - Incoming query: show me user with rsik score more than 25 | Domain: compliance
+2026-01-25 16:40:55,811 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 16:40:55,813 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: compliance | Query: show me user with rsik score more than 25
+2026-01-25 16:40:55,815 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 16:40:56,712 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 1....
+2026-01-25 16:40:56,714 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 16:40:56,714 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 16:40:56,722 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 16:40:57,592 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {},
+  "metadata":...
+2026-01-25 16:40:57,592 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {}
+2026-01-25 16:40:57,599 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 16:40:57,599 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: compliance | Query: show me user with rsik score more than 25
+2026-01-25 16:40:57,606 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the complianc...
+2026-01-25 16:40:59,091 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: Error: The provided schema does not contain a 'ris...
+2026-01-25 16:40:59,091 - nl2sql - WARNING - sql_generation.py:80 - SQL Generation guidance response for query: show me user with rsik score more than 25 | Msg: Error: The provided schema does not contain a 'ris...
+2026-01-25 16:40:59,091 - nl2sql - INFO - workflow.py:63 - SQL Generated: Error: The provided schema does not contain a 'ris...
+2026-01-25 16:40:59,099 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 16:40:59,107 - nl2sql - WARNING - workflow.py:71 - SQL Validation Error: Invalid expression / Unexpected token. Line 1, Col: 19.
+  Error: The [4mprovided[0m schema does not contain a 'risk_score' column for users or a direct way to query by a numerical ris
+2026-01-25 16:40:59,114 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a SQL expert. The following SQLite query ...
+2026-01-25 16:41:00,094 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT * FROM users WHERE risk_level = 'HIGH'...
+2026-01-25 16:41:00,101 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 16:41:00,113 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 16:41:00,114 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT * FROM users WHERE risk_level = 'HIGH'
+2026-01-25 16:41:00,117 - nl2sql - INFO - database.py:60 - Execution complete. Returned 17 rows.
+2026-01-25 16:41:00,119 - nl2sql - INFO - workflow.py:92 - Query execution returned 17 rows.
+2026-01-25 16:41:00,123 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 16:41:01,290 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "table",
+  "title": "Use...
+2026-01-25 16:41:01,294 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: show me user with rsik score more than 25
+2026-01-25 16:41:01,294 - nl2sql - INFO - endpoints.py:48 - Query success! 17 rows returned.
+2026-01-25 16:42:07,983 - nl2sql - INFO - endpoints.py:14 - Incoming query: show me users with risk score more than 25 | Domain: general
+2026-01-25 16:42:07,984 - nl2sql - INFO - workflow.py:16 - Node: [classify_intent]
+2026-01-25 16:42:07,991 - nl2sql - INFO - intent_classification.py:15 - Classifying intent for domain: general | Query: show me users with risk score more than 25
+2026-01-25 16:42:08,000 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an AI assistant for a Database system.
+Yo...
+2026-01-25 16:42:09,607 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "intent": "SELECT",
+  "confidence": 1....
+2026-01-25 16:42:09,609 - nl2sql - INFO - intent_classification.py:82 - Classification Result: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 16:42:09,609 - nl2sql - INFO - workflow.py:24 - Intent classified: SELECT (conf: 1.0) | Needs Clarification: False
+2026-01-25 16:42:09,613 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a Precise Entity Extractor and Resolver.
+...
+2026-01-25 16:42:10,456 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "resolved_entities": {
+    "risk_score...
+2026-01-25 16:42:10,458 - nl2sql - INFO - entity_extractor.py:82 - Entities Extracted/Resolved: {'risk_score': 25}
+2026-01-25 16:42:10,462 - nl2sql - INFO - workflow.py:54 - Node: [generate_sql]
+2026-01-25 16:42:10,471 - nl2sql - INFO - sql_generation.py:25 - Generating SQL for domain: general | Query: show me users with risk score more than 25
+2026-01-25 16:42:10,476 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are an expert SQL assistant for the general d...
+2026-01-25 16:42:11,105 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: SELECT user_id, full_name, risk_score FROM users W...
+2026-01-25 16:42:11,105 - nl2sql - INFO - sql_generation.py:91 - SQL Generated and cleaned: SELECT user_id, full_name, risk_score FROM users W...
+2026-01-25 16:42:11,111 - nl2sql - INFO - workflow.py:63 - SQL Generated: SELECT user_id, full_name, risk_score FROM users W...
+2026-01-25 16:42:11,112 - nl2sql - INFO - workflow.py:67 - Node: [validate_sql]
+2026-01-25 16:42:11,120 - nl2sql - INFO - workflow.py:88 - Node: [execute_query]
+2026-01-25 16:42:11,130 - nl2sql - INFO - database.py:53 - Executing SQL: SELECT user_id, full_name, risk_score FROM users WHERE risk_score > 25
+2026-01-25 16:42:11,140 - nl2sql - INFO - database.py:60 - Execution complete. Returned 131 rows.
+2026-01-25 16:42:11,142 - nl2sql - INFO - workflow.py:92 - Query execution returned 131 rows.
+2026-01-25 16:42:11,144 - nl2sql - INFO - llm.py:44 - LLM [gemini] generating response for prompt snippet: 
+You are a data visualization expert. Recommend th...
+2026-01-25 16:42:12,278 - nl2sql - INFO - llm.py:55 - LLM response received. Snippet: ```json
+{
+  "chart_type": "table",
+  "title": "Use...
+2026-01-25 16:42:12,283 - nl2sql - INFO - endpoints.py:24 - Graph execution status: success for query: show me users with risk score more than 25
+2026-01-25 16:42:12,288 - nl2sql - INFO - endpoints.py:48 - Query success! 131 rows returned.

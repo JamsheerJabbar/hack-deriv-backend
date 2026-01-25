@@ -1,9 +1,9 @@
 {
   "domain": "risk",
   "description": "Configuration for risk domain",
-  "schema_context": "The database contains information about users, their transactions, login events, alerts, alert rules, audit logs, and dashboards. The `users` table stores user-specific information, including their user ID, email, full name, country, phone number, date of birth, KYC (Know Your Customer) status, KYC verification and expiry dates, risk level, risk score, PEP (Politically Exposed Person) status, account status, and creation/update timestamps.  KYC status can be EXPIRED, PENDING, REJECTED, or VERIFIED. Risk levels are HIGH, MEDIUM, or LOW. Account statuses are ACTIVE, FROZEN, or SUSPENDED. The `transactions` table tracks user transactions, including transaction ID, user ID, transaction type (BONUS, DEPOSIT, FEE, TRADE, WITHDRAWAL), instrument (e.g., AAPL, AED/USD, BTC/USD, ETH/USD, EUR/USD), amount, currency (USD), amount in USD, status (COMPLETED, FAILED, FLAGGED, PENDING), flag reason (Automated screening, Risk threshold exceeded, Large amount, Unusual pattern), payment method (CRYPTO, EWALLET, CARD, BANK_TRANSFER), external reference, IP address, and creation/processing timestamps. The `login_events` table records user login attempts, including event ID, user ID, attempted email, IP address, country (AE, AU, CA, CH, DE), city, device type (DESKTOP, MOBILE, TABLET), device fingerprint, user agent, status (BLOCKED, FAILED, SUCCESS), failure reason (MFA_FAILED, IP_BLOCKED, WRONG_PASSWORD, ACCOUNT_LOCKED, SUSPICIOUS_ACTIVITY) and creation timestamp. The `alert_rules` table defines rules for generating alerts, including rule ID, rule name (Dormant Account Activity, Failed Auth Spike, High Risk Country, Large Transaction, New Geo Login), rule type (THRESHOLD, VELOCITY, TIME, GEO, PATTERN), condition (JSON format), severity (HIGH, MEDIUM, LOW, CRITICAL), active status, and creation timestamp. The `alerts` table stores information about generated alerts, including alert ID, rule name, rule ID, user ID, transaction ID, severity, status (DISMISSED, INVESTIGATING, OPEN, RESOLVED), details (JSON format), assigned user, resolution timestamp, resolution notes, and creation timestamp. The `audit_logs` table records user actions, including log ID, actor ID, action (EXPORT, LOGIN, QUERY, UPDATE, VIEW), resource type (REPORT, ALERT, DASHBOARD, TRANSACTION, USER), resource ID, query text, IP address, and creation timestamp. Finally, `dashboards` stores metadata about analytical dashboards, `query_history` is currently empty.",
+  "schema_context": "The database contains information about users, their transactions, login events, risk-related alerts and rules, audit logs, and dashboards. The 'users' table stores user profile information including KYC status, risk level, and account details. The 'transactions' table logs financial activities with details on transaction type, amount, currency, and status. 'login_events' tracks user authentication attempts, including IP addresses and device information. 'alert_rules' defines conditions for triggering alerts, and 'alerts' records instances where these rules were violated. 'audit_logs' provides a record of system actions performed by users. The 'dashboards' table stores metadata about user-created analytical dashboards.",
   "prompts": {
-    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nPay close attention to the following terms and their meanings in the context of risk management: KYC Status (EXPIRED, PENDING, REJECTED, VERIFIED), Risk Level (HIGH, LOW, MEDIUM), Is PEP (Politically Exposed Person), Account Status (ACTIVE, FROZEN, SUSPENDED), Flag Reason (e.g., Automated screening, Risk threshold exceeded), Alert Severity (CRITICAL, HIGH, LOW, MEDIUM), and Transaction Types (BONUS, DEPOSIT, FEE, TRADE, WITHDRAWAL).\n\nDOMAIN SPECIFIC INSTRUCTION:\nClarify the meaning of KYC status (EXPIRED, PENDING, REJECTED, VERIFIED), account status (ACTIVE, FROZEN, SUSPENDED), risk level (HIGH, MEDIUM, LOW), transaction status (COMPLETED, FAILED, FLAGGED, PENDING) and PEP (Politically Exposed Person).",
+    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nPay close attention to the following terms and their meanings in the context of risk management: KYC Status (EXPIRED, PENDING, REJECTED, VERIFIED), Risk Level (HIGH, LOW, MEDIUM), Is PEP (Politically Exposed Person), Account Status (ACTIVE, FROZEN, SUSPENDED), Flag Reason (e.g., Automated screening, Risk threshold exceeded), Alert Severity (CRITICAL, HIGH, LOW, MEDIUM), and Transaction Types (BONUS, DEPOSIT, FEE, TRADE, WITHDRAWAL).\n\nDOMAIN SPECIFIC INSTRUCTION:\nClarify the meaning of KYC status (EXPIRED, PENDING, REJECTED, VERIFIED), account status (ACTIVE, FROZEN, SUSPENDED), risk level (HIGH, MEDIUM, LOW), transaction status (COMPLETED, FAILED, FLAGGED, PENDING) and PEP (Politically Exposed Person).\n\nDOMAIN SPECIFIC INSTRUCTION:\nThe user is asking questions related to risk management, user behavior, and transaction monitoring. Pay close attention to terms like 'risk_level', 'kyc_status', 'is_pep', 'flagged transactions', 'login failures', 'suspicious activity', and 'alert rules'.",
     "sql": null
   },
   "few_shots": [
@@ -56,6 +56,31 @@
       "question": "Show the emails of users whose accounts are 'FROZEN' and have a risk level of 'HIGH'.",
       "sql": "SELECT email FROM users WHERE account_status = 'FROZEN' AND risk_level = 'HIGH'",
       "explanation": "This SQL query selects the email addresses of users who have 'FROZEN' accounts and are classified as having a 'HIGH' risk level."
+    },
+    {
+      "question": "How many users have a 'HIGH' risk level and are from 'CA'?",
+      "sql": "SELECT COUNT(user_id) FROM users WHERE risk_level = 'HIGH' AND country = 'CA';",
+      "explanation": "This query counts users who meet specific criteria for risk level and country, directly extracting information from the 'users' table."
+    },
+    {
+      "question": "Show me all transactions that were flagged and the reason for the flag.",
+      "sql": "SELECT txn_id, flag_reason FROM transactions WHERE status = 'FLAGGED';",
+      "explanation": "This query retrieves transaction IDs and their associated flag reasons for transactions that are marked as 'FLAGGED' in the 'transactions' table."
+    },
+    {
+      "question": "List the email addresses of users who have had a 'SUSPICIOUS_ACTIVITY' failure reason during login.",
+      "sql": "SELECT DISTINCT u.email FROM users u JOIN login_events le ON u.user_id = le.user_id WHERE le.failure_reason = 'SUSPICIOUS_ACTIVITY';",
+      "explanation": "This query joins the 'users' and 'login_events' tables to find users whose login attempts failed due to 'SUSPICIOUS_ACTIVITY' and returns their email addresses."
+    },
+    {
+      "question": "What is the total 'amount_usd' for all 'COMPLETED' 'WITHDRAWAL' transactions?",
+      "sql": "SELECT SUM(amount_usd) FROM transactions WHERE status = 'COMPLETED' AND txn_type = 'WITHDRAWAL';",
+      "explanation": "This query calculates the sum of 'amount_usd' for transactions that have a 'COMPLETED' status and are of the 'WITHDRAWAL' type, aggregating data from the 'transactions' table."
+    },
+    {
+      "question": "Find users whose KYC status is 'EXPIRED' and their KYC expiry date.",
+      "sql": "SELECT full_name, kyc_expiry_date FROM users WHERE kyc_status = 'EXPIRED';",
+      "explanation": "This query selects the full name and KYC expiry date for users whose KYC status is 'EXPIRED', retrieving data from the 'users' table."
     }
   ]
 }

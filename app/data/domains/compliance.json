@@ -1,9 +1,9 @@
 {
   "domain": "compliance",
   "description": "Configuration for compliance domain",
-  "schema_context": "The database contains information related to user compliance, transactions, and security events. The `users` table stores user details such as email, full name, country, phone number, date of birth, KYC (Know Your Customer) status, risk level, risk score, PEP (Politically Exposed Person) status, and account status. KYC status can be EXPIRED, PENDING, REJECTED, or VERIFIED. Risk level can be HIGH, MEDIUM, or LOW. Account status includes ACTIVE, FROZEN, and SUSPENDED. The `transactions` table logs transaction details, including transaction ID, user ID, transaction type (DEPOSIT, WITHDRAWAL, TRADE, FEE, BONUS), instrument (e.g., AAPL, BTC/USD, EUR/USD), amount, currency, amount in USD, status (COMPLETED, FAILED, FLAGGED, PENDING), flag reason (Automated screening, Risk threshold exceeded, Large amount, Unusual pattern), payment method (CRYPTO, EWALLET, CARD, BANK_TRANSFER), IP address, and timestamps. The `login_events` table captures login attempts, including user ID, email attempted, IP address, country, city (currently empty), device type (DESKTOP, MOBILE, TABLET), device fingerprint, user agent, status (SUCCESS, FAILED, BLOCKED), failure reason (MFA_FAILED, IP_BLOCKED, WRONG_PASSWORD, ACCOUNT_LOCKED, SUSPICIOUS_ACTIVITY), and timestamps. The `alert_rules` table defines rules for generating alerts, including rule ID, rule name, rule type (THRESHOLD, VELOCITY, TIME, GEO, PATTERN), condition (JSON format describing the rule), severity (HIGH, MEDIUM, LOW, CRITICAL), and status. The `alerts` table stores details of generated alerts, including alert ID, rule name, rule ID, user ID, transaction ID, severity, status (DISMISSED, INVESTIGATING, OPEN, RESOLVED), details (JSON format), assigned user, resolution timestamp, and resolution notes. The `audit_logs` table tracks user actions such as EXPORT, LOGIN, QUERY, UPDATE, and VIEW performed on resources like REPORT, ALERT, DASHBOARD, TRANSACTION, and USER. The `dashboards` table stores dashboard metadata including owner, widgets (JSON), layout (JSON), deploy URL and refresh interval.",
+  "schema_context": "The database manages compliance-related information for users and their activities. Key entities include 'users' (customer profiles with KYC status, risk assessment, and account details), 'transactions' (financial activities with instrument, amount, and status), 'login_events' (user authentication attempts and outcomes), 'alert_rules' (defined conditions for triggering compliance alerts), 'alerts' (generated compliance alerts with status and details), 'audit_logs' (records of system actions and queries), and 'dashboards' (pre-defined analytical views).  User demographics include 'country' (e.g., AE, AU, CA, CH, DE), and 'risk_level' can be HIGH, MEDIUM, or LOW. Transaction types include DEPOSIT, WITHDRAWAL, TRADE, FEE, and BONUS. KYC statuses are EXPIRED, PENDING, REJECTED, and VERIFIED. Alert severities range from LOW to CRITICAL. Login statuses include SUCCESS, FAILED, and BLOCKED. Account statuses include ACTIVE, FROZEN, and SUSPENDED.",
   "prompts": {
-    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nWhen referring to user verification, use the term KYC and its possible values: EXPIRED, PENDING, REJECTED, VERIFIED. When referring to flagged transactions, consider flag reasons: Automated screening, Risk threshold exceeded, Large amount, Unusual pattern. Risk levels are HIGH, MEDIUM or LOW. A user can also be a PEP (Politically Exposed Person).",
+    "intent": "You are an AI assistant...\n\nDOMAIN SPECIFIC INSTRUCTION:\nWhen referring to user verification, use the term KYC and its possible values: EXPIRED, PENDING, REJECTED, VERIFIED. When referring to flagged transactions, consider flag reasons: Automated screening, Risk threshold exceeded, Large amount, Unusual pattern. Risk levels are HIGH, MEDIUM or LOW. A user can also be a PEP (Politically Exposed Person).\n\nDOMAIN SPECIFIC INSTRUCTION:\nWhen a user asks about financial activities, transactions, or monetary amounts, classify the intent as 'Financial Transaction Analysis'. When queries involve user authentication, login attempts, or account access, classify the intent as 'User Authentication and Security'. For questions related to KYC, risk levels, or compliance checks, classify the intent as 'Compliance and Risk Management'. If the query concerns system actions, access logs, or data exports, classify it as 'Audit and System Monitoring'. When users inquire about pre-defined reports or data visualizations, classify it as 'Dashboard and Reporting'.",
     "sql": null
   },
   "few_shots": [
@@ -31,6 +31,31 @@
       "question": "Show the alert rules with severity HIGH or CRITICAL.",
       "sql": "SELECT * FROM alert_rules WHERE severity IN ('HIGH', 'CRITICAL')",
       "explanation": "This query retrieves all columns from the 'alert_rules' table, filtering for rules where the 'severity' column is either 'HIGH' or 'CRITICAL'."
+    },
+    {
+      "question": "Show me all users from 'AU' who have 'VERIFIED' KYC status.",
+      "sql": "SELECT * FROM users WHERE country = 'AU' AND kyc_status = 'VERIFIED'",
+      "explanation": "This query directly filters the 'users' table based on country and KYC status, using exact values found in the sample data. It's a common request to identify specific user segments."
+    },
+    {
+      "question": "List all 'FAILED' transactions along with their transaction IDs and amounts in USD.",
+      "sql": "SELECT txn_id, amount_usd FROM transactions WHERE status = 'FAILED'",
+      "explanation": "This query retrieves specific details ('txn_id', 'amount_usd') from the 'transactions' table, filtering by the 'FAILED' status. This is a typical need for investigating transaction issues."
+    },
+    {
+      "question": "Find login events that were 'BLOCKED' and occurred in 'CA'.",
+      "sql": "SELECT * FROM login_events WHERE status = 'BLOCKED' AND country = 'CA'",
+      "explanation": "This query targets the 'login_events' table, filtering by a specific 'status' ('BLOCKED') and 'country' ('CA'), both present in the sample data. This helps in identifying security concerns."
+    },
+    {
+      "question": "What are the details of alerts with 'CRITICAL' severity and 'OPEN' status?",
+      "sql": "SELECT * FROM alerts WHERE severity = 'CRITICAL' AND status = 'OPEN'",
+      "explanation": "This query focuses on the 'alerts' table, filtering by 'severity' and 'status' using exact values found in the samples. This is crucial for prioritizing immediate compliance actions."
+    },
+    {
+      "question": "List all users who are marked as 'is_pep' (Politically Exposed Person).",
+      "sql": "SELECT * FROM users WHERE is_pep = 1",
+      "explanation": "This query filters the 'users' table based on the 'is_pep' flag, which is represented by binary values (0 or 1) in the sample data. Identifying PEPs is a standard compliance requirement."
     }
   ]
 }

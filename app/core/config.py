@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     OPENAI_MODEL_NAME: str = "gpt-3.5-turbo"
     
     # Database Settings (Target DB to query)
-    DATABASE_URL: str = "sqlite:///./derivinsight_fixed.db"
+    DATABASE_URL: str = "sqlite:///./derivinsight_hackathon.db"
     SCHEMA_PATH: str = "app/files/derivinsight_schema.sql"
     MOCK_DATA_SCRIPT_PATH: str = "app/files/generate_mock_data.py"
     

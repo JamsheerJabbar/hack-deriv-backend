@@ -1,4 +1,5 @@
 from typing import List, Dict, Any
+from datetime import datetime
 from app.services.llm import llm_service
 from app.modules.schema_understanding import schema_module
 from app.core.logger import logger
@@ -18,7 +19,7 @@ class SQLGenerationModule:
         """
         Generates SQL based on query and context (schema, few-shot, domain, etc.)
         """
-        from app.modules.domain_adapter import domain_adapter
+        from app.modules.learning import learning_service
         
         # Get domain from context
         domain = context.get("domain", "general")
@@ -27,8 +28,24 @@ class SQLGenerationModule:
         # 1. Get Schema Context from Domain Adapter (via Schema Module)
         schema_str = schema_module.get_schema_string(domain=domain)
         
-        # 2. Get Domain Prompt (SQL Specific) from Domain Adapter
-        domain_config = domain_adapter.get_domain_config(domain)
+        # 2. Get LIVE truth from DB service to prevent hallucinations
+        from app.services.database import db_service
+        live_schema = db_service.get_schema_info()
+        
+        # Group columns by table for better LLM understanding
+        schema_dict = {}
+        for item in live_schema:
+            t, c = item.split('.')
+            if t not in schema_dict:
+                schema_dict[t] = []
+            schema_dict[t].append(c)
+            
+        live_schema_str = "ACTUAL DATABASE SCHEMA (ABSOLUTE TRUTH):\n"
+        for table, cols in schema_dict.items():
+            live_schema_str += f"Table: {table}\nColumns: {', '.join(cols)}\n\n"
+
+        # 3. Get Domain Prompt (SQL Specific) from Domain Adapter
+        domain_config = learning_service.get_domain_config(domain)
         custom_sql_prompt = domain_config.get("prompts", {}).get("sql")
         
         if custom_sql_prompt:
@@ -40,7 +57,7 @@ class SQLGenerationModule:
         examples = context.get("few_shot_examples", [])
         few_shot_str = format_few_shots_for_prompt(examples) if examples else ""
         
-        # 3. Get Resolved Entities from context
+        # 3. Get Resolved Entities and Columns from context
         entities = context.get("entities", {})
         resolved_vals = entities.get("resolved_entities", {})
         entity_str = ""
@@ -49,12 +66,34 @@ class SQLGenerationModule:
             for col, val in resolved_vals.items():
                 entity_str += f"- {col}: {val}\n"
 
+        # Add Relevant Columns for precision
+        relevant_columns = context.get("relevant_columns", [])
+        columns_str = ""
+        if relevant_columns:
+            columns_str = "Relevant Database Columns:\n" + ", ".join(relevant_columns) + "\n"
+
+        # Get current date for temporal context
+        current_date = datetime.now().strftime("%Y-%m-%d")
+        current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        # Format conversation history for context
+        history = context.get("conversation_history", [])
+        history_str = ""
+        if history:
+            history_str = "CONVERSATION HISTORY (Use this to understand follow-up questions):\n"
+            for msg in history[-5:]: # Last 5 messages
+                role = msg.get('role', 'user') if isinstance(msg, dict) else getattr(msg, 'role', 'user')
+                content = msg.get('content', '') if isinstance(msg, dict) else getattr(msg, 'content', '')
+                history_str += f"- {role.upper()}: {content}\n"
+
         prompt = f"""
 {domain_prompt}
 
-Database Schema & Entities:
-{schema_str}
+{live_schema_str}
 
+{history_str}
+
+{columns_str}
 {entity_str}
 
 {f"Example Queries for {domain.upper()} domain:" if few_shot_str else ""}
@@ -63,17 +102,21 @@ Database Schema & Entities:
 Guidelines:
 1. Use SQLite syntax ONLY.
 2. Return ONLY the SQL query. Do not include markdown formatting (```sql ... ```) or explanations.
-3. Current date is available via datetime('now').
-4. Respect the schema relations described above. Favor querying the actual business tables (e.g., users, transactions, alerts) instead of system metadata (like sqlite_master).
-5. If the user asks for "column names" or "schema", provide a query that selects a few rows from that table instead, or return an Error guidance explaining the table structure.
-6. If the query CANNOT be answered with the given schema (e.g. asking for "Weather", "Stock Prices" not in DB), return "Error: <Explanation>. Try asking about: <List relevant tables/columns>".
+3. Current date/time context: Today is {current_date} ({current_datetime}). 
+4. **NO HALLUCINATION**: ONLY use tables listed in 'ACTUAL DATABASE SCHEMA'. NEVER use 'payments', 'flags', or 'user_instruments'.
+5. **TABLE REPLACEMENT**: If the user asks for 'payments', 'debits', 'credit' or 'transfers', ALWAYS map this to the 'transactions' table.
+6. **STRICT COLUMNS**: Use 'username' for names and 'user_id' for IDs. NEVER use 'name' or 'id'.
+7. Respect the schema relations. JOIN users and transactions on 'user_id'.
+8. MANDATORY PARTIAL MATCHING: Whenever you query a string-based column, ALWAYS use `UPPER(column) LIKE '%VALUE%'`.
+9. **DATA LIMITATION**: If the query asks for concepts not in our schema (like 'regulatory rules', 'HR policies', 'legal text'), DO NOT generate SQL. Instead, return: "Error: I don't have a table for regulatory text. However, I can show you domain-relevant data like [List 3 things from schema]. Which would you like to see?"
+10. If the query CANNOT be answered with users, transactions, or login_events, return an Error message starting with "Error:".
 
 User Request: {query}
 
 SQL Query:
 """
-        
-        response = await llm_service.generate_response(prompt)
+        from app.core.config import settings
+        response = await llm_service.generate_response(prompt, model_name=settings.SQL_MODEL)
         
         # If the LLM explicitly returns an Error/Guidance message, return it as is.
         if response.startswith("Error"):

@@ -1,3 +1,4 @@
+import asyncio
 from langgraph.graph import StateGraph, END
 from typing import Dict, Any
 from app.models.state import GraphState
@@ -18,13 +19,19 @@ async def classify_intent_node(state: GraphState) -> Dict[str, Any]:
     domain = state.get("domain", "general")
     conversation_history = state.get("conversation_history", [])
     
-    intent, confidence, complexity, needs_clarification = await intent_module.classify(
-        query, conversation_history, domain=domain
-    )
-    logger.info(f"Intent classified: {intent} (conf: {confidence}) | Needs Clarification: {needs_clarification}")
+    # OPTIMIZATION: Run Intent Classification and Preprocessing in parallel
+    # Preprocessing does NOT require intent as a pre-output, only the domain.
+    logger.info(f"Starting Intent Classification and Preprocessing in parallel for domain: {domain}")
     
-    # Run preprocessing with domain context
-    preproc_data = await preprocessing_service.process(query, domain=domain)
+    task_intent = intent_module.classify(query, conversation_history, domain=domain)
+    task_preproc = preprocessing_service.process(query, domain=domain)
+    
+    results = await asyncio.gather(task_intent, task_preproc)
+    
+    intent, confidence, complexity, needs_clarification = results[0]
+    preproc_data = results[1]
+    
+    logger.info(f"Intent classified: {intent} (conf: {confidence}) | Needs Clarification: {needs_clarification}")
     
     return {
         "intent": intent,
@@ -32,6 +39,7 @@ async def classify_intent_node(state: GraphState) -> Dict[str, Any]:
         "needs_clarification": needs_clarification,
         "relevant_columns": preproc_data["relevant_columns"],
         "few_shot_examples": preproc_data["few_shot_examples"],
+        "entities": preproc_data["entities"], # Ensure entities are passed forward
         "domain": domain
     }
 
@@ -57,9 +65,21 @@ async def generate_sql_node(state: GraphState) -> Dict[str, Any]:
     context = {
         "relevant_columns": state["relevant_columns"],
         "few_shot_examples": state["few_shot_examples"],
-        "domain": domain
+        "entities": state.get("entities", {}), # Fixed: Pass resolved entities forward
+        "domain": domain,
+        "conversation_history": state.get("conversation_history", [])
     }
     sql = await sql_generation_module.generate(query, context)
+    
+    # If the generator returned a guidance message (Error: ...)
+    if sql.startswith("Error:"):
+        logger.info(f"SQL Generator returned guidance instead of SQL: {sql[:50]}...")
+        return {
+            "generated_sql": None,
+            "clarification_question": sql.replace("Error:", "").strip(),
+            "status": "needs_clarification"
+        }
+        
     logger.info(f"SQL Generated: {sql[:50]}...")
     return {"generated_sql": sql}
 
@@ -102,6 +122,14 @@ async def recommend_visualization_node(state: GraphState) -> Dict[str, Any]:
     results = state.get("query_result", [])
     
     vis_config = await visualization_module.recommend(query, sql, results)
+    
+    # If LLM generated mock data because real results were empty
+    if vis_config and vis_config.get("is_mock") and "mock_data" in vis_config:
+        logger.info("Injecting mock data for demonstration.")
+        return {
+            "visualization_config": vis_config,
+            "query_result": vis_config["mock_data"] # Update results with mock data
+        }
     
     return {"visualization_config": vis_config}
 
@@ -208,7 +236,19 @@ workflow.add_conditional_edges(
 workflow.add_edge("clarification", END)
 workflow.add_edge("guidance", END)
 
-workflow.add_edge("generate_sql", "validate_sql")
+def route_after_sql_generation(state: GraphState):
+    if state.get("status") == "needs_clarification":
+        return "end"
+    return "validate_sql"
+
+workflow.add_conditional_edges(
+    "generate_sql",
+    route_after_sql_generation,
+    {
+        "validate_sql": "validate_sql",
+        "end": END
+    }
+)
 
 workflow.add_conditional_edges(
     "validate_sql",

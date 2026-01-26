@@ -67,4 +67,19 @@ class DatabaseService:
             logger.error(f"DATABASE EXECUTION ERROR: {str(e)} | Query: {sql}")
             return []
 
+    def get_schema_info(self) -> List[str]:
+        """Returns a list of 'table.column' strings for all tables in the database."""
+        schema_info = []
+        try:
+            inspector = inspect(self.engine)
+            tables = inspector.get_table_names()
+            for table in tables:
+                columns = inspector.get_columns(table)
+                for col in columns:
+                    schema_info.append(f"{table}.{col['name']}")
+            return schema_info
+        except Exception as e:
+            logger.error(f"Error fetching schema info: {e}")
+            return []
+
 db_service = DatabaseService()

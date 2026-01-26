@@ -1,0 +1,101 @@
+Table: users
+Description: All registered user accounts with KYC and risk info
+user_id: VARCHAR(36) PRIMARY KEY (Format: USR-XXXX)
+email: VARCHAR(255) UNIQUE NOT NULL
+full_name: VARCHAR(200) NOT NULL
+country: CHAR(2) NOT NULL (ISO 3166-1 alpha-2)
+phone: VARCHAR(20)
+date_of_birth: DATE
+kyc_status: VARCHAR(20) NOT NULL DEFAULT 'PENDING' (PENDING|VERIFIED|REJECTED|EXPIRED)
+kyc_verified_at: TIMESTAMP
+kyc_expiry_date: DATE
+risk_level: VARCHAR(10) NOT NULL DEFAULT 'LOW' (LOW|MEDIUM|HIGH)
+risk_score: INTEGER CHECK (risk_score >= 0 AND risk_score <= 100)
+is_pep: BOOLEAN DEFAULT FALSE (Politically Exposed Person)
+account_status: VARCHAR(20) NOT NULL DEFAULT 'ACTIVE' (ACTIVE|SUSPENDED|CLOSED|FROZEN)
+created_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+updated_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+Table: transactions
+Description: All financial transactions
+txn_id: VARCHAR(36) PRIMARY KEY (Format: TXN-XXXXXX)
+user_id: VARCHAR(36) NOT NULL REFERENCES users(user_id)
+txn_type: VARCHAR(20) NOT NULL (DEPOSIT|WITHDRAWAL|TRADE|FEE|BONUS|TRANSFER)
+instrument: VARCHAR(20) (EUR/USD, BTC/USD, GOLD, etc.)
+amount: DECIMAL(18,2) NOT NULL CHECK (amount > 0)
+currency: CHAR(3) NOT NULL DEFAULT 'USD' (ISO 4217)
+amount_usd: DECIMAL(18,2) NOT NULL (Converted to USD for reporting)
+status: VARCHAR(20) NOT NULL DEFAULT 'PENDING' (PENDING|COMPLETED|FAILED|FLAGGED|REVERSED)
+flag_reason: VARCHAR(100)
+payment_method: VARCHAR(50) (CARD|BANK_TRANSFER|CRYPTO|EWALLET)
+external_ref: VARCHAR(100)
+ip_address: VARCHAR(45) (IPv4 or IPv6)
+created_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+processed_at: TIMESTAMP
+Table: login_events
+Description: Authentication attempts for security monitoring
+event_id: VARCHAR(36) PRIMARY KEY (Format: EVT-XXXXX)
+user_id: VARCHAR(36) REFERENCES users(user_id) (NULL for unknown user attempts)
+email_attempted: VARCHAR(255) NOT NULL
+ip_address: VARCHAR(45) NOT NULL
+country: CHAR(2) (Geo-located from IP)
+city: VARCHAR(100)
+device_type: VARCHAR(20) (MOBILE|DESKTOP|TABLET|UNKNOWN)
+device_fingerprint: VARCHAR(64)
+user_agent: TEXT
+status: VARCHAR(20) NOT NULL (SUCCESS|FAILED|BLOCKED|MFA_REQUIRED)
+failure_reason: VARCHAR(50) (WRONG_PASSWORD|ACCOUNT_LOCKED|IP_BLOCKED)
+created_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+Table: alert_rules
+Description: Configurable anomaly detection rules
+rule_id: VARCHAR(36) PRIMARY KEY
+rule_name: VARCHAR(50) UNIQUE NOT NULL
+rule_type: VARCHAR(30) NOT NULL (THRESHOLD|VELOCITY|PATTERN|GEO|TIME)
+condition: JSON NOT NULL (Rule condition config)
+severity: VARCHAR(10) NOT NULL DEFAULT 'MEDIUM' (LOW|MEDIUM|HIGH|CRITICAL)
+is_active: BOOLEAN DEFAULT TRUE
+created_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+Table: alerts
+Description: System-generated alerts from anomaly detection
+alert_id: VARCHAR(36) PRIMARY KEY (Format: ALR-XXXX)
+rule_name: VARCHAR(50) NOT NULL
+rule_id: VARCHAR(36) REFERENCES alert_rules(rule_id)
+user_id: VARCHAR(36) REFERENCES users(user_id) (NULL for system alerts)
+txn_id: VARCHAR(36) REFERENCES transactions(txn_id)
+severity: VARCHAR(10) NOT NULL (LOW|MEDIUM|HIGH|CRITICAL)
+status: VARCHAR(20) NOT NULL DEFAULT 'OPEN' (OPEN|INVESTIGATING|RESOLVED|DISMISSED|ESCALATED)
+details: JSON (Alert context payload)
+assigned_to: VARCHAR(36) REFERENCES users(user_id)
+resolved_at: TIMESTAMP
+resolution_notes: TEXT
+created_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+Table: audit_logs
+Description: Complete audit trail for compliance
+log_id: VARCHAR(36) PRIMARY KEY
+actor_id: VARCHAR(36) REFERENCES users(user_id)
+action: VARCHAR(50) NOT NULL (QUERY|EXPORT|VIEW|UPDATE|DELETE|LOGIN)
+resource_type: VARCHAR(30) NOT NULL (USER|TRANSACTION|ALERT|DASHBOARD|REPORT)
+resource_id: VARCHAR(36)
+query_text: TEXT (NL query or SQL executed)
+ip_address: VARCHAR(45)
+created_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+Table: dashboards
+Description: Saved dashboard configurations
+dashboard_id: VARCHAR(36) PRIMARY KEY
+name: VARCHAR(100) NOT NULL
+owner_id: VARCHAR(36) NOT NULL REFERENCES users(user_id)
+widgets: JSON NOT NULL (Array of widget configs)
+layout: JSON NOT NULL (Grid layout positions)
+is_deployed: BOOLEAN DEFAULT FALSE
+deploy_url: VARCHAR(255)
+refresh_interval: INTEGER DEFAULT 300 (Auto-refresh in seconds)
+created_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+deployed_at: TIMESTAMP
+Table: query_history
+Description: Saved NL queries for replay
+query_id: VARCHAR(36) PRIMARY KEY
+user_id: VARCHAR(36) NOT NULL REFERENCES users(user_id)
+nl_query: TEXT NOT NULL (Natural language query)
+generated_sql: TEXT NOT NULL (Generated SQL)
+result_count: INTEGER
+is_favorite: BOOLEAN DEFAULT FALSE
+created_at: TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP

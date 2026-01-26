@@ -21,38 +21,71 @@ class LLMService:
         elif settings.GEMINI_API_KEY:
             genai.configure(api_key=settings.GEMINI_API_KEY)
             self.provider = "gemini"
-            self.model = genai.GenerativeModel(settings.GEMINI_MODEL_NAME)
+            self.model_name = getattr(settings, "GEMINI_MODEL_NAME", "gemini-2.5-flash-lite")
+            # Set lowered safety settings to avoid blocking technical database queries
+            safety_settings = [
+                {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+            ]
+            self.model = genai.GenerativeModel(
+                model_name=self.model_name,
+                safety_settings=safety_settings
+            )
         else:
             print("Warning: No LLM API key found in settings.")
             self.provider = None
             self.model = None
 
-    async def _call_openai(self, prompt: str) -> str:
+    async def _call_openai(self, prompt: str, model_override: str = None) -> str:
         # Simple wrapper for OpenAI ChatCompletion
         response = openai.ChatCompletion.create(
-            model=self.model_name,
+            model=model_override or self.model_name,
             messages=[{"role": "system", "content": prompt}],
             temperature=0.0,
         )
         return response.choices[0].message.content
 
-    async def generate_response(self, prompt: str) -> str:
+    async def generate_response(self, prompt: str, model_name: str = None) -> str:
         if not self.provider:
             logger.error("LLM Service not configured (no API key found).")
             return "LLM Service not configured."
 
-        logger.info(f"LLM [{self.provider}] generating response for prompt snippet: {prompt[:50]}...")
+        selected_model = model_name or self.model_name
+        logger.info(f"LLM [{self.provider}] using model [{selected_model}] generating response...")
+        
         # Retry logic for rate‑limit (429) – up to 3 attempts
         attempts = 0
         while attempts < 3:
             try:
                 if self.provider == "openai":
-                    res = await self._call_openai(prompt)
+                    res = await self._call_openai(prompt, model_override=selected_model)
                 else:  # gemini
-                    response = self.model.generate_content(prompt)
+                    # If model_name is provided, we use a new model instance for that call
+                    model_to_use = self.model
+                    if model_name:
+                        model_to_use = genai.GenerativeModel(
+                            model_name=model_name,
+                            safety_settings=[
+                                {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+                                {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+                                {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+                                {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+                            ]
+                        )
+                    
+                    response = model_to_use.generate_content(prompt)
+                    
+                    # Handle safety blocks
+                    if not response.candidates or response.candidates[0].finish_reason != 1: # 1 = STOP (Success)
+                        if response.candidates and response.candidates[0].finish_reason == 3: # 3 = SAFETY
+                            logger.warning(f"LLM response blocked by safety filters for model {selected_model}.")
+                            return "Error: Response blocked by safety filters."
+                        
                     res = response.text
                 
-                logger.info(f"LLM response received. Snippet: {res[:50]}...")
+                logger.info(f"LLM response received from [{selected_model}]. Snippet: {res[:50]}...")
                 return res
             except Exception as e:
                 # Detect rate‑limit / quota errors

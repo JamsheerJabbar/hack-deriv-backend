@@ -12,10 +12,10 @@ class FewShotRetriever:
         Retrieves similar past query-SQL pairs, filtered by domain.
         Uses Jaccard Similarity to rank examples dynamically.
         """
-        from app.modules.domain_adapter import domain_adapter
+        from app.modules.learning import learning_service
         
         # 1. Get all examples for the domain
-        config = domain_adapter.get_domain_config(domain)
+        config = learning_service.get_domain_config(domain)
         all_examples = config.get("few_shots", [])
         
         if not all_examples:

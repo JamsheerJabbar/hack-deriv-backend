@@ -12,12 +12,18 @@ class Settings(BaseSettings):
     
     # LLM Settings
     GEMINI_API_KEY: Optional[str] = None
-    GEMINI_MODEL_NAME: str = "gemini-2.5-flash-lite"
+    GEMINI_MODEL_NAME: str = "gemini-3-flash-preview"
     OPENAI_API_KEY: Optional[str] = None
-    OPENAI_MODEL_NAME: str = "gpt-3.5-turbo"
+    # stage-specific models
+    INTENT_MODEL: str = os.getenv("INTENT_MODEL", "gemini-3-flash-preview")
+    SQL_MODEL: str = os.getenv("SQL_MODEL", "gemini-3-flash-preview")
+    CLARIFICATION_MODEL: str = os.getenv("CLARIFICATION_MODEL", "gemini-2.5-flash-lite")
+    DISCOVERY_MODEL: str = os.getenv("DISCOVERY_MODEL", "gemini-2.5-flash-lite")
+    EXTRACTION_MODEL: str = os.getenv("EXTRACTION_MODEL", "gemini-2.5-flash-lite")
+    RETRIEVAL_MODEL: str = os.getenv("RETRIEVAL_MODEL", "gemini-2.5-flash-lite")
     
     # Database Settings (Target DB to query)
-    DATABASE_URL: str = "sqlite:///./derivinsight_hackathon.db"
+    DATABASE_URL: str = "sqlite:///./derivinsightnew.db"
     SCHEMA_PATH: str = "app/files/derivinsight_schema.sql"
     MOCK_DATA_SCRIPT_PATH: str = "app/files/generate_mock_data.py"
     

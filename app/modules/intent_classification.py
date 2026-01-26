@@ -13,10 +13,11 @@ class IntentClassificationModule:
         Returns (intent, confidence, complexity, needs_clarification)
         """
         logger.info(f"Classifying intent for domain: {domain} | Query: {query}")
-        from app.modules.domain_adapter import domain_adapter
+        from app.modules.learning import learning_service
         
         # Load domain config
-        domain_config = domain_adapter.get_domain_config(domain)
+        domain_config = learning_service.get_domain_config(domain)
+        schema_context = domain_config.get("schema_context", "")
         # We treat the stored prompt as "Domain Specific Instructions" 
         # (even if it currently contains 'You are an AI...', we'll just append it contextually)
         domain_instructions = domain_config.get("prompts", {}).get("intent", "")
@@ -25,12 +26,18 @@ class IntentClassificationModule:
         if conversation_history:
             history_context = "\n\nConversation History:\n"
             for msg in conversation_history[-3:]:  # Last 3 messages for context
-                history_context += f"- {msg.get('role', 'user')}: {msg.get('content', '')}\n"
+                # Handle both dict and object messages
+                role = msg.get('role', 'user') if isinstance(msg, dict) else getattr(msg, 'role', 'user')
+                content = msg.get('content', '') if isinstance(msg, dict) else getattr(msg, 'content', '')
+                history_context += f"- {role}: {content}\n"
         
         # Base Prompt Template
         prompt = f"""
 You are an AI assistant for a Database system.
 Your job is to classify the user's intent.
+
+DATABASE SCHEMA CONTEXT (STRICT TRUTH):
+{schema_context}
 
 {history_context}
 
@@ -51,18 +58,24 @@ INTENT GUIDELINES:
 1. **SCHEMA_QUERY**: User asks about the database structure, tables available, column names, or "what can you do?".
    - Example: "list columns", "what tables are there?", "show schema".
 2. **OFF_TOPIC**: Query is about weather, sports... or greetings.
-3. **SELECT**: Query asks for data retrieval.
+3. **SELECT**: Query asks for SPECIFIC DATA that exists in our 3 tables (users, transactions, login_events).
 4. **UNKNOWN**: Query is gibberish.
 
 CLARIFICATION GUIDELINES:
-- Set needs_clarification=true if query is ambiguous (e.g., "Show me data") or missing critical filters implies by the logic.
-- Do NOT ask for clarification for simple things like "Show users" (Assume LIMIT 5).
+- Set needs_clarification=true if:
+    a) The query mentions tables or concepts NOT in our schema (e.g., "rules", "policies", "compliance_alerts", "payments_table").
+    b) The user wants to "discuss" or "explain" something rather than retrieve data.
+    c) The query is vague (e.g., "show data", "check UAE").
+- If the user asks for "compliance rules", set needs_clarification=true because we have DATA, not RULES.
+- Your goal is to catch queries that would lead to SQL hallucinations and force a clarification instead.
+- If you can reasonably map the request to one of the 3 tables without guessing, set needs_clarification=false.
 
 Output JSON only.
 """
         
         try:
-            response_text = await llm_service.generate_response(prompt)
+            from app.core.config import settings
+            response_text = await llm_service.generate_response(prompt, model_name=settings.INTENT_MODEL)
             # Simple cleanup to handle potential markdown
             response_text = response_text.replace("```json", "").replace("```", "").strip()
             

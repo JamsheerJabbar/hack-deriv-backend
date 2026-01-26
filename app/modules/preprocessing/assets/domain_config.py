@@ -19,7 +19,7 @@ Key areas of concern:
 - Device fingerprint analysis
 - Geographic anomalies in authentication
 
-Use tables: login_events, users, alerts, audit_logs
+Use tables: login_events, users
 Prioritize: created_at timestamps, ip_address, device_type, status='BLOCKED' or 'FAILED'
 """,
 
@@ -32,9 +32,9 @@ Key areas of concern:
 - PEP (Politically Exposed Person) monitoring
 - Document expiry tracking
 - Regulatory reporting requirements
-- Audit trail completeness
+- Transaction monitoring for compliance
 
-Use tables: users, transactions, alerts, audit_logs
+Use tables: users, transactions
 Prioritize: kyc_status, kyc_expiry_date, is_pep, account_status
 """,
 
@@ -49,7 +49,7 @@ Key areas of concern:
 - High-risk user profiles
 - Country-based risk (FATF high-risk jurisdictions)
 
-Use tables: transactions, users, alerts, alert_rules
+Use tables: transactions, users
 Prioritize: amount_usd, risk_level, risk_score, status='FLAGGED'
 """,
 
@@ -60,11 +60,10 @@ Your focus is on business metrics, system health, and operational efficiency.
 Key areas of concern:
 - Daily transaction volumes and trends
 - User growth and activity patterns
-- System performance metrics
-- Dashboard usage and deployment
-- Query performance and audit logs
+- Login activity and authentication metrics
+- Business performance tracking
 
-Use tables: transactions, users, dashboards, audit_logs, query_history
+Use tables: transactions, users, login_events
 Prioritize: DATE() aggregations, COUNT(), SUM(), trends over time
 """,
 
@@ -76,9 +75,6 @@ Available data domains:
 - Users: KYC status, risk levels, account information
 - Transactions: Trades, deposits, withdrawals, payment methods
 - Login Events: Authentication attempts, device info, geo-location
-- Alerts: Security and compliance alerts, severity levels
-- Audit Logs: System activity tracking
-- Dashboards: User-created analytics dashboards
 """
 }
 
@@ -139,8 +135,8 @@ DOMAIN_FEW_SHOTS: Dict[str, List[Dict[str, str]]] = {
             "sql": "SELECT user_id, COUNT(*) as txn_count, SUM(amount_usd) as total FROM transactions WHERE amount_usd BETWEEN 9000 AND 10000 AND created_at > datetime('now', '-24 hours') GROUP BY user_id HAVING txn_count >= 3;"
         },
         {
-            "question": "Show critical severity alerts that are still open",
-            "sql": "SELECT a.*, u.full_name, u.risk_level FROM alerts a LEFT JOIN users u ON a.user_id = u.user_id WHERE a.severity = 'CRITICAL' AND a.status = 'OPEN' ORDER BY a.created_at DESC;"
+            "question": "Show high-risk users with recent large transactions",
+            "sql": "SELECT u.user_id, u.full_name, u.risk_level, t.amount_usd, t.created_at FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE u.risk_level = 'HIGH' AND t.amount_usd > 50000 ORDER BY t.created_at DESC;"
         }
     ],
 
@@ -158,8 +154,8 @@ DOMAIN_FEW_SHOTS: Dict[str, List[Dict[str, str]]] = {
             "sql": "SELECT country, COUNT(*) as user_count FROM users GROUP BY country ORDER BY user_count DESC;"
         },
         {
-            "question": "Show deployed dashboards with their owners",
-            "sql": "SELECT d.dashboard_id, d.name, u.full_name as owner, d.deployed_at FROM dashboards d JOIN users u ON d.owner_id = u.user_id WHERE d.is_deployed = 1 ORDER BY d.deployed_at DESC;"
+            "question": "Show daily active users based on login events",
+            "sql": "SELECT DATE(created_at) as date, COUNT(DISTINCT user_id) as active_users FROM login_events WHERE status = 'SUCCESS' AND created_at > datetime('now', '-30 days') GROUP BY DATE(created_at) ORDER BY date DESC;"
         }
     ],
 

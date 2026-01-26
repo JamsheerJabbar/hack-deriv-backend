@@ -1,4 +1,5 @@
 from typing import Dict, Any
+import json
 from app.services.llm import llm_service
 
 class ClarificationModule:
@@ -10,7 +11,15 @@ class ClarificationModule:
     async def generate_clarification(self, query: str, domain: str, conversation_history: list = None) -> str:
         """
         Generates a follow-up question to clarify the user's intent.
+        Uses real schema context to ensure suggestions match the database.
         """
+        from app.modules.learning import learning_service
+        
+        # Load real domain context
+        config = learning_service.get_domain_config(domain)
+        schema_context = config.get("schema_context", "")
+        db_profile = config.get("db_profile", {})
+        
         history_context = ""
         if conversation_history:
             history_context = "\n\nConversation so far:\n"
@@ -19,36 +28,40 @@ class ClarificationModule:
                 content = msg.get('content', '')
                 history_context += f"{role.upper()}: {content}\n"
         
-        domain_context = {
-            "security": "Focus on login patterns, IP addresses, device info, authentication failures, blocked accounts.",
-            "compliance": "Focus on KYC status, PEP flags, document expiry, regulatory requirements, audit trails.",
-            "risk": "Focus on transaction amounts, risk scores, flagged transactions, velocity patterns, high-risk countries.",
-            "operations": "Focus on daily volumes, user growth, system metrics, time ranges, aggregations."
-        }.get(domain, "Focus on database tables: users, transactions, login_events, alerts.")
-        
         prompt = f"""
 You are a helpful assistant helping clarify database queries in the {domain.upper()} domain.
 
-{domain_context}
+DATABASE CONTEXT (STRICT TRUTH):
+{schema_context}
+
+Available Table Insights:
+{json.dumps({t: d.get('columns') for t, d in db_profile.items()}, indent=2) if db_profile else "users, transactions, login_events"}
 
 {history_context}
 
 Current user query: "{query}"
 
-The query is ambiguous or missing critical information. Generate ONE clarifying question to help the user be more specific.
+The query is ambiguous, asks for something not in the database (like 'rules' or 'policies'), or wants a general discussion. 
 
-Examples of good clarifying questions:
-- "What time range would you like to analyze? (e.g., last 24 hours, last 7 days, last month)"
-- "What threshold should I use to identify 'high-risk' users? (e.g., risk_score > 70)"
-- "Which specific compliance rule are you interested in? (e.g., KYC pending, PEP status, expired documents)"
-- "Do you want to see all transactions or only flagged/suspicious ones?"
-- "Should I include active users only, or all account statuses?"
+Your Task: 
+1. Acknowledge what they asked (e.g., "I see you want to discuss UAE compliance rules").
+2. Explain that you are a Data Assistant with access to transaction logs, user profiles, and login events, but you do NOT have a table for regulatory text/rules.
+3. BRIDGE to the data: Suggest 2-3 specific things you CAN show them from our 3 tables that are relevant to their domain.
+
+DOMAIN-SPECIFIC DATA GUIDANCE:
+- COMPLIANCE: "I can show you **flagged transactions in the UAE**, **users with pending KYC status**, or **PEP users**."
+- SECURITY: "I can show you **failed login attempts**, **blocked IP addresses**, or **login frequency by country**."
+- RISK: "I can show you **high-value transactions (>$10k)**, **users with an elevated risk score**, or **velocity patterns**."
+- OPERATIONS: "I can show you **daily transaction volumes**, **average transaction amounts**, or **active users by device type**."
+
+Generate a conversational, helpful response that redirects them to ask about our real data.
 
 Return ONLY the clarifying question. Be conversational and helpful. Don't include JSON or markdown.
 """
         
         try:
-            response = await llm_service.generate_response(prompt)
+            from app.core.config import settings
+            response = await llm_service.generate_response(prompt, model_name=settings.CLARIFICATION_MODEL)
             return response.strip()
         except Exception as e:
             print(f"Clarification generation error: {e}")

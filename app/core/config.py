@@ -15,8 +15,8 @@ class Settings(BaseSettings):
     GEMINI_MODEL_NAME: str = "gemini-3-flash-preview"
     OPENAI_API_KEY: Optional[str] = None
     # stage-specific models
-    INTENT_MODEL: str = os.getenv("INTENT_MODEL", "gemini-3-flash-preview")
-    SQL_MODEL: str = os.getenv("SQL_MODEL", "gemini-3-flash-preview")
+    INTENT_MODEL: str = os.getenv("INTENT_MODEL", "gemini-2.5-flash-lite")
+    SQL_MODEL: str = os.getenv("SQL_MODEL", "gemini-2.5-flash-lite")
     CLARIFICATION_MODEL: str = os.getenv("CLARIFICATION_MODEL", "gemini-2.5-flash-lite")
     DISCOVERY_MODEL: str = os.getenv("DISCOVERY_MODEL", "gemini-2.5-flash-lite")
     EXTRACTION_MODEL: str = os.getenv("EXTRACTION_MODEL", "gemini-2.5-flash-lite")

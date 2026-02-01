@@ -19,7 +19,7 @@ import json
 
 router = APIRouter(prefix="/api/v1/dashboards", tags=["dashboards"])
 
-DATABASE_PATH = "./derivinsight_hackathon.db"
+DATABASE_PATH = "./deriveinsights_dashboard.db"
 
 
 def get_db_connection():

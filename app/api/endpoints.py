@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.models.state import QueryRequest, QueryResponse, AlertRequest, AlertResponse
+from app.models.state import QueryRequest, QueryResponse
+from app.alert_system.models import AlertRequest, AlertResponse
 from app.orchestration.workflow import app_graph
 from app.core.logger import logger
 
@@ -60,7 +61,7 @@ async def create_alert(request: AlertRequest):
     Process a request to create a data alert based on a previous query.
     """
     logger.info(f"Alert creation request received for SQL: {request.base_sql[:50]}...")
-    from app.modules.alert_generation import alert_module
+    from app.alert_system.service import alert_module
     
     status, message, sql, config = await alert_module.process_alert_request(
         request.base_sql,

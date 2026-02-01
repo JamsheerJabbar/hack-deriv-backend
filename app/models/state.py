@@ -39,14 +39,3 @@ class QueryResponse(BaseModel):
     metadata: Dict[str, Any] = Field(default_factory=dict)
     is_final: bool = False  # True if SQL was generated, False if asking for clarification
 
-class AlertRequest(BaseModel):
-    base_sql: str
-    user_message: str
-    conversation_history: List[Dict[str, str]] = []
-
-class AlertResponse(BaseModel):
-    status: str  # "created" | "needs_clarification" | "failed"
-    response_message: str
-    alert_sql: Optional[str] = None
-    alert_config: Optional[Dict[str, Any]] = None
-    clarification_question: Optional[str] = None

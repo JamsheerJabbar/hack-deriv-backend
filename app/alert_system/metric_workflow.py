@@ -1,10 +1,4 @@
 import json
-from typing import Dict, Any, Tuple
-from langgraph.graph import StateGraph, END
-from typing_extensions import TypedDict
-from app.services.llm import llm_service
-from app.alert_system.metric_models import MetricDefinition
-
 from typing import List, Dict, Any, Optional, Tuple
 from langgraph.graph import StateGraph, END
 from typing_extensions import TypedDict
@@ -108,33 +102,39 @@ Return ONLY the question string.
 async def generate_metric_node(state: MetricGraphState) -> Dict[str, Any]:
     """Uses LLM to transform NL query into a structured Metric JSON."""
     query = state["user_query"]
-    tables = state.get("relevant_tables", ["transaction"])
+    tables = state.get("relevant_tables", ["transactions"])
     history = state.get("conversation_history", [])
     
     # Use only the first table for primary event_type
-    primary_table = tables[0] if tables else "transaction"
+    primary_table = tables[0] if tables else "transactions"
     # Mapping for consistent output format
     table_map = {"transactions": "transaction", "login_events": "login_event", "users": "user"}
-    event_type = table_map.get(primary_table, primary_table)
+    event_type = table_map.get(primary_table, "transaction")
 
-    history_str = "\n".join([f"{m['role']}: {m['content']}" for m in history[-3:]])
+    history_str = "\n".join([f"{m.get('role', 'user')}: {m.get('content', '')}" for m in history[-3:]])
     
     prompt = f"""
-You are an expert Monitoring Engineer. 
+You are an expert Performance Monitoring Engineer. 
 Convert the request into a "Metric Definition" JSON.
 
 Context:
-- Primary Event: {event_type}
+- Primary Event Type: {event_type}
 - Chat History: {history_str}
-- Current Request: "{query}"
+- Current User Request: "{query}"
+
+LOGIC RULES:
+1. Identify if the user is asking for a COUNT, SUM, or AVG.
+2. Identify the threshold (e.g., "below 50000" means threshold=50000).
+3. Identify a filter if possible (e.g., status='failed'). If no specific filter is mentioned but a status is implied, add it. If NO filter is relevant, you can omit the "filter" key.
+4. Set "window_sec" to 60 unless specified otherwise.
 
 METRIC JSON STRUCTURE:
 {{
   "metric_id": "m1",
   "event_type": "{event_type}",
   "filter": {{
-    "field": "string",
-    "operator": "==",
+    "field": "string_column_name",
+    "operator": "==" | ">" | "<" | "!=",
     "value": "string_or_number"
   }},
   "aggregation": "count" | "sum" | "avg",
@@ -145,7 +145,8 @@ METRIC JSON STRUCTURE:
 Return JSON ONLY.
 """
     try:
-        response = await llm_service.generate_response(prompt)
+        from app.core.config import settings
+        response = await llm_service.generate_response(prompt, model_name=settings.SQL_MODEL)
         # Clean response
         response = response.strip()
         if response.startswith("```json"):
@@ -155,16 +156,21 @@ Return JSON ONLY.
             
         metric_data = json.loads(response.strip())
         
+        # Ensure name consistency
+        if "event_type" not in metric_data:
+            metric_data["event_type"] = event_type
+            
         return {
             "metric": metric_data,
             "status": "success",
             "explanation": f"Successfully created metric for: {query}"
         }
     except Exception as e:
+        logger.error(f"Metric generation error: {e}")
         return {
             "status": "failed",
             "explanation": f"Error parsing metric: {str(e)}",
-            "clarification_question": "I couldn't quite map that to a metric. Could you specify the event type and threshold?"
+            "clarification_question": "I couldn't quite map that to a metric config. Could you specify the event type (transaction, login, user) and the threshold?"
         }
 
 # Setup the graph

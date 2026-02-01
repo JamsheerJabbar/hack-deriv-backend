@@ -9,7 +9,7 @@ class MetricFilter(BaseModel):
 class MetricDefinition(BaseModel):
     metric_id: str = Field(..., description="Unique identifier for the metric (e.g., m1, m2)")
     event_type: str = Field(..., description="The table/event type (e.g., transaction, login_event, user)")
-    filter: MetricFilter
+    filter: Optional[MetricFilter] = None
     aggregation: str = Field(..., description="Aggregation type (e.g., count, sum, avg)")
     window_sec: int = Field(..., description="Time window in seconds")
     threshold: float = Field(..., description="The value at which to trigger an alert")

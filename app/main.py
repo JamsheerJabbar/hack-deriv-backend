@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from app.api.endpoints import router as api_router
 from app.api.alerts_endpoints import router as alerts_router
+from app.api.dashboard_endpoints import router as dashboard_router
 from app.core.config import settings
 from app.core.logger import logger
 import os
@@ -22,6 +23,7 @@ app.add_middleware(
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(alerts_router)  # Alerts API endpoints
+app.include_router(dashboard_router)  # Dashboard API endpoints
 
 @app.get("/health")
 def health_check():

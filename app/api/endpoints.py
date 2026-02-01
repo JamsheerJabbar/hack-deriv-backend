@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from app.models.state import QueryRequest, QueryResponse
-from app.alert_system.models import AlertRequest, AlertResponse
+from app.alert_system.metric_models import MetricRequest, MetricResponse
+from app.alert_system.metric_workflow import metric_app_graph
 from app.orchestration.workflow import app_graph
 from app.core.logger import logger
 
@@ -55,24 +56,27 @@ async def query_database(request: QueryRequest):
         is_final=True
     )
 
-@router.post("/alert", response_model=AlertResponse)
-async def create_alert(request: AlertRequest):
+@router.post("/alert", response_model=MetricResponse)
+async def create_alert(request: MetricRequest):
     """
-    Process a request to create a data alert based on a previous query.
+    Process a request to create a data metric/alert.
     """
-    logger.info(f"Alert creation request received for SQL: {request.base_sql[:50]}...")
-    from app.alert_system.service import alert_module
+    logger.info(f"Relaying alert request to Metric Workflow: {request.query}")
     
-    status, message, sql, config = await alert_module.process_alert_request(
-        request.base_sql,
-        request.user_message,
-        request.conversation_history
-    )
+    initial_state = {
+        "user_query": request.query,
+        "domain": request.domain,
+        "conversation_history": request.conversation_history,
+        "metric": {},
+        "status": "pending",
+        "explanation": ""
+    }
     
-    return AlertResponse(
-        status=status,
-        response_message=message,
-        alert_sql=sql,
-        alert_config=config,
-        clarification_question=message if status == "needs_clarification" else None
+    result = await metric_app_graph.ainvoke(initial_state)
+    
+    return MetricResponse(
+        status=result.get("status", "failed"),
+        metric=result.get("metric"),
+        explanation=result.get("explanation", ""),
+        clarification_question=result.get("clarification_question")
     )

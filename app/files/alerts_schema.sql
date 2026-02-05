@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS events (
 CREATE INDEX IF NOT EXISTS idx_events_id ON events(id);
 CREATE INDEX IF NOT EXISTS idx_events_table_name ON events(table_name);
 CREATE INDEX IF NOT EXISTS idx_events_created_at ON events(created_at);
+CREATE INDEX IF NOT EXISTS idx_events_table_name_created_at ON events(table_name, created_at);
 CREATE INDEX IF NOT EXISTS idx_events_processed ON events(processed);
 
 -- Metric Specs table (alerts configuration)
@@ -51,6 +52,24 @@ CREATE TABLE IF NOT EXISTS alert_history (
 CREATE INDEX IF NOT EXISTS idx_alert_history_metric_id ON alert_history(metric_id);
 CREATE INDEX IF NOT EXISTS idx_alert_history_created_at ON alert_history(created_at);
 
+-- Anomaly History table: one row per metric, updated whenever alert_history is written for that metric
+CREATE TABLE IF NOT EXISTS anomaly_history (
+    metric_id INTEGER PRIMARY KEY,
+    metric_name TEXT NOT NULL,
+    severity TEXT DEFAULT 'medium',
+    alert_count INTEGER NOT NULL DEFAULT 0,
+    detected_at TIMESTAMP,              -- set when alert becomes active and alert_count was 0 (start of current period)
+    last_seen_at TIMESTAMP,             -- updated on every trigger
+    last_resolved_at TIMESTAMP,          -- updated on every resolve
+    current_status TEXT NOT NULL,       -- 'active' | 'resolved'
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (metric_id) REFERENCES metric_specs(metric_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_anomaly_history_current_status ON anomaly_history(current_status);
+CREATE INDEX IF NOT EXISTS idx_anomaly_history_updated_at ON anomaly_history(updated_at);
+
 -- Metric Windows table: stores event timestamps for sliding window calculations
 -- This replaces Redis ZSET for SQLite-based implementation
 CREATE TABLE IF NOT EXISTS metric_windows (
@@ -64,13 +83,6 @@ CREATE TABLE IF NOT EXISTS metric_windows (
 CREATE INDEX IF NOT EXISTS idx_metric_windows_metric_id ON metric_windows(metric_id);
 CREATE INDEX IF NOT EXISTS idx_metric_windows_event_timestamp ON metric_windows(event_timestamp);
 CREATE INDEX IF NOT EXISTS idx_metric_windows_composite ON metric_windows(metric_id, event_timestamp);
-
--- Engine State table: tracks processing state
-CREATE TABLE IF NOT EXISTS engine_state (
-    key TEXT PRIMARY KEY,
-    value TEXT NOT NULL,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
 -- =============================================
 -- Insert default metric specs (sample alerts)
@@ -100,7 +112,3 @@ VALUES (4, 'Transaction Volume Spike', 'Triggers when total transaction volume i
 INSERT OR IGNORE INTO metric_specs (metric_id, name, description, table_name, filter_json, window_sec, threshold, severity)
 VALUES (5, 'User Registration Spike', 'Triggers when new user registrations spike', 
         'user', '{}', 1800, 50, 'low');
-
--- Initialize engine state
-INSERT OR IGNORE INTO engine_state (key, value) VALUES ('last_processed_id', '0');
-INSERT OR IGNORE INTO engine_state (key, value) VALUES ('engine_status', 'stopped');

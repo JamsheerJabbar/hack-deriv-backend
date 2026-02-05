@@ -11,6 +11,9 @@ Endpoints:
 - DELETE /api/v1/alerts/metrics/{id}      - Delete a metric
 - GET    /api/v1/alerts/active            - Get active alerts
 - GET    /api/v1/alerts/history           - Get alert history
+- GET    /api/v1/alerts/failure-spike     - Get failure spike summary (from anomaly_history)
+- GET    /api/v1/alerts/anomaly-history    - List anomaly history (metric_id, alert_count, status, etc.)
+- GET    /api/v1/alerts/anomaly-history/summary - Aggregates: active, critical, resolved_today
 - POST   /api/v1/alerts/events            - Push a new event
 - GET    /api/v1/alerts/stats             - Get engine stats
 - POST   /api/v1/alerts/engine/start      - Start the alert engine
@@ -29,6 +32,8 @@ import json
 
 from app.services.alert_engine import AlertEngineService, ALERTS_DB_PATH
 from app.services.alert_events_generate import EventGenerator
+from app.services.worker_registry import worker_registry
+from app.services import task_orchestrator
 import os
 
 router = APIRouter(prefix="/api/v1/alerts", tags=["alerts"])
@@ -36,14 +41,15 @@ router = APIRouter(prefix="/api/v1/alerts", tags=["alerts"])
 # Initialize alert engine
 alert_engine = AlertEngineService()
 
-# Initialize event generator (singleton)
+# Initialize event generator (singleton; used for burst and in-worker container)
 event_generator = EventGenerator()
-_generator_running = False  # Track generator state
 
 # Check if DB exists and initialize if needed
 if not os.path.exists(ALERTS_DB_PATH):
     schema_path = os.path.join(os.path.dirname(__file__), "..", "files", "alerts_schema.sql")
     alert_engine.initialize_db(schema_path)
+else:
+    alert_engine.ensure_anomaly_history_table()
 
 
 # ==================== PYDANTIC MODELS ====================
@@ -65,7 +71,7 @@ class MetricUpdate(BaseModel):
     description: Optional[str] = None
     table_name: Optional[str] = None
     filter_json: Optional[Dict[str, Any]] = None
-    window_sec: Optional[int] = Field(None, ge=1)
+    window_sec: Optional[int] = Field(None, ge=0)
     threshold: Optional[int] = Field(None, ge=1)
     severity: Optional[str] = None
 
@@ -109,6 +115,23 @@ class BurstRequest(BaseModel):
     status: Optional[str] = Field(default=None, description="Status for the events (e.g., 'failed', 'success')")
 
 
+class WorkerStartRequest(BaseModel):
+    """Optional body for engine/generator start: register an externally started task by taskArn."""
+    task_arn: Optional[str] = Field(default=None, description="Task ARN of the worker (e.g. ECS task); if provided, only registers in Redis")
+
+
+class GeneratorStartRequest(BaseModel):
+    """Body for generator start: optional task_arn to register, optional config when API starts the task."""
+    task_arn: Optional[str] = Field(default=None, description="Task ARN if registering an externally started task")
+    config: Optional[GeneratorConfig] = Field(default=None, description="Generator config when API starts the task")
+
+
+class StartAllRequest(BaseModel):
+    """Body for start-all: optional task ARNs to register (externally started workers)."""
+    engine_task_arn: Optional[str] = Field(default=None, description="Engine worker task ARN to register")
+    generator_task_arn: Optional[str] = Field(default=None, description="Generator worker task ARN to register")
+
+
 # ==================== METRIC ENDPOINTS ====================
 
 @router.post("/metrics", response_model=dict)
@@ -129,12 +152,13 @@ async def create_metric(metric: MetricCreate):
     }
     ```
     """
+    window_sec = metric.window_sec if (metric.window_sec is not None and metric.window_sec > 0) else 60
     metric_id = alert_engine.create_metric(
         name=metric.name,
         description=metric.description or "",
         table_name=metric.table_name,
         filter_json=metric.filter_json,
-        window_sec=metric.window_sec,
+        window_sec=window_sec,
         threshold=metric.threshold,
         severity=metric.severity
     )
@@ -197,7 +221,7 @@ async def update_metric(metric_id: int, metric: MetricUpdate):
     if metric.filter_json is not None:
         updates["filter_json"] = metric.filter_json
     if metric.window_sec is not None:
-        updates["window_sec"] = metric.window_sec
+        updates["window_sec"] = metric.window_sec if metric.window_sec > 0 else 60
     if metric.threshold is not None:
         updates["threshold"] = metric.threshold
     if metric.severity is not None:
@@ -253,6 +277,65 @@ async def get_alert_history(limit: int = 50):
         "status": "success",
         "count": len(history),
         "history": history
+    }
+
+
+@router.get("/failure-spike")
+async def get_failure_spike(
+    use_cache: bool = True,
+    skip_baseline_lookup: bool = False,
+):
+    """
+    Get failure spike summary from anomaly_history (current_status='active') and metric_specs.
+    Returns card-ready data: title, status, metric (Failure Rate), current vs baseline %,
+    detected time, duration, summary, and actions (Open Dashboard, Acknowledge, Snooze).
+    - use_cache: use 30s TTL cache to reduce latency on repeated calls (default True).
+    - skip_baseline_lookup: if True, use default baseline and skip extra DB queries (lower latency).
+    """
+    summaries = alert_engine.get_failure_spike_summary(
+        use_cache=use_cache,
+        skip_baseline_lookup=skip_baseline_lookup,
+    )
+    return {
+        "status": "success",
+        "count": len(summaries),
+        "failure_spikes": summaries
+    }
+
+
+@router.get("/anomaly-history")
+async def list_anomaly_history(
+    limit: int = 100,
+    current_status: Optional[str] = None,
+):
+    """
+    List anomaly_history rows (one per metric, updated on every alert trigger/resolve).
+    Query params:
+    - limit: max rows (default 100).
+    - current_status: filter by 'active' or 'resolved'.
+    """
+    rows = alert_engine.get_anomaly_history(limit=limit, current_status=current_status)
+    return {
+        "status": "success",
+        "count": len(rows),
+        "anomaly_history": rows
+    }
+
+
+@router.get("/anomaly-history/summary")
+async def get_anomaly_history_summary():
+    """
+    Aggregate counts from anomaly_history for dashboard header:
+    - active: number of anomalies currently active
+    - critical: number of active anomalies with severity critical
+    - resolved_today: number resolved today (by date(last_resolved_at))
+    """
+    summary = alert_engine.get_anomaly_history_summary()
+    return {
+        "status": "success",
+        "active": summary["active"],
+        "critical": summary["critical"],
+        "resolved_today": summary["resolved_today"],
     }
 
 
@@ -338,131 +421,183 @@ async def clear_redis_windows():
 
 
 @router.post("/engine/start")
-async def start_engine():
-    """Start the alert engine in background."""
-    status = alert_engine.get_engine_status()
-    
-    if status == "running":
+async def start_engine(body: Optional[WorkerStartRequest] = None):
+    """
+    Start the alert engine worker (runs in a separate container).
+    If task_arn is provided in body, registers that task in Redis (task was started externally).
+    Otherwise attempts to start the task via ECS (if configured) and stores taskArn in Redis.
+    """
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable; cannot register engine worker")
+    task_arn = body.task_arn if body else None
+    if task_arn:
+        if worker_registry.get_engine_task_arn():
+            return {
+                "status": "warning",
+                "message": "Engine worker already registered; stop it first to register a new task_arn"
+            }
+        if worker_registry.set_engine_task_arn(task_arn):
+            return {
+                "status": "success",
+                "message": "Engine worker task registered",
+                "task_arn": task_arn
+            }
+        raise HTTPException(status_code=500, detail="Failed to store task_arn in Redis")
+    task_arn, err = task_orchestrator.start_engine_task()
+    if err and not task_arn:
+        raise HTTPException(status_code=400, detail=err)
+    if not task_arn:
+        raise HTTPException(status_code=500, detail="Failed to start engine task")
+    if not worker_registry.set_engine_task_arn(task_arn):
         return {
-            "status": "warning",
-            "message": "Engine is already running"
+            "status": "error",
+            "message": "Engine task started but failed to register task_arn in Redis",
+            "task_arn": task_arn
         }
-    
-    alert_engine.start_background(tick_interval=1.0)
-    
     return {
         "status": "success",
-        "message": "Alert engine started"
+        "message": "Alert engine worker started",
+        "task_arn": task_arn
     }
 
 
 @router.post("/engine/stop")
 async def stop_engine():
-    """Stop the alert engine."""
-    status = alert_engine.get_engine_status()
-    
-    if status == "stopped":
+    """
+    Stop the alert engine worker: fetch taskArn from Redis, stop that task, then remove the key.
+    """
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable")
+    task_arn = worker_registry.get_engine_task_arn()
+    if not task_arn:
         return {
             "status": "warning",
-            "message": "Engine is already stopped"
+            "message": "Engine is already stopped (no task_arn in Redis)"
         }
-    
-    alert_engine.stop()
-    
+    err = task_orchestrator.stop_engine_task(task_arn)
+    worker_registry.delete_engine_task_arn()
+    if err:
+        return {
+            "status": "success",
+            "message": "Engine task unregistered from Redis; stop may have failed",
+            "stop_error": err
+        }
     return {
         "status": "success",
-        "message": "Alert engine stopped"
+        "message": "Alert engine worker stopped"
     }
 
 
 @router.get("/engine/status")
 async def engine_status():
-    """Get the current engine status."""
-    status = alert_engine.get_engine_status()
-    return {
-        "status": "success",
-        "engine_status": status
-    }
+    """
+    Get engine status from Redis: if task_arn key is present, engine is running.
+    """
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable")
+    task_arn = worker_registry.get_engine_task_arn()
+    status = "running" if task_arn else "stopped"
+    out = {"status": "success", "engine_status": status}
+    if task_arn:
+        out["task_arn"] = task_arn
+    return out
 
 
 # ==================== EVENT GENERATOR CONTROL ====================
 
 @router.post("/generator/start")
-async def start_generator(config: Optional[GeneratorConfig] = None):
+async def start_generator(body: Optional[GeneratorStartRequest] = None):
     """
-    Start the event generator to produce simulated events.
-    
-    The generator creates:
-    - User registration events
-    - Login events (success/failed)
-    - Transaction events (success/failed)
-    - KYC events (pending/approved/rejected)
-    
-    Optional config to customize intervals.
+    Start the event generator worker (runs in a separate container).
+    If task_arn is provided in body, registers that task in Redis (task was started externally).
+    Otherwise attempts to start the task via ECS (if configured) and stores taskArn in Redis.
+    Config in body is used when the API starts the task; otherwise the worker container uses its own config.
     """
-    global _generator_running
-    
-    if _generator_running:
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable; cannot register generator worker")
+    task_arn = body.task_arn if body else None
+    config = body.config if body else None
+    if task_arn:
+        if worker_registry.get_generator_task_arn():
+            return {
+                "status": "warning",
+                "message": "Generator worker already registered; stop it first to register a new task_arn"
+            }
+        if worker_registry.set_generator_task_arn(task_arn):
+            return {
+                "status": "success",
+                "message": "Generator worker task registered",
+                "task_arn": task_arn
+            }
+        raise HTTPException(status_code=500, detail="Failed to store task_arn in Redis")
+    task_arn, err = task_orchestrator.start_generator_task()
+    if err and not task_arn:
+        raise HTTPException(status_code=400, detail=err)
+    if not task_arn:
+        raise HTTPException(status_code=500, detail="Failed to start generator task")
+    if not worker_registry.set_generator_task_arn(task_arn):
         return {
-            "status": "warning",
-            "message": "Event generator is already running"
+            "status": "error",
+            "message": "Generator task started but failed to register task_arn in Redis",
+            "task_arn": task_arn
         }
-    
-    # Use default or custom config
-    if config is None:
-        config = GeneratorConfig()
-    
-    event_generator.start_all(
-        user_interval=config.user_interval,
-        login_interval=(config.login_min_interval, config.login_max_interval),
-        txn_interval=(config.txn_min_interval, config.txn_max_interval),
-        kyc_interval=(config.kyc_min_interval, config.kyc_max_interval)
-    )
-    
-    _generator_running = True
-    
+    cfg = config or GeneratorConfig()
     return {
         "status": "success",
-        "message": "Event generator started",
+        "message": "Event generator worker started",
+        "task_arn": task_arn,
         "config": {
-            "user_interval": config.user_interval,
-            "login_interval": [config.login_min_interval, config.login_max_interval],
-            "txn_interval": [config.txn_min_interval, config.txn_max_interval],
-            "kyc_interval": [config.kyc_min_interval, config.kyc_max_interval]
+            "user_interval": cfg.user_interval,
+            "login_interval": [cfg.login_min_interval, cfg.login_max_interval],
+            "txn_interval": [cfg.txn_min_interval, cfg.txn_max_interval],
+            "kyc_interval": [cfg.kyc_min_interval, cfg.kyc_max_interval]
         }
     }
 
 
 @router.post("/generator/stop")
 async def stop_generator():
-    """Stop the event generator."""
-    global _generator_running
-    
-    if not _generator_running:
+    """
+    Stop the generator worker: fetch taskArn from Redis, stop that task, then remove the key.
+    """
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable")
+    task_arn = worker_registry.get_generator_task_arn()
+    if not task_arn:
         return {
             "status": "warning",
-            "message": "Event generator is not running"
+            "message": "Generator is already stopped (no task_arn in Redis)"
         }
-    
-    event_generator.stop_all()
-    _generator_running = False
-    
+    err = task_orchestrator.stop_generator_task(task_arn)
+    worker_registry.delete_generator_task_arn()
+    if err:
+        return {
+            "status": "success",
+            "message": "Generator task unregistered from Redis; stop may have failed",
+            "stop_error": err
+        }
     return {
         "status": "success",
-        "message": "Event generator stopped"
+        "message": "Event generator worker stopped"
     }
 
 
 @router.get("/generator/status")
 async def generator_status():
-    """Get the current event generator status."""
-    global _generator_running
-    
-    return {
+    """
+    Get generator status from Redis: if task_arn key is present, generator is running.
+    """
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable")
+    task_arn = worker_registry.get_generator_task_arn()
+    running = task_arn is not None
+    out = {
         "status": "success",
-        "generator_running": _generator_running,
-        "active_threads": len(event_generator._threads) if _generator_running else 0
+        "generator_running": running,
     }
+    if task_arn:
+        out["task_arn"] = task_arn
+    return out
 
 
 @router.post("/generator/burst")
@@ -528,43 +663,45 @@ async def generate_burst(request: BurstRequest):
 # ==================== COMBINED CONTROL ====================
 
 @router.post("/start-all")
-async def start_all_services(config: Optional[GeneratorConfig] = None):
+async def start_all_services(body: Optional[StartAllRequest] = None):
     """
-    Start both the alert engine and event generator.
-    
-    This is a convenience endpoint to start the complete system.
+    Start both the alert engine and event generator workers (each in a separate container).
+    Uses Redis task_arn registration; pass engine_task_arn and/or generator_task_arn to register externally started tasks.
     """
-    global _generator_running
-    
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable")
     results = {}
-    
-    # Start alert engine
-    engine_status = alert_engine.get_engine_status()
-    if engine_status != "running":
-        alert_engine.start_background(tick_interval=1.0)
-        results["engine"] = "started"
-    else:
+    task_arn_engine = body.engine_task_arn if body else None
+    task_arn_gen = body.generator_task_arn if body else None
+    # Start engine: register or ECS
+    if worker_registry.get_engine_task_arn():
         results["engine"] = "already running"
-    
-    # Start generator
-    if not _generator_running:
-        if config is None:
-            config = GeneratorConfig()
-        
-        event_generator.start_all(
-            user_interval=config.user_interval,
-            login_interval=(config.login_min_interval, config.login_max_interval),
-            txn_interval=(config.txn_min_interval, config.txn_max_interval),
-            kyc_interval=(config.kyc_min_interval, config.kyc_max_interval)
-        )
-        _generator_running = True
-        results["generator"] = "started"
+    elif task_arn_engine:
+        worker_registry.set_engine_task_arn(task_arn_engine)
+        results["engine"] = "registered"
     else:
+        arn, err = task_orchestrator.start_engine_task()
+        if arn:
+            worker_registry.set_engine_task_arn(arn)
+            results["engine"] = "started"
+        else:
+            results["engine"] = f"failed: {err}"
+    # Start generator: register or ECS
+    if worker_registry.get_generator_task_arn():
         results["generator"] = "already running"
-    
+    elif task_arn_gen:
+        worker_registry.set_generator_task_arn(task_arn_gen)
+        results["generator"] = "registered"
+    else:
+        arn, err = task_orchestrator.start_generator_task()
+        if arn:
+            worker_registry.set_generator_task_arn(arn)
+            results["generator"] = "started"
+        else:
+            results["generator"] = f"failed: {err}"
     return {
         "status": "success",
-        "message": "Services started",
+        "message": "Services start requested",
         "results": results
     }
 
@@ -572,28 +709,27 @@ async def start_all_services(config: Optional[GeneratorConfig] = None):
 @router.post("/stop-all")
 async def stop_all_services():
     """
-    Stop both the alert engine and event generator.
+    Stop both the alert engine and event generator workers: fetch taskArn from Redis, stop each, remove keys.
     """
-    global _generator_running
-    
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable")
     results = {}
-    
     # Stop generator first
-    if _generator_running:
-        event_generator.stop_all()
-        _generator_running = False
+    g_arn = worker_registry.get_generator_task_arn()
+    if g_arn:
+        task_orchestrator.stop_generator_task(g_arn)
+        worker_registry.delete_generator_task_arn()
         results["generator"] = "stopped"
     else:
         results["generator"] = "not running"
-    
     # Stop engine
-    engine_status = alert_engine.get_engine_status()
-    if engine_status == "running":
-        alert_engine.stop()
+    e_arn = worker_registry.get_engine_task_arn()
+    if e_arn:
+        task_orchestrator.stop_engine_task(e_arn)
+        worker_registry.delete_engine_task_arn()
         results["engine"] = "stopped"
     else:
         results["engine"] = "not running"
-    
     return {
         "status": "success",
         "message": "Services stopped",
@@ -604,23 +740,25 @@ async def stop_all_services():
 @router.get("/status-all")
 async def get_all_status():
     """
-    Get status of both the alert engine and event generator.
+    Get status of both the alert engine and event generator from Redis and engine stats.
     """
-    global _generator_running
-    
+    if not worker_registry.is_available():
+        raise HTTPException(status_code=503, detail="Redis unavailable")
     stats = alert_engine.get_stats()
-    
+    engine_task_arn = worker_registry.get_engine_task_arn()
+    generator_task_arn = worker_registry.get_generator_task_arn()
     return {
         "status": "success",
         "engine": {
-            "status": stats["engine_status"],
+            "status": "running" if engine_task_arn else "stopped",
+            "task_arn": engine_task_arn,
             "last_processed_id": stats["last_processed_id"],
             "total_events": stats["total_events"],
             "active_alerts": stats["active_alerts"],
             "total_alerts_triggered": stats["total_alerts_triggered"]
         },
         "generator": {
-            "running": _generator_running,
-            "active_threads": len(event_generator._threads) if _generator_running else 0
+            "running": generator_task_arn is not None,
+            "task_arn": generator_task_arn
         }
     }

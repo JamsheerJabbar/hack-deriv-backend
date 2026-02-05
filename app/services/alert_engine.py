@@ -32,7 +32,6 @@ class AlertEngineService:
     - metric_specs table (SQLite): defines alert conditions (metric_id, table_name, filter_json, window_sec, threshold, is_active)
     - Redis ZSET: stores event timestamps for sliding window calculations (replaces metric_windows table)
     - alert_history table (SQLite): logs alert triggers and resolutions
-    - engine_state table (SQLite): tracks last_processed_id
     
     Redis Key Pattern:
     - metric:{metric_id} -> ZSET with event timestamps as score and value
@@ -50,6 +49,13 @@ class AlertEngineService:
         
         self._stop_event = Event()
         self._engine_thread: Optional[Thread] = None
+        self._last_processed_id: int = 0
+        self._engine_status: str = "stopped"
+        
+        # Optional short TTL cache for failure spike summary
+        self._failure_spike_cache: Optional[Dict[str, Any]] = None
+        self._failure_spike_cache_ts: float = 0
+        self.FAILURE_SPIKE_CACHE_TTL_SEC: float = 30.0
         
         # Initialize Redis connection
         self._init_redis()
@@ -128,6 +134,33 @@ class AlertEngineService:
         
         print("[AlertEngine] Database initialized successfully")
         return True
+    
+    def ensure_anomaly_history_table(self):
+        """Create anomaly_history table and indexes if they do not exist (for existing DBs)."""
+        sqls = [
+            """
+            CREATE TABLE IF NOT EXISTS anomaly_history (
+                metric_id INTEGER PRIMARY KEY,
+                metric_name TEXT NOT NULL,
+                severity TEXT DEFAULT 'medium',
+                alert_count INTEGER NOT NULL DEFAULT 0,
+                detected_at TIMESTAMP,
+                last_seen_at TIMESTAMP,
+                last_resolved_at TIMESTAMP,
+                current_status TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (metric_id) REFERENCES metric_specs(metric_id)
+            )
+            """,
+            "CREATE INDEX IF NOT EXISTS idx_anomaly_history_current_status ON anomaly_history(current_status)",
+            "CREATE INDEX IF NOT EXISTS idx_anomaly_history_updated_at ON anomaly_history(updated_at)",
+        ]
+        for sql in sqls:
+            try:
+                self.execute(sql.strip())
+            except Exception as e:
+                print(f"[AlertEngine] ensure_anomaly_history_table: {e}")
     
     # ==================== EVENT OPERATIONS ====================
     
@@ -445,6 +478,65 @@ class AlertEngineService:
         elif count <= threshold and is_active:
             self._resolve_alert(metric, count)
     
+    def _upsert_anomaly_history(self, metric: Dict[str, Any], action: str):
+        """
+        Update anomaly_history whenever alert_history is updated for this metric.
+        - detected_at: set when alert becomes active and (no row or current_status was 'resolved').
+        - last_seen_at: updated on every trigger.
+        - last_resolved_at: updated on every resolve.
+        - alert_count: total number of 'triggered' rows in alert_history for this metric.
+        - current_status: 'active' on trigger, 'resolved' on resolve.
+        """
+        metric_id = metric["metric_id"]
+        now_iso = datetime.utcnow().isoformat()
+        # Alert count = total triggers for this metric
+        ac = self.execute(
+            "SELECT COUNT(*) as c FROM alert_history WHERE metric_id = :mid AND action = 'triggered'",
+            {"mid": metric_id},
+        )
+        alert_count = ac[0]["c"] if ac else 0
+        existing = self.execute(
+            "SELECT detected_at, last_seen_at, last_resolved_at, current_status FROM anomaly_history WHERE metric_id = :mid",
+            {"mid": metric_id},
+        )
+        existing = existing[0] if existing else None
+        metric_name = metric.get("name", "")
+        severity = metric.get("severity", "medium")
+        if action == "triggered":
+            detected_at = now_iso if (not existing or existing.get("current_status") == "resolved") else (existing.get("detected_at") or now_iso)
+            last_seen_at = now_iso
+            last_resolved_at = existing.get("last_resolved_at") if existing else None
+            current_status = "active"
+        else:
+            detected_at = existing.get("detected_at") if existing else None
+            last_seen_at = existing.get("last_seen_at") if existing else None
+            last_resolved_at = now_iso
+            current_status = "resolved"
+        sql = """
+            INSERT INTO anomaly_history (metric_id, metric_name, severity, alert_count, detected_at, last_seen_at, last_resolved_at, current_status, updated_at)
+            VALUES (:metric_id, :metric_name, :severity, :alert_count, :detected_at, :last_seen_at, :last_resolved_at, :current_status, :updated_at)
+            ON CONFLICT(metric_id) DO UPDATE SET
+                metric_name = excluded.metric_name,
+                severity = excluded.severity,
+                alert_count = excluded.alert_count,
+                detected_at = excluded.detected_at,
+                last_seen_at = excluded.last_seen_at,
+                last_resolved_at = excluded.last_resolved_at,
+                current_status = excluded.current_status,
+                updated_at = excluded.updated_at
+        """
+        self.execute(sql, {
+            "metric_id": metric_id,
+            "metric_name": metric_name,
+            "severity": severity,
+            "alert_count": alert_count,
+            "detected_at": detected_at,
+            "last_seen_at": last_seen_at,
+            "last_resolved_at": last_resolved_at,
+            "current_status": current_status,
+            "updated_at": now_iso,
+        })
+    
     def _trigger_alert(self, metric: Dict[str, Any], count: int):
         """Trigger an alert."""
         metric_id = metric["metric_id"]
@@ -464,6 +556,9 @@ class AlertEngineService:
         
         # Mark metric as active
         self.execute("UPDATE metric_specs SET is_active = 1 WHERE metric_id = :metric_id", {"metric_id": metric_id})
+        
+        # Keep anomaly_history in sync
+        self._upsert_anomaly_history(metric, "triggered")
         
         print(f"\n{message}")
         print(f"   Severity: {metric.get('severity', 'medium').upper()}")
@@ -489,35 +584,42 @@ class AlertEngineService:
         # Mark metric as inactive
         self.execute("UPDATE metric_specs SET is_active = 0 WHERE metric_id = :metric_id", {"metric_id": metric_id})
         
+        # Keep anomaly_history in sync
+        self._upsert_anomaly_history(metric, "resolved")
+        
         print(f"\n{message}\n")
     
     # ==================== ENGINE STATE ====================
+    # last_processed_id: Redis (key alert_engine:last_processed_id), fallback in-memory
+    LAST_PROCESSED_ID_KEY = "alert_engine:last_processed_id"
     
     def get_last_processed_id(self) -> int:
-        """Get the last processed event ID."""
-        result = self.execute("SELECT value FROM engine_state WHERE key = 'last_processed_id'")
-        return int(result[0]["value"]) if result else 0
+        """Get the last processed event ID (from Redis, or in-memory fallback)."""
+        if self._redis_available and self.redis:
+            try:
+                val = self.redis.get(self.LAST_PROCESSED_ID_KEY)
+                if val is not None:
+                    return int(val)
+            except (redis.RedisError, ValueError):
+                pass
+        return self._last_processed_id
     
     def save_last_processed_id(self, event_id: int):
-        """Save the last processed event ID."""
-        sql = """
-            INSERT OR REPLACE INTO engine_state (key, value, updated_at)
-            VALUES ('last_processed_id', :value, :updated_at)
-        """
-        self.execute(sql, {"value": str(event_id), "updated_at": datetime.utcnow().isoformat()})
+        """Save the last processed event ID to Redis and in-memory fallback."""
+        self._last_processed_id = event_id
+        if self._redis_available and self.redis:
+            try:
+                self.redis.set(self.LAST_PROCESSED_ID_KEY, str(event_id))
+            except redis.RedisError:
+                pass
     
     def set_engine_status(self, status: str):
         """Set the engine status (running/stopped)."""
-        sql = """
-            INSERT OR REPLACE INTO engine_state (key, value, updated_at)
-            VALUES ('engine_status', :status, :updated_at)
-        """
-        self.execute(sql, {"status": status, "updated_at": datetime.utcnow().isoformat()})
+        self._engine_status = status
     
     def get_engine_status(self) -> str:
         """Get the current engine status."""
-        result = self.execute("SELECT value FROM engine_state WHERE key = 'engine_status'")
-        return result[0]["value"] if result else "stopped"
+        return self._engine_status
     
     # ==================== CORE EVENT PROCESSING ====================
     
@@ -623,6 +725,230 @@ class AlertEngineService:
             WHERE is_active = 1
         """
         return self.execute(sql)
+    
+    def get_anomaly_history(
+        self,
+        limit: int = 100,
+        current_status: Optional[str] = None,
+    ) -> List[Dict[str, Any]]:
+        """
+        List anomaly_history rows, optionally filtered by current_status ('active' | 'resolved').
+        """
+        if current_status and current_status not in ("active", "resolved"):
+            current_status = None
+        if current_status:
+            sql = """
+                SELECT metric_id, metric_name, severity, alert_count, detected_at,
+                       last_seen_at, last_resolved_at, current_status, created_at, updated_at
+                FROM anomaly_history
+                WHERE current_status = :current_status
+                ORDER BY updated_at DESC
+                LIMIT :limit
+            """
+            return self.execute(sql, {"current_status": current_status, "limit": limit})
+        sql = """
+            SELECT metric_id, metric_name, severity, alert_count, detected_at,
+                   last_seen_at, last_resolved_at, current_status, created_at, updated_at
+            FROM anomaly_history
+            ORDER BY updated_at DESC
+            LIMIT :limit
+        """
+        return self.execute(sql, {"limit": limit})
+    
+    def get_anomaly_history_summary(self) -> Dict[str, int]:
+        """
+        Aggregate counts from anomaly_history for dashboard header:
+        - active: count where current_status = 'active'
+        - critical: count where current_status = 'active' AND severity = 'critical'
+        - resolved_today: count where current_status = 'resolved' AND date(last_resolved_at) = date('now')
+        """
+        active = self.execute(
+            "SELECT COUNT(*) as c FROM anomaly_history WHERE current_status = 'active'"
+        )
+        critical = self.execute(
+            "SELECT COUNT(*) as c FROM anomaly_history WHERE current_status = 'active' AND severity = 'critical'"
+        )
+        resolved_today = self.execute(
+            "SELECT COUNT(*) as c FROM anomaly_history WHERE current_status = 'resolved' AND date(last_resolved_at) = date('now')"
+        )
+        return {
+            "active": active[0]["c"] if active else 0,
+            "critical": critical[0]["c"] if critical else 0,
+            "resolved_today": resolved_today[0]["c"] if resolved_today else 0,
+        }
+    
+    def get_events_count_in_window(self, table_name: str, window_sec: int) -> int:
+        """Count total events in the events table for the given table_name in the last window_sec."""
+        window_start = (datetime.utcnow() - timedelta(seconds=window_sec)).isoformat()
+        sql = """
+            SELECT COUNT(*) as count
+            FROM events
+            WHERE table_name = :table_name AND created_at >= :window_start
+        """
+        result = self.execute(sql, {"table_name": table_name, "window_start": window_start})
+        return result[0]["count"] if result else 0
+    
+    def _get_failure_count_in_events_window(
+        self, table_name: str, filter_json: str, since_iso: str, until_iso: str
+    ) -> int:
+        """Count events matching the metric filter in events table within a time range."""
+        try:
+            filter_dict = json.loads(filter_json) if isinstance(filter_json, str) else filter_json
+        except (json.JSONDecodeError, TypeError):
+            filter_dict = {}
+        if not filter_dict:
+            sql = """
+                SELECT COUNT(*) as count FROM events
+                WHERE table_name = :table_name AND created_at >= :since AND created_at <= :until
+            """
+            result = self.execute(sql, {"table_name": table_name, "since": since_iso, "until": until_iso})
+            return result[0]["count"] if result else 0
+        # Simple case: single key like {"status": "failed"} or {"kyc_status": "rejected"}
+        key = next(iter(filter_dict))
+        val = filter_dict[key]
+        if isinstance(val, str) and key.replace("_", "").isalnum():
+            # Path as literal (key restricted to alphanumeric + underscore)
+            path_literal = f"$.{key}"
+            sql = f"""
+                SELECT COUNT(*) as count FROM events
+                WHERE table_name = :table_name AND created_at >= :since AND created_at <= :until
+                AND json_extract(payload_json, '{path_literal}') = :val
+            """
+            result = self.execute(
+                sql, {
+                    "table_name": table_name,
+                    "since": since_iso,
+                    "until": until_iso,
+                    "val": val,
+                }
+            )
+            return result[0]["count"] if result else 0
+        # Fallback: fetch and filter in Python (for complex filters)
+        sql = """
+            SELECT id, payload_json FROM events
+            WHERE table_name = :table_name AND created_at >= :since AND created_at <= :until
+        """
+        rows = self.execute(sql, {"table_name": table_name, "since": since_iso, "until": until_iso})
+        count = 0
+        for row in rows:
+            try:
+                payload = json.loads(row["payload_json"]) if isinstance(row["payload_json"], str) else row["payload_json"]
+                if self.matches_filter(payload, filter_json):
+                    count += 1
+            except (json.JSONDecodeError, TypeError):
+                pass
+        return count
+    
+    def get_failure_spike_summary(
+        self,
+        use_cache: bool = True,
+        skip_baseline_lookup: bool = False,
+    ) -> List[Dict[str, Any]]:
+        """
+        Build failure spike card summaries from anomaly_history (current_status='active')
+        and metric_specs. Enriches with current rate from window; optional baseline from
+        last resolved window.
+        """
+        now_ts = time.time()
+        if use_cache and self._failure_spike_cache is not None:
+            if (now_ts - self._failure_spike_cache_ts) < self.FAILURE_SPIKE_CACHE_TTL_SEC:
+                return self._failure_spike_cache.get("summaries", [])
+        # Active anomalies only; join metric_specs for table_name, window_sec, threshold, filter_json
+        sql = """
+            SELECT ah.metric_id, ah.metric_name, ah.severity, ah.alert_count, ah.detected_at,
+                   ah.last_seen_at, ah.last_resolved_at, ah.current_status,
+                   ms.table_name, ms.window_sec, ms.threshold, ms.filter_json
+            FROM anomaly_history ah
+            JOIN metric_specs ms ON ah.metric_id = ms.metric_id
+            WHERE ah.current_status = 'active'
+            ORDER BY ah.last_seen_at DESC
+        """
+        rows = self.execute(sql)
+        # Optional: only failure-related metrics for "failure spike" card
+        failure_rows = [
+            r for r in rows
+            if "fail" in (r.get("metric_name") or "").lower()
+            or "failed" in (r.get("filter_json") or "{}").lower()
+        ]
+        if not failure_rows:
+            if use_cache:
+                self._failure_spike_cache = {"summaries": []}
+                self._failure_spike_cache_ts = now_ts
+            return []
+        table_window_pairs = {(r["table_name"], r["window_sec"]) for r in failure_rows}
+        events_count_cache = {}
+        for (tname, wsec) in table_window_pairs:
+            events_count_cache[(tname, wsec)] = self.get_events_count_in_window(tname, wsec)
+        now = datetime.utcnow()
+        out = []
+        for r in failure_rows:
+            metric_id = r["metric_id"]
+            name = r["metric_name"]
+            table_name = r["table_name"]
+            window_sec = r["window_sec"]
+            threshold = r["threshold"]
+            filter_json = r.get("filter_json") or "{}"
+            severity = r.get("severity", "medium")
+            detected_at_iso = r.get("detected_at") or r.get("last_seen_at")
+            if not detected_at_iso:
+                continue
+            try:
+                detected_at = datetime.fromisoformat(detected_at_iso.replace("Z", "+00:00"))
+            except (ValueError, TypeError):
+                detected_at = now
+            if detected_at.tzinfo:
+                now_local = datetime.now(detected_at.tzinfo)
+            else:
+                now_local = now
+            detected_mins_ago = max(0, int((now_local - detected_at).total_seconds() / 60))
+            duration_mins = max(0, int((now_local - detected_at).total_seconds() / 60))
+            current_failed = self.get_window_count(metric_id, window_sec)
+            total_in_window = events_count_cache.get((table_name, window_sec), 0)
+            current_rate_pct = round((current_failed / total_in_window) * 100, 1) if total_in_window else 0.0
+            baseline_rate_pct = 0.7
+            if not skip_baseline_lookup and r.get("last_resolved_at"):
+                resolved_at_iso = r["last_resolved_at"]
+                try:
+                    resolved_at = datetime.fromisoformat(resolved_at_iso.replace("Z", "+00:00"))
+                except (ValueError, TypeError):
+                    resolved_at = now_local
+                window_start_dt = resolved_at - timedelta(seconds=window_sec)
+                since_iso = window_start_dt.isoformat()
+                until_iso = resolved_at.isoformat()
+                total_then_row = self.execute(
+                    "SELECT COUNT(*) as count FROM events WHERE table_name = :tn AND created_at >= :since AND created_at <= :until",
+                    {"tn": table_name, "since": since_iso, "until": until_iso},
+                )
+                total_then = total_then_row[0]["count"] if total_then_row else 0
+                if total_then > 0:
+                    failed_then = self._get_failure_count_in_events_window(
+                        table_name, filter_json, since_iso, until_iso
+                    )
+                    baseline_rate_pct = round((failed_then / total_then) * 100, 1)
+            out.append({
+                "title": "Failure Spike Detected",
+                "severity_label": "Critical" if severity == "critical" else "High",
+                "status": "Active",
+                "metric_name": name,
+                "metric": "Failure Rate",
+                "current_rate_pct": current_rate_pct,
+                "baseline_rate_pct": baseline_rate_pct,
+                "current_vs_baseline": f"{current_rate_pct}% vs {baseline_rate_pct}%",
+                "current_count": current_failed,
+                "threshold": threshold,
+                "detected_at": detected_at_iso,
+                "detected_mins_ago": detected_mins_ago,
+                "duration_mins": duration_mins,
+                "duration_ongoing": True,
+                "summary": "Failure rate crossed expected threshold significantly.",
+                "actions": ["open_dashboard", "acknowledge", "snooze"],
+                "metric_id": metric_id,
+                "table_name": table_name,
+            })
+        if use_cache:
+            self._failure_spike_cache = {"summaries": out}
+            self._failure_spike_cache_ts = now_ts
+        return out
     
     # ==================== STATS ====================
     

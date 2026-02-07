@@ -20,6 +20,8 @@ class GraphState(TypedDict):
     retry_count: int
     query_result: Optional[List[Dict[str, Any]]]
     visualization_config: Optional[Dict[str, Any]]  # Chart type, axis info, etc.
+    insight: Optional[str]  # AI-generated business insight
+    recommendation: Optional[str]  # Actionable business recommendation
     status: str  # success | failed | needs_clarification
 
 # API Models
@@ -33,6 +35,8 @@ class QueryResponse(BaseModel):
     sql: Optional[str]
     results: Optional[List[Dict[str, Any]]]
     visualization_config: Optional[Dict[str, Any]] = None
+    insight: Optional[str] = None
+    recommendation: Optional[str] = None
     status: str
     error: Optional[str] = None
     clarification_question: Optional[str] = None  # Set if needs clarification

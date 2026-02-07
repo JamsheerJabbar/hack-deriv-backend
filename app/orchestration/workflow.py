@@ -8,6 +8,7 @@ from app.modules.preprocessing import preprocessing_service
 from app.modules.sql_generation import sql_generation_module
 from app.modules.validation import validation_module
 from app.modules.visualization import visualization_module
+from app.modules.insight_generation import insight_module
 from app.services.database import db_service
 from app.core.logger import logger
 
@@ -133,6 +134,23 @@ async def recommend_visualization_node(state: GraphState) -> Dict[str, Any]:
     
     return {"visualization_config": vis_config}
 
+async def insight_recommendation_node(state: GraphState) -> Dict[str, Any]:
+    """Provide executive insights and recommendations based on the results."""
+    logger.info("Node: [insight_recommendation]")
+    query = state["user_question"]
+    results = state.get("query_result", [])
+    domain = state.get("domain", "general")
+    
+    if state["status"] != "success" or not results:
+        return {}
+
+    insights = await insight_module.generate(query, results, domain)
+    
+    return {
+        "insight": insights.get("insight"),
+        "recommendation": insights.get("recommendation")
+    }
+
 async def guidance_node(state: GraphState) -> Dict[str, Any]:
     """Generate a helpful response for off-topic or schema queries."""
     from app.services.llm import llm_service
@@ -218,6 +236,7 @@ workflow.add_node("validate_sql", validate_sql_node)
 workflow.add_node("repair_sql", repair_sql_node)
 workflow.add_node("execute_query", execute_query_node)
 workflow.add_node("recommend_visualization", recommend_visualization_node)
+workflow.add_node("insight_recommendation", insight_recommendation_node)
 workflow.add_node("format_response", format_response_node)
 
 workflow.set_entry_point("classify_intent")
@@ -262,7 +281,8 @@ workflow.add_conditional_edges(
 
 workflow.add_edge("repair_sql", "validate_sql")
 workflow.add_edge("execute_query", "recommend_visualization")
-workflow.add_edge("recommend_visualization", "format_response")
+workflow.add_edge("recommend_visualization", "insight_recommendation")
+workflow.add_edge("insight_recommendation", "format_response")
 workflow.add_edge("format_response", END)
 
 app_graph = workflow.compile()

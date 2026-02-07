@@ -52,6 +52,8 @@ async def query_database(request: QueryRequest):
         sql=result.get("generated_sql"),
         results=result.get("query_result"),
         visualization_config=result.get("visualization_config"),
+        insight=result.get("insight"),
+        recommendation=result.get("recommendation"),
         status="success",
         is_final=True
     )
